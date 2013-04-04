@@ -3,11 +3,12 @@ package exterminatorJeff.undergroundBiomes.common.item;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
 
-public class ItemMetamorphicStoneBlock extends ItemBlock{
+public class ItemMetamorphicStoneBlock extends ItemBlockBase{
 	
     public ItemMetamorphicStoneBlock(int par1, Block block)
     {
@@ -22,15 +23,15 @@ public class ItemMetamorphicStoneBlock extends ItemBlock{
     }
     
     @SideOnly(Side.CLIENT)
-    public int getIconFromDamage(int par1)
+    public Icon getIconFromDamage(int par1)
     {
         return UndergroundBiomes.metamorphicStone.getBlockTextureFromSideAndMetadata(0, par1);
     }
     
-    public String getItemNameIS(ItemStack itemstack) {
+    public String getItemName(int index){
     	String name = "";
-    	switch(itemstack.getItemDamage()){
-			case(0): name = "gneiss";
+    	switch(index){
+		    case(0): name = "gneiss";
 				break;
 			case(1): name = "eclogite";
 				break;
@@ -47,9 +48,9 @@ public class ItemMetamorphicStoneBlock extends ItemBlock{
 			case(7): name = "migmatite";
 				break;
 			default: name="default";
-    		
+			
 	    }
-    	return getItemName() + "." + name;
-	}
+    	return getUnlocalizedName() + "." + name;
+    }
 
 }

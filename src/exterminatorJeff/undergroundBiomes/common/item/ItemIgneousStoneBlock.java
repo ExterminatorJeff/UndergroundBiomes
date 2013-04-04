@@ -3,11 +3,12 @@ package exterminatorJeff.undergroundBiomes.common.item;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
 
-public class ItemIgneousStoneBlock extends ItemBlock{
+public class ItemIgneousStoneBlock extends ItemBlockBase{
 
     public ItemIgneousStoneBlock(int par1, Block block)
     {
@@ -22,14 +23,14 @@ public class ItemIgneousStoneBlock extends ItemBlock{
     }
     
     @SideOnly(Side.CLIENT)
-    public int getIconFromDamage(int par1)
+    public Icon getIconFromDamage(int par1)
     {
         return UndergroundBiomes.igneousStone.getBlockTextureFromSideAndMetadata(0, par1);
     }
     
-    public String getItemNameIS(ItemStack itemstack) {
+    public String getItemName(int index){
     	String name = "";
-    	switch(itemstack.getItemDamage()){
+    	switch(index){
     		case(0): name = "redGranite";
     			break;
     		case(1): name = "blackGranite";
@@ -49,10 +50,8 @@ public class ItemIgneousStoneBlock extends ItemBlock{
     		default: name="default";
     		
 	    }
-    	return getItemName() + "." + name;
-	}
-    
-    
+    	return getUnlocalizedName() + "." + name;
+    }
     
 
 	

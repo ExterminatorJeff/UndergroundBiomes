@@ -7,7 +7,7 @@ public class FuelManager implements IFuelHandler {
 
 	@Override
 	public int getBurnTime(ItemStack fuel){
-		if(fuel.itemID == UndergroundBiomes.ligniteCoal.shiftedIndex){
+		if(fuel.itemID == UndergroundBiomes.ligniteCoal.itemID){
 			return 200;
 		}else if(fuel.itemID == UndergroundBiomes.anthraciteCoalID){
 			return 6400;

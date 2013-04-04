@@ -3,11 +3,12 @@ package exterminatorJeff.undergroundBiomes.common.item;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
 
-public class ItemIgneousCobblestoneBlock extends ItemBlock{
+public class ItemIgneousCobblestoneBlock extends ItemBlockBase{
 	
 	public ItemIgneousCobblestoneBlock(int par1, Block block)
     {
@@ -22,33 +23,34 @@ public class ItemIgneousCobblestoneBlock extends ItemBlock{
     }
     
     @SideOnly(Side.CLIENT)
-    public int getIconFromDamage(int par1)
+    public Icon getIconFromDamage(int par1)
     {
         return UndergroundBiomes.igneousCobblestone.getBlockTextureFromSideAndMetadata(0, par1);
     }
     
-    public String getItemNameIS(ItemStack itemstack) {
+    public String getItemName(int index){
     	String name = "";
-    	switch(itemstack.getItemDamage()){
-    		case(0): name = "redGraniteCobble";
-    			break;
-    		case(1): name = "blackGraniteCobble";
-    			break;
-    		case(2): name = "rhyoliteCobble";
-    			break;
-    		case(3): name = "andesiteCobble";
-    			break;
-    		case(4): name = "gabbroCobble";
-    			break;
-    		case(5): name = "basaltCobble";
-    			break;
-    		case(6): name = "komatiiteCobble";
-    			break;
-    		case(7): name = "epidoteCobble";
-    			break;
-    		default: name="default";
-    		
-	    }
-    	return getItemName() + "." + name;
-	}
+    	
+    	switch(index){
+			case(0): name = "gneissCobble";
+				break;
+			case(1): name = "eclogiteCobble";
+				break;
+			case(2): name = "marbleCobble";
+				break;
+			case(3): name = "quartziteCobble";
+				break;
+			case(4): name = "blueschistCobble";
+				break;
+			case(5): name = "greenschistCobble";
+				break;
+			case(6): name = "soapstoneCobble";
+				break;
+			case(7): name = "migmatiteCobble";
+				break;
+			default: name="default";
+    	}
+    	
+	return getUnlocalizedName() + "." + name;
+    }
 }

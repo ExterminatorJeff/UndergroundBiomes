@@ -159,18 +159,18 @@ public class BiomeUndergroundDecorator {
     			for(int z = 0; z < 128; z++){
     				if(UndergroundBiomes.testMode1){
     					if(currentWorld.getBlockId(x, z, y) != 0){
-    						currentWorld.setBlockAndMetadata(x, z, y, currentBiome.fillerBlock, currentBiome.fillerBlockMetadata);
+    						currentWorld.setBlock(x, z, y, currentBiome.fillerBlock, currentBiome.fillerBlockMetadata, 0);
     					}
     				}else if(rule[currentSurfaceBiome.biomeID] != null && currentWorld.getBlockId(x, z, y) == Block.stone.blockID){//has a custom rule defined
     					if(currentWorld.getBlockId(x, z, y) != 0){//block is not air
     						if(currentBiome.hasStrata){//underground biome has strata?
 	    						int variation = (int) (currentBiome.strataNoise.noise(x/55.533, y/55.533, 3, 1, 0.5) * 10 - 5);
 	    						int[] strata = currentBiome.getStrataBlockAtLayer(z + variation);
-	    						currentWorld.setBlockAndMetadata(x, z, y, strata[0], strata[1]);
+	    						currentWorld.setBlock(x, z, y, strata[0], strata[1], 0);
     						}
 	    					int[] strata = currentBiome.getStrataBlockAtLayerWithRule(z, rule[currentSurfaceBiome.biomeID].ruleLayers);//strata layer for custom rule
 	    					if(strata != null){
-	    						currentWorld.setBlockAndMetadata(x, z, y, strata[0], strata[1]);
+	    						currentWorld.setBlock(x, z, y, strata[0], strata[1], 0);
 	    					}
     					}
     				}else{//no custom rule for this surface biome
@@ -181,7 +181,7 @@ public class BiomeUndergroundDecorator {
 		    					if(currentBiome.hasStrata){
 		    						int variation = (int) (currentBiome.strataNoise.noise(x/55.533, y/55.533, 3, 1, 0.5) * 10 - 5);
 		    						int[] strata = currentBiome.getStrataBlockAtLayer(z + variation);
-		    						currentWorld.setBlockAndMetadata(x, z, y, strata[0], strata[1]);
+		    						currentWorld.setBlock(x, z, y, strata[0], strata[1], 0);
 		    					}else{
 		    						currentWorld.setBlock(x, z, y, currentBiome.fillerBlock);
 		    					}

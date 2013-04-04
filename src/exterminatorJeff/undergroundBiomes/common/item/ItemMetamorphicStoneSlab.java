@@ -2,6 +2,7 @@ package exterminatorJeff.undergroundBiomes.common.item;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
@@ -14,14 +15,14 @@ public class ItemMetamorphicStoneSlab extends ItemIgneousStoneSlab{
 	}
 	
     @SideOnly(Side.CLIENT)
-    public int getIconFromDamage(int par1)
+    public Icon getIconFromDamage(int par1)
     {
         return UndergroundBiomes.metamorphicBrickSlabHalf.getBlockTextureFromSideAndMetadata(0, par1);
     }
     
-    public String getItemNameIS(ItemStack itemstack) {
+    public String getItemName(int index) {
     	String name = "";
-    	switch(itemstack.getItemDamage()){
+    	switch(index){
 			case(0): name = "gneissBrickSlab";
 				break;
 			case(1): name = "eclogiteBrickSlab";
@@ -41,7 +42,7 @@ public class ItemMetamorphicStoneSlab extends ItemIgneousStoneSlab{
 			default: name="default";
     		
 	    }
-    	return getItemName() + "." + name;
+    	return getUnlocalizedName() + "." + name;
 	}
 
 }
