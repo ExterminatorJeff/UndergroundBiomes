@@ -50,7 +50,7 @@ public class ItemIgneousCobblestoneBlock extends ItemBlockBase{
 				break;
 			default: name="default";
     	}
-    	
+    	String s = getUnlocalizedName() + "." + name;
 	return getUnlocalizedName() + "." + name;
     }
 }

@@ -10,8 +10,8 @@ import net.minecraft.world.World;
 
 public class BlockMetamorphicStoneBrick extends BlockMetamorphicStone{
 
-	public BlockMetamorphicStoneBrick(int id, int texture) {
-		super(id, texture);
+	public BlockMetamorphicStoneBrick(int id) {
+		super(id);
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -29,6 +29,11 @@ public class BlockMetamorphicStoneBrick extends BlockMetamorphicStone{
             }
         }
         return ret;
+    }
+    
+    @Override
+    public String getBlockName(int index){
+    	return super.getBlockName(index) + "Brick";
     }
 	
 

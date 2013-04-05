@@ -65,7 +65,7 @@ import exterminatorJeff.undergroundBiomes.common.item.ItemSedimentaryStoneBlock;
 import exterminatorJeff.undergroundBiomes.worldGen.StrataLayer;
 
 
-@Mod(modid = "Underground Biomes", name = "Underground Biomes", version = "0.3.3")
+@Mod(modid = "UndergroundBiomes", name = "Underground Biomes", version = "0.3.4")
 @NetworkMod(clientSideRequired = true, serverSideRequired = true)
 
 
@@ -83,7 +83,7 @@ public class UndergroundBiomes{
 	
 	public static String blockTextures = "/exterminatorJeff/undergroundBiomes/textures/BlockTextures.png";
 	public static String itemTextures = "/exterminatorJeff/undergroundBiomes/textures/Items.png";
-	public static String texturePath = "exterminatorJeff.undergroundBiomes:";
+	public static String texturePath = "UndergroundBiomes:";
 	
 	public static CreativeTabs tabModBlocks;
 	public static CreativeTabs tabModItems;
@@ -196,31 +196,31 @@ public class UndergroundBiomes{
 		igneousStoneBrick = new BlockIgneousStoneBrick(igneousStoneBrickID, 16).setUnlocalizedName("igneousStoneBrick");
 		Item.itemsList[igneousStoneBrickID] = new ItemIgneousStoneBrickBlock(igneousStoneBrickID - 256, igneousStoneBrick).setUnlocalizedName("igneousStoneBrick");
 		
-		metamorphicStone = new BlockMetamorphicStone(metamorphicStoneID, 32).setUnlocalizedName("metamorphicStone");
+		metamorphicStone = new BlockMetamorphicStone(metamorphicStoneID).setUnlocalizedName("metamorphicStone");
 		Item.itemsList[metamorphicStoneID] = new ItemMetamorphicStoneBlock(metamorphicStoneID - 256, metamorphicStone).setUnlocalizedName("metamorphicStone");
 		
-		metamorphicCobblestone = new BlockMetamorphicCobblestone(metamorphicCobblestoneID, 40).setUnlocalizedName("metamorphicCobblestone");
+		metamorphicCobblestone = new BlockMetamorphicCobblestone(metamorphicCobblestoneID).setUnlocalizedName("metamorphicCobblestone");
 		Item.itemsList[metamorphicCobblestoneID] = new ItemMetamorphicCobblestoneBlock(metamorphicCobblestoneID - 256, metamorphicCobblestone).setUnlocalizedName("metamorphicCobblestone");
 		
-		metamorphicStoneBrick = new BlockMetamorphicStoneBrick(metamorphicStoneBrickID, 24).setUnlocalizedName("metamorphicStoneBrick");
+		metamorphicStoneBrick = new BlockMetamorphicStoneBrick(metamorphicStoneBrickID).setUnlocalizedName("metamorphicStoneBrick");
 		Item.itemsList[metamorphicStoneBrickID] = new ItemMetamorphicStoneBrickBlock(metamorphicStoneBrickID - 256, metamorphicStoneBrick).setUnlocalizedName("metamorphicStoneBrick");
 		
-		sedimentaryStone = new BlockSedimentaryStone(sedimentaryStoneID, 48).setUnlocalizedName("sedimentaryStone");
+		sedimentaryStone = new BlockSedimentaryStone(sedimentaryStoneID).setUnlocalizedName("sedimentaryStone");
 		Item.itemsList[sedimentaryStoneID] = new ItemSedimentaryStoneBlock(sedimentaryStoneID - 256, sedimentaryStone).setUnlocalizedName("sedimentaryStone");
 		
-		anthraciteCoal = new BlockAnthracite(anthraciteCoalID, 56).setUnlocalizedName("anthraciteCoal");
+		anthraciteCoal = new BlockAnthracite(anthraciteCoalID).setUnlocalizedName("anthraciteCoal");
 		GameRegistry.registerBlock(anthraciteCoal, "undergroundBiomes_anthraciteBlock");
 		
-		igneousBrickSlabHalf = new BlockIgneousStoneSlab(igneousBrickSlabHalfId, false, 16).setUnlocalizedName("igneousBrickSlab");
+		igneousBrickSlabHalf = new BlockIgneousStoneSlab(igneousBrickSlabHalfId, false).setUnlocalizedName("igneousBrickSlab");
 		Item.itemsList[igneousBrickSlabHalfId] = new ItemIgneousStoneSlab(igneousBrickSlabHalfId - 256, igneousBrickSlabHalf).setUnlocalizedName("igneousBrickSlab");
 		
-		igneousBrickSlabFull = new BlockIgneousStoneSlab(igneousBrickSlabFullId, true, 16).setUnlocalizedName("igneousBrickSlabFull");
+		igneousBrickSlabFull = new BlockIgneousStoneSlab(igneousBrickSlabFullId, true).setUnlocalizedName("igneousBrickSlabFull");
 		Item.itemsList[igneousBrickSlabFullId] = new ItemIgneousStoneSlab(igneousBrickSlabFullId - 256, igneousBrickSlabFull).setUnlocalizedName("igneousBrickSlabFull");
 		
-		metamorphicBrickSlabHalf = new BlockMetamorphicStoneSlab(metamorphicBrickSlabHalfID, false, 24).setUnlocalizedName("metamorphicBrickSlab");
+		metamorphicBrickSlabHalf = new BlockMetamorphicStoneSlab(metamorphicBrickSlabHalfID, false).setUnlocalizedName("metamorphicBrickSlab");
 		Item.itemsList[metamorphicBrickSlabHalfID] = new ItemMetamorphicStoneSlab(metamorphicBrickSlabHalfID - 256, metamorphicBrickSlabHalf).setUnlocalizedName("metamorphicBrickSlab");
 		
-		metamorphicBrickSlabFull = new BlockMetamorphicStoneSlab(metamorphicBrickSlabFullID, true, 24).setUnlocalizedName("metamorphicBrickSlabFull");
+		metamorphicBrickSlabFull = new BlockMetamorphicStoneSlab(metamorphicBrickSlabFullID, true).setUnlocalizedName("metamorphicBrickSlabFull");
 		Item.itemsList[metamorphicBrickSlabFullID] = new ItemMetamorphicStoneSlab(metamorphicBrickSlabFullID - 256, metamorphicBrickSlabFull).setUnlocalizedName("metamorphicBrickSlabFull");
 		
 		//items

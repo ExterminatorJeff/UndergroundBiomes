@@ -50,7 +50,7 @@ public class ItemIgneousStoneBlock extends ItemBlockBase{
     		default: name="default";
     		
 	    }
-    	return getUnlocalizedName() + "." + name;
+    	return name;
     }
     
 

@@ -54,5 +54,10 @@ public class BlockIgneousStoneBrick extends BlockIgneousStone{
         return ret;
     }
     
+    @Override
+    public String getBlockName(int index){
+    	return super.getBlockName(index) + "Brick";
+    }
+    
 
 }

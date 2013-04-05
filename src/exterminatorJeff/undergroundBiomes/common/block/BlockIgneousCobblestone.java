@@ -13,7 +13,10 @@ public class BlockIgneousCobblestone extends BlockIgneousStone{
 		return UndergroundBiomes.igneousStone.getBlockHardness(par1World, par2, par3, par4)-0.25f;
 	}
 	
-    
+    @Override
+    public String getBlockName(int index){
+    	return super.getBlockName(index) + "Cobble";
+    }
 	
 	
 

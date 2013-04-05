@@ -12,7 +12,7 @@ import javax.imageio.ImageIO;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 
-public class CustomOreCreator {
+public class CustomOreCreator {/*
 	
 	Block[] blockList;
 	public ArrayList<Block> ores;
@@ -29,7 +29,7 @@ public class CustomOreCreator {
 		ores = new ArrayList<Block>();
 		for(Block b: blockList){
 			if(b != null){
-				String name = b.getBlockName();
+				String name = b.getUnlocalizedName();
 				if(name != null){
 					if(name.contains("ore") || name.contains("Ore")){
 						ores.add(b);
@@ -159,6 +159,6 @@ public class CustomOreCreator {
 		for(Block b: ores){
 			System.err.println(b.getBlockName());
 		}
-	}
+	}*/
 	
 }

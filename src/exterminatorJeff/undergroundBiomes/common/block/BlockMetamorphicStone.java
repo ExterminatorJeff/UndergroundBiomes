@@ -7,18 +7,18 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
 
-public class BlockMetamorphicStone extends Block{
+public class BlockMetamorphicStone extends BlockMetadataBase{
 	
-	public BlockMetamorphicStone(int id, int texture){
-		super(id, texture, Material.rock);
+	public BlockMetamorphicStone(int id){
+		super(id, Material.rock);
 		this.setHardness(1.5f);
 		this.setCreativeTab(UndergroundBiomes.tabModBlocks);
-		this.setRequiresSelfNotify();
 	}
 	
 	public String getTextureFile(){
@@ -58,8 +58,8 @@ public class BlockMetamorphicStone extends Block{
 
     
     @SideOnly(Side.CLIENT)
-    public int getBlockTextureFromSideAndMetadata(int side, int metadata){
-        return blockIndexInTexture + metadata;
+    public Icon getBlockTextureFromSideAndMetadata(int side, int metadata){
+        return textures[metadata];
     }
 
 
@@ -92,5 +92,30 @@ public class BlockMetamorphicStone extends Block{
         }
         return ret;
     }
+    
+    public String getBlockName(int index){
+    	String name = "";
+    	switch(index){
+		    case(0): name = "gneiss";
+				break;
+			case(1): name = "eclogite";
+				break;
+			case(2): name = "marble";
+				break;
+			case(3): name = "quartzite";
+				break;
+			case(4): name = "blueschist";
+				break;
+			case(5): name = "greenschist";
+				break;
+			case(6): name = "soapstone";
+				break;
+			case(7): name = "migmatite";
+				break;
+			default: name="default";
+			
+	    }
+    	return name;
+	}
 
 }

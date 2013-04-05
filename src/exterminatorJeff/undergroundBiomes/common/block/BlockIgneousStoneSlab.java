@@ -8,16 +8,20 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockHalfSlab;
 import net.minecraft.block.BlockStep;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
 public class BlockIgneousStoneSlab extends BlockStep{
 	
 	boolean isFullSlab = false;
 	
-	public BlockIgneousStoneSlab(int par1, boolean par2, int texture){
+	protected Icon[] textures = {null, null, null, null, null, null, null, null};
+	
+	public BlockIgneousStoneSlab(int par1, boolean par2){
 		super(par1, par2);
 		isFullSlab = par2;
 		if(!par2){
@@ -25,8 +29,6 @@ public class BlockIgneousStoneSlab extends BlockStep{
 		}else{
 			this.setCreativeTab(null);
 		}
-		this.setRequiresSelfNotify();
-		this.blockIndexInTexture = texture;
 		this.useNeighborBrightness[par1] = true;
 	}
 
@@ -34,11 +36,6 @@ public class BlockIgneousStoneSlab extends BlockStep{
 	public String getFullSlabName(int var1) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-	
-	@Override
-	public String getTextureFile(){
-		return UndergroundBiomes.blockTextures;
 	}
 	
 	@Override
@@ -61,12 +58,12 @@ public class BlockIgneousStoneSlab extends BlockStep{
 	}
     
     @Override
-    public int getBlockTextureFromSideAndMetadata(int par1, int par2)
+    public Icon getBlockTextureFromSideAndMetadata(int par1, int par2)
     {
-        return this.blockIndexInTexture + (par2 & 7);
+        return textures[par2 & 7];
     }
     
-    @Override
+  /*  @Override
     public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLiving par5EntityLiving){
     	if(par1World.getBlockId(par2, par3 - 1, par4) == UndergroundBiomes.igneousBrickSlabHalf.blockID){
     		int metadata = par1World.getBlockMetadata(par2, par3, par4) & 7;
@@ -75,7 +72,7 @@ public class BlockIgneousStoneSlab extends BlockStep{
 	    		par1World.setBlockAndMetadataWithNotify(par2, par3 - 1, par4, UndergroundBiomes.igneousBrickSlabFull.blockID, metadata);
     		}
     	}
-    }
+    }*/
     
     @Override
     public int idPicked(World par1World, int par2, int par3, int par4){
@@ -99,5 +96,37 @@ public class BlockIgneousStoneSlab extends BlockStep{
         }
         return ret;
     }
+    
+	@Override
+	public void registerIcons(IconRegister iconRegister){
+    	for(int i = 0; i < 8; i++){
+    		textures[i] = iconRegister.registerIcon(UndergroundBiomes.texturePath + getBlockName(i));
+    	}
+    }
+	
+	public String getBlockName(int index){
+		String name = "";
+    	switch(index){
+    		case(0): name = "redGranite";
+    			break;
+    		case(1): name = "blackGranite";
+    			break;
+    		case(2): name = "rhyolite";
+    			break;
+    		case(3): name = "andesite";
+    			break;
+    		case(4): name = "gabbro";
+    			break;
+    		case(5): name = "basalt";
+    			break;
+    		case(6): name = "komatiite";
+    			break;
+    		case(7): name = "epidote";
+    			break;
+    		default: name="default";
+    		
+	    }
+    	return name + "Brick";
+	}
 
 }

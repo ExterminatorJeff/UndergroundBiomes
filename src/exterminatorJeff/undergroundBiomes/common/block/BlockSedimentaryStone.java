@@ -7,18 +7,18 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
 
-public class BlockSedimentaryStone extends Block{
+public class BlockSedimentaryStone extends BlockMetadataBase{
 	
-	public BlockSedimentaryStone(int id, int texture){
-		super(id, texture, Material.rock);
+	public BlockSedimentaryStone(int id){
+		super(id, Material.rock);
 		this.setHardness(1.5f);
 		this.setCreativeTab(UndergroundBiomes.tabModBlocks);
-		this.setRequiresSelfNotify();
 	}
 	
 	public String getTextureFile(){
@@ -52,8 +52,8 @@ public class BlockSedimentaryStone extends Block{
     
     @SideOnly(Side.CLIENT)
     @Override
-    public int getBlockTextureFromSideAndMetadata(int side, int metadata){
-        return blockIndexInTexture + metadata;
+    public Icon getBlockTextureFromSideAndMetadata(int side, int metadata){
+        return textures[metadata];
     }
     
     public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List)
@@ -80,7 +80,7 @@ public class BlockSedimentaryStone extends Block{
             if (id > 0){
             	
                 if(metadata == 4){
-                	ret.add(new ItemStack(UndergroundBiomes.ligniteCoal.shiftedIndex, 1, damageDropped(metadata)));
+                	ret.add(new ItemStack(UndergroundBiomes.ligniteCoal.itemID, 1, damageDropped(metadata)));
                 }else{
                 	ret.add(new ItemStack(this, 1, damageDropped(metadata)));
                 }
@@ -88,5 +88,30 @@ public class BlockSedimentaryStone extends Block{
         }
         return ret;
     }
+    
+    public String getBlockName(int index) {
+    	String name = "";
+    	switch(index){
+    		case(0): name = "limestone";
+    			break;
+    		case(1): name = "chalk";
+    			break;
+    		case(2): name = "shale";
+    			break;
+    		case(3): name = "siltstone";
+    			break;
+    		case(4): name = "ligniteBlock";
+    			break;
+    		case(5): name = "flint";
+    			break;
+    		case(6): name = "greywacke";
+    			break;
+    		case(7): name = "chert";
+    			break;
+    		default: name="default";
+    		
+	    }
+    	return name;
+	}
 
 }

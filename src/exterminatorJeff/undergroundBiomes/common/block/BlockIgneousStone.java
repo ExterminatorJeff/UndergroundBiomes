@@ -115,7 +115,7 @@ public class BlockIgneousStone extends BlockMetadataBase{
     		default: name="default";
     		
 	    }
-    	return getUnlocalizedName() + "." + name;
+    	return name;
     }
     
             
