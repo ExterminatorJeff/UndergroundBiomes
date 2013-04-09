@@ -1,6 +1,9 @@
 package exterminatorJeff.undergroundBiomes.common.item;
 
+import java.util.List;
+
 import net.minecraft.block.Block;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
@@ -50,8 +53,14 @@ public class ItemIgneousStoneBlock extends ItemBlockBase{
     		default: name="default";
     		
 	    }
-    	return name;
+    	return super.getUnlocalizedName() + "." + name;
     }
+    
+    /*@Override
+    public String getUnlocalizedName(ItemStack stack){
+    	return getItemName(stack.getItemDamage());
+    }*/
+    
     
 
 	

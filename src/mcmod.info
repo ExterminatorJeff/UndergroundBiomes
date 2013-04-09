@@ -1,0 +1,19 @@
+[
+{
+"modid": "Underground Biomes",
+"name": "Underground Biomes",
+"description": "Adds underground biomes composed of layers of new rock types",
+"version": "0.3.4",
+"credits": "Created by Exterminator Jeff",
+"logoFile": "",
+"mcversion": "",
+"url": "http://www.minecraftforum.net/topic/1593704-146-underground-biomes/",
+"updateUrl": "",
+"authors": [ "Exterminator Jeff" ],
+"parent":"",
+"screenshots": [],
+"dependencies": [
+"mod_MinecraftForge"
+]
+}
+]

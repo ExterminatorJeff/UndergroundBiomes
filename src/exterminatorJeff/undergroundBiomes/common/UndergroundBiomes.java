@@ -248,6 +248,9 @@ public class UndergroundBiomes{
 	}
 	
 	public void setUpBlockNames(){
+		
+
+		
 		//igneous stone
 		LanguageRegistry.instance().addStringLocalization("tile.igneousStone.redGranite.name", "Red Granite");
 		LanguageRegistry.instance().addStringLocalization("tile.igneousStone.blackGranite.name", "Black Granite");

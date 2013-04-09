@@ -28,7 +28,8 @@ public class ItemBlockBase extends ItemBlock {
 		return "";
 	}
 	
-	public String getItemNameIS(ItemStack itemstack) {
+	@Override
+	public String getUnlocalizedName(ItemStack itemstack) {
     	return getItemName(itemstack.getItemDamage());
 	}
 

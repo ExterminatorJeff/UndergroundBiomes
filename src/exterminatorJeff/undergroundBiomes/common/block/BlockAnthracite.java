@@ -18,5 +18,10 @@ public class BlockAnthracite extends Block{
 	public void registerIcons(IconRegister iconRegister){
     	texture = iconRegister.registerIcon(UndergroundBiomes.texturePath + "anthracite");
     }
+	
+	@Override
+	public Icon getBlockTextureFromSideAndMetadata(int side, int metadata){
+		return texture;
+	}
 
 }

@@ -1,6 +1,9 @@
 package exterminatorJeff.undergroundBiomes.common.item;
 
+import java.util.List;
+
 import net.minecraft.block.Block;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
@@ -32,25 +35,29 @@ public class ItemIgneousCobblestoneBlock extends ItemBlockBase{
     	String name = "";
     	
     	switch(index){
-			case(0): name = "gneissCobble";
+			case(0): name = "redGraniteCobble";
 				break;
-			case(1): name = "eclogiteCobble";
+			case(1): name = "blackGraniteCobble";
 				break;
-			case(2): name = "marbleCobble";
+			case(2): name = "rhyoliteCobble";
 				break;
-			case(3): name = "quartziteCobble";
+			case(3): name = "andesiteCobble";
 				break;
-			case(4): name = "blueschistCobble";
+			case(4): name = "gabbroCobble";
 				break;
-			case(5): name = "greenschistCobble";
+			case(5): name = "basaltCobble";
 				break;
-			case(6): name = "soapstoneCobble";
+			case(6): name = "komatiiteCobble";
 				break;
-			case(7): name = "migmatiteCobble";
+			case(7): name = "epidoteCobble";
 				break;
 			default: name="default";
     	}
-    	String s = getUnlocalizedName() + "." + name;
-	return getUnlocalizedName() + "." + name;
+    	return super.getUnlocalizedName() + "." + name;
     }
+    
+	/*public String getItemNameIS(ItemStack itemstack) {
+		String s = getItemName(itemstack.getItemDamage());
+    	return getItemName(itemstack.getItemDamage());
+	}*/
 }
