@@ -92,8 +92,8 @@ public class BiomeUndergroundDecorator {
     public void decorate(boolean[] ores){
     	worldGen = UndergroundBiomes.getWorldGenManager();
     	replaceBlocksForUndergroundBiome(chunk_X, chunk_Z);
-
-    	this.generateOres(ores);
+    	currentWorld.getChunkProvider().loadChunk(chunk_X, chunk_Z);
+    	//this.generateOres(ores);
     }
     
     protected void genStandardOre1(int par1, WorldGenerator par2WorldGenerator, int par3, int par4)
@@ -159,29 +159,29 @@ public class BiomeUndergroundDecorator {
     			for(int z = 0; z < 128; z++){
     				if(UndergroundBiomes.testMode1){
     					if(currentWorld.getBlockId(x, z, y) != 0){
-    						currentWorld.setBlock(x, z, y, currentBiome.fillerBlock, currentBiome.fillerBlockMetadata, 0);
+    						currentWorld.setBlock(x, z, y, currentBiome.fillerBlock, currentBiome.fillerBlockMetadata, 0x2);
     					}
     				}else if(rule[currentSurfaceBiome.biomeID] != null && currentWorld.getBlockId(x, z, y) == Block.stone.blockID){//has a custom rule defined
     					if(currentWorld.getBlockId(x, z, y) != 0){//block is not air
     						if(currentBiome.hasStrata){//underground biome has strata?
 	    						int variation = (int) (currentBiome.strataNoise.noise(x/55.533, y/55.533, 3, 1, 0.5) * 10 - 5);
 	    						int[] strata = currentBiome.getStrataBlockAtLayer(z + variation);
-	    						currentWorld.setBlock(x, z, y, strata[0], strata[1], 0);
+	    						currentWorld.setBlock(x, z, y, strata[0], strata[1], 0x2);
     						}
 	    					int[] strata = currentBiome.getStrataBlockAtLayerWithRule(z, rule[currentSurfaceBiome.biomeID].ruleLayers);//strata layer for custom rule
 	    					if(strata != null){
-	    						currentWorld.setBlock(x, z, y, strata[0], strata[1], 0);
+	    						currentWorld.setBlock(x, z, y, strata[0], strata[1], 0x2);
 	    					}
     					}
     				}else{//no custom rule for this surface biome
 	    				if(currentWorld.getBlockId(x, z, y) == Block.stone.blockID){
 	    					if(UndergroundBiomes.testMode2){
-	    						currentWorld.setBlock(x, z, y, 0);
+	    						currentWorld.setBlock(x, z, y, 0, 0, 0x2);
 	    					}else{
 		    					if(currentBiome.hasStrata){
 		    						int variation = (int) (currentBiome.strataNoise.noise(x/55.533, y/55.533, 3, 1, 0.5) * 10 - 5);
 		    						int[] strata = currentBiome.getStrataBlockAtLayer(z + variation);
-		    						currentWorld.setBlock(x, z, y, strata[0], strata[1], 0);
+		    						currentWorld.setBlock(x, z, y, strata[0], strata[1], 0x02);
 		    					}else{
 		    						currentWorld.setBlock(x, z, y, currentBiome.fillerBlock);
 		    					}

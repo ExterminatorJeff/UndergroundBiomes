@@ -59,6 +59,7 @@ public class WorldGenManager {
 	public void onBiomeDecorate(DecorateBiomeEvent event){
 		this.blockUndergroundBiomeArray = new byte[256];
 		getUndergroundBiomeGenAt(event.chunkX, event.chunkZ).decorate(event.world, event.rand, event.chunkX, event.chunkZ);
+		
 		//cavernGenerator.generate(event.chunkX, event.chunkZ);
 	}
 	
