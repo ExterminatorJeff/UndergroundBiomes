@@ -29,14 +29,25 @@ public class WorldGenManager {
     CavernGenerator cavernGenerator;
     
     public World world;
+    
+    private long seed;
 	
 	public WorldGenManager(long par1, WorldType par3WorldType, World world){
 
+		seed = par1;
+		long initialSeed = seed;
+		
 		this.biomeCache = new UBiomeCache(this);
 		
 		GenLayerUnderground[] gen = GenLayerUnderground.initializeAllBiomeGenerators(par1, par3WorldType, UndergroundBiomes.biomeSize);
         this.genUndergroundBiomes = gen[0];
         this.undergroundBiomeIndexLayer = gen[1];
+        
+        while(!arrayHasValues(this.undergroundBiomeIndexLayer.getInts(0, 0, 16, 16))){
+        	gen = GenLayerUnderground.initializeAllBiomeGenerators(seed++, par3WorldType, UndergroundBiomes.biomeSize);
+            this.genUndergroundBiomes = gen[0];
+            this.undergroundBiomeIndexLayer = gen[1];
+        }
         
         //add custom rules for above ground biomes
         BiomeGenRules = new BiomeGenRule[256];
@@ -86,6 +97,8 @@ public class WorldGenManager {
 	        }else{
 	        	
 	            int[] var7 = this.undergroundBiomeIndexLayer.getInts(par2, par3, par4, par5);
+	            
+	            
 	
 	            for (int var8 = 0; var8 < par4 * par5; ++var8){
 	                biomesArray[var8] = BiomeGenUndergroundBase.biomeList[var7[var8]];
@@ -94,6 +107,15 @@ public class WorldGenManager {
 	       return biomesArray;
         }
    
+    }
+    
+    private boolean arrayHasValues(int[] ints){
+    	for(int i : ints){
+    		if(i != 0){
+    			return true;
+    		}
+    	}
+    	return false;
     }
     
     public ChunkPosition findUndergroundBiomePosition(int par1, int par2, int par3, List par4List, Random par5Random)
