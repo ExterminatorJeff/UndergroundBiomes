@@ -3,9 +3,10 @@ package exterminatorJeff.undergroundBiomes.worldGen;
 import java.util.ArrayList;
 import java.util.Random;
 
+import net.minecraft.block.Block;
 import net.minecraft.world.World;
-
-import exterminatorJeff.undergroundBiomes.common.*;
+import exterminatorJeff.undergroundBiomes.common.PerlinNoiseGenerator;
+import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
 
 public abstract class BiomeGenUndergroundBase {
 	
@@ -85,6 +86,15 @@ public abstract class BiomeGenUndergroundBase {
 	public static final BiomeGenUndergroundBase metamorphic16 = (new BiomeGenUndergroundMetamorphic(31, metamorphicID, 7))
 			.setName("Metamorphic").AddStrataLayers(strataLayers.layers[1]).setOres(new boolean[]{true, true, true});
 	
+	public static final BiomeGenUndergroundBase vanillaStone1 = (new BiomeGenUndergroundMetamorphic(32, Block.stone.blockID, 0, true))
+			.setName("Metamorphic").AddStrataLayers(strataLayers.layers[0]).setOres(new boolean[]{true, true, true});
+	public static final BiomeGenUndergroundBase vanillaStone2 = (new BiomeGenUndergroundMetamorphic(33, Block.stone.blockID, 0, true))
+			.setName("Metamorphic").AddStrataLayers(strataLayers.layers[1]).setOres(new boolean[]{true, true, true});
+	public static final BiomeGenUndergroundBase vanillaStone3 = (new BiomeGenUndergroundMetamorphic(34, Block.stone.blockID, 0, true))
+			.setName("Metamorphic").AddStrataLayers(strataLayers.layers[2]).setOres(new boolean[]{true, true, true});
+	public static final BiomeGenUndergroundBase vanillaStone4 = (new BiomeGenUndergroundMetamorphic(35, Block.stone.blockID, 0, true))
+			.setName("Metamorphic").AddStrataLayers(strataLayers.layers[3]).setOres(new boolean[]{true, true, true});
+	
 	public String biomeName;
 	
 	public final int biomeID;
@@ -117,6 +127,18 @@ public abstract class BiomeGenUndergroundBase {
 		this.theBiomeDecorator = this.createBiomeDecorator();
 		biomeList[ID] = this;
 		strataNoise = new PerlinNoiseGenerator(1);
+	}
+	
+	protected BiomeGenUndergroundBase(int ID, int filler, int metadataValue, boolean vanillaStone){
+		this.biomeID = ID;
+		if(vanillaStone && UndergroundBiomes.vanillaStoneBiomes){
+			this.fillerBlock =  filler;
+			this.fillerBlockMetadata = (byte) metadataValue;
+			this.theBiomeDecorator = this.createBiomeDecorator();
+			biomeList[ID] = this;
+			strataNoise = new PerlinNoiseGenerator(1);
+		}
+		
 	}
 	
 	protected BiomeGenUndergroundBase AddStrataLayers(StrataLayer[] strata){

@@ -1,17 +1,15 @@
 package exterminatorJeff.undergroundBiomes.worldGen;
 
-import java.io.Externalizable;
 import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraft.world.chunk.Chunk;
-import net.minecraft.world.chunk.storage.ExtendedBlockStorage;
 import net.minecraft.world.gen.feature.WorldGenerator;
-
-import exterminatorJeff.undergroundBiomes.common.*;
-import net.minecraft.world.gen.feature.*;
+import exterminatorJeff.undergroundBiomes.common.BiomeGenRule;
+import exterminatorJeff.undergroundBiomes.common.PerlinNoiseGenerator;
+import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
+import exterminatorJeff.undergroundBiomes.common.WorldGenManager;
 
 public class BiomeUndergroundDecorator {
 	
@@ -152,7 +150,7 @@ public class BiomeUndergroundDecorator {
     	for(int x = par1; x < par1 + 16; x++){
     		for(int y = par2; y < par2 + 16; y++){
     			//current underground Biome
-    			BiomeGenUndergroundBase currentBiome = undergroundBiomesForGeneration[(y-par2) + (x-par1) * 16];
+    			BiomeGenUndergroundBase currentBiome = undergroundBiomesForGeneration[(x-par1) + (y-par2) * 16];
     			//current surface biome
     			BiomeGenBase currentSurfaceBiome = currentWorld.getBiomeGenForCoords(x-par1, y-par2);
     			

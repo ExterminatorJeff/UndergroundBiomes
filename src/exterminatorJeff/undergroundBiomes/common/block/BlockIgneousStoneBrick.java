@@ -3,20 +3,15 @@ package exterminatorJeff.undergroundBiomes.common.block;
 import java.util.ArrayList;
 import java.util.List;
 
-import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
-
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
 
 public class BlockIgneousStoneBrick extends BlockIgneousStone{
 
 	public BlockIgneousStoneBrick(int id, int texture) {
 		super(id, texture);
-	}
-	
-	public String getTextureFile(){
-		return UndergroundBiomes.blockTextures;
 	}
 	
 	public float getBlockHardness(World par1World, int par2, int par3, int par4){

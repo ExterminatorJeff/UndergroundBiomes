@@ -1,24 +1,16 @@
 package exterminatorJeff.undergroundBiomes.common;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import exterminatorJeff.undergroundBiomes.worldGen.BiomeGenUndergroundBase;
-import exterminatorJeff.undergroundBiomes.worldGen.BiomeUndergroundCacheBlock;
-import exterminatorJeff.undergroundBiomes.worldGen.BiomeUndergroundDecorator;
-import exterminatorJeff.undergroundBiomes.worldGen.CavernGenerator;
-import exterminatorJeff.undergroundBiomes.worldGen.GenLayerUnderground;
-import net.minecraft.util.LongHashMap;
 import net.minecraft.world.ChunkPosition;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldType;
-import net.minecraft.world.biome.BiomeCache;
-import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.gen.layer.IntCache;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
+import exterminatorJeff.undergroundBiomes.worldGen.BiomeGenUndergroundBase;
+import exterminatorJeff.undergroundBiomes.worldGen.CavernGenerator;
+import exterminatorJeff.undergroundBiomes.worldGen.GenLayerUnderground;
 
 public class WorldGenManager {
 	

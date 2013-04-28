@@ -1,7 +1,6 @@
 package exterminatorJeff.undergroundBiomes.worldGen;
 
 import exterminatorJeff.undergroundBiomes.common.UBiomeCache;
-import net.minecraft.world.biome.BiomeCache;
 
 public class BiomeUndergroundCacheBlock {
 	

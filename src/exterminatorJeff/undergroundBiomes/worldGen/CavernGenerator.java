@@ -1,9 +1,8 @@
 package exterminatorJeff.undergroundBiomes.worldGen;
 
-import exterminatorJeff.undergroundBiomes.common.PerlinNoiseGenerator;
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
-import net.minecraft.world.chunk.Chunk;
+import exterminatorJeff.undergroundBiomes.common.PerlinNoiseGenerator;
 
 public class CavernGenerator {
 	

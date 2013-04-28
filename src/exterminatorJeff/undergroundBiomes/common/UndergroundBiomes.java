@@ -1,14 +1,10 @@
 package exterminatorJeff.undergroundBiomes.common;
-import java.io.File;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockHalfSlab;
-import net.minecraft.block.BlockStep;
-import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -16,19 +12,13 @@ import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraft.world.World;
-import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.Property;
-import net.minecraftforge.event.Event.Result;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
-import net.minecraftforge.event.terraingen.OreGenEvent;
-import net.minecraftforge.event.terraingen.OreGenEvent.GenerateMinable.EventType;
 import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
-import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.PostInit;
@@ -38,10 +28,8 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
-import cpw.mods.fml.common.registry.GameData;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
-import exterminatorJeff.undergroundBiomes.client.CustomOreCreator;
 import exterminatorJeff.undergroundBiomes.common.block.BlockAnthracite;
 import exterminatorJeff.undergroundBiomes.common.block.BlockIgneousCobblestone;
 import exterminatorJeff.undergroundBiomes.common.block.BlockIgneousStone;
@@ -62,7 +50,6 @@ import exterminatorJeff.undergroundBiomes.common.item.ItemMetamorphicStoneBlock;
 import exterminatorJeff.undergroundBiomes.common.item.ItemMetamorphicStoneBrickBlock;
 import exterminatorJeff.undergroundBiomes.common.item.ItemMetamorphicStoneSlab;
 import exterminatorJeff.undergroundBiomes.common.item.ItemSedimentaryStoneBlock;
-import exterminatorJeff.undergroundBiomes.worldGen.StrataLayer;
 
 
 @Mod(modid = "UndergroundBiomes", name = "Underground Biomes", version = "0.3.4")
@@ -74,6 +61,7 @@ public class UndergroundBiomes{
 	public static World world;
 	public static boolean compatibilityMode = false;
 	public static boolean addOreDictRecipes = true;
+	public static boolean vanillaStoneBiomes = false;
 	
 	public Configuration config;
 	public static boolean oreVeins = true;
@@ -131,6 +119,7 @@ public class UndergroundBiomes{
 	public static int metamorphicBrickSlabFullID = 2008;
 	
 	public static float hardnessFactor = 0.25f;
+	public static float resistanceFactor = 1.5f;
 	public static int biomeSize = 45;
 	
 	//no grass
@@ -169,6 +158,7 @@ public class UndergroundBiomes{
             
             biomeSize = config.get(Configuration.CATEGORY_GENERAL, "Biome size (warning: exponential): ", 45).getInt();
             addOreDictRecipes = config.get(Configuration.CATEGORY_GENERAL, "Modify all recipes to include Underground Biomes blocks (could be buggy)", true).getBoolean(true);
+            vanillaStoneBiomes = config.get(Configuration.CATEGORY_GENERAL, "Generate Vanilla Stone Biomes (Could cause sharp biome transitions is changed while playing the same world", false).getBoolean(false);
             
             config.save();
             
@@ -242,15 +232,12 @@ public class UndergroundBiomes{
 	public void postInit(FMLPostInitializationEvent event){
 		//CustomOreCreator creator = new CustomOreCreator();
 		if(addOreDictRecipes){
-			oreDictifyRecipes(Block.stone, "blockStone");
-			oreDictifyRecipes(Block.cobblestone, "blockCobble");
+			oreDictifyRecipes(Block.stone, "stoneSmooth");
+			oreDictifyRecipes(Block.cobblestone, "stoneCobble");
 		}
 	}
 	
 	public void setUpBlockNames(){
-		
-
-		
 		//igneous stone
 		LanguageRegistry.instance().addStringLocalization("tile.igneousStone.redGranite.name", "Red Granite");
 		LanguageRegistry.instance().addStringLocalization("tile.igneousStone.blackGranite.name", "Black Granite");
@@ -453,24 +440,45 @@ public class UndergroundBiomes{
 		}
 		
 		//fuels
-		
 		GameRegistry.registerFuelHandler(new FuelManager());
 		
 	}
 	
 	public void addOreDicts(){
 		
-		OreDictionary.registerOre("blockStone", new ItemStack(Block.stone));
 		for(int i = 0; i < 8; i++){
-			OreDictionary.registerOre("blockStone", new ItemStack(igneousStone, 1, i));
-			OreDictionary.registerOre("blockStone", new ItemStack(metamorphicStone, 1, i));
-			OreDictionary.registerOre("blockCobble", new ItemStack(igneousCobblestone, 1, i));
+			//Register each stone with its proper name and its base name
+			ItemStack igStone = new ItemStack(igneousStone, 1, i);
+			ItemStack metStone = new ItemStack(metamorphicStone, 1, i);
+			ItemStack sedStone = new ItemStack(sedimentaryStone, 1, i);
+			
+			ItemStack igStoneCobble = new ItemStack(igneousCobblestone, 1, i);
+			ItemStack metStoneCobble = new ItemStack(metamorphicCobblestone, 1, i);
+			
+			ItemStack igStoneBrick = new ItemStack(igneousStoneBrick, 1, i);
+			ItemStack metStoneBrick = new ItemStack(metamorphicStoneBrick, 1, i);
+			
+			//proper names
+			
+			//stones
+			OreDictionary.registerOre("stone" + ((BlockIgneousStone)igneousStone).getBlockName(i, true),  igStone);
+			OreDictionary.registerOre("stone" + ((BlockMetamorphicStone)metamorphicStone).getBlockName(i, true),  metStone);
+			OreDictionary.registerOre("stone" + ((BlockSedimentaryStone)sedimentaryStone).getBlockName(i, true),  sedStone);
+			//cobble
+			OreDictionary.registerOre("stone" + ((BlockIgneousCobblestone)igneousCobblestone).getBlockName(i, true),  igStoneCobble);
+			OreDictionary.registerOre("stone" + ((BlockMetamorphicCobblestone)metamorphicCobblestone).getBlockName(i, true),  metStoneCobble);
+			//bricks
+			OreDictionary.registerOre("stone" + ((BlockIgneousStoneBrick)igneousStoneBrick).getBlockName(i, true),  igStoneBrick);
+			OreDictionary.registerOre("stone" + ((BlockMetamorphicStoneBrick)metamorphicStoneBrick).getBlockName(i, true),  metStoneBrick);
+			
+			//base name
+			OreDictionary.registerOre("stoneSmooth", new ItemStack(igneousStone, 1, i));
+			OreDictionary.registerOre("stoneSmooth", new ItemStack(metamorphicStone, 1, i));
+			OreDictionary.registerOre("stoneCobble", new ItemStack(igneousCobblestone, 1, i));
 			OreDictionary.registerOre("blockCobble", new ItemStack(metamorphicCobblestone, 1, i));
-			OreDictionary.registerOre("blockStoneBrick", new ItemStack(igneousStoneBrick, 1, i));
-			OreDictionary.registerOre("blockStoneBrick", new ItemStack(metamorphicStoneBrick, 1, i));
+			OreDictionary.registerOre("stoneBricks", new ItemStack(igneousStoneBrick, 1, i));
+			OreDictionary.registerOre("stoneBricks", new ItemStack(metamorphicStoneBrick, 1, i));
 		}
-		
-
 	}
 	
 	public void oreDictifyRecipes(Block block, String oreDictName){

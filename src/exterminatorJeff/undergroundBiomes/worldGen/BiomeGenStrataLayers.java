@@ -1,7 +1,7 @@
 package exterminatorJeff.undergroundBiomes.worldGen;
 
 import net.minecraft.block.Block;
-import exterminatorJeff.undergroundBiomes.common.*;
+import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
 
 
 
@@ -47,6 +47,10 @@ public class BiomeGenStrataLayers {
 		layers[7] = new StrataLayer[]{new StrataLayer(sedimentaryBlockID, 0, 33, 35), new StrataLayer(sedimentaryBlockID, 3, 45, 49), new StrataLayer(sedimentaryBlockID, 6, 80, 85)};
 		layers[8] = new StrataLayer[]{new StrataLayer(sedimentaryBlockID, 1, 30, 32), new StrataLayer(metamorphicBlockID, 2, 70, 74), new StrataLayer(sedimentaryBlockID, 4, 75, 79)};
 		layers[9] = new StrataLayer[]{new StrataLayer(sedimentaryBlockID, 2, 31, 35), new StrataLayer(sedimentaryBlockID, 5, 39, 42), new StrataLayer(sedimentaryBlockID, 7, 62, 65)};
+		
+		//Layers for vanilla stone biomes
+		layers[10] = new StrataLayer[]{new StrataLayer(igneousBlockID, 2, 12, 18), new StrataLayer(igneousBlockID, 6, 24, 29), new StrataLayer(metamorphicBlockID, 2, 80, 85)};
+		layers[11] = new StrataLayer[]{new StrataLayer(igneousBlockID, 5, 13, 22), new StrataLayer(metamorphicBlockID, 6, 29, 36), new StrataLayer(metamorphicBlockID, 3, 80, 128)};
 		
 	}
 

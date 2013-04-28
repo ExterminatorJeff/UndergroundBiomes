@@ -1,7 +1,6 @@
 package exterminatorJeff.undergroundBiomes.client;
 
-import net.minecraftforge.client.MinecraftForgeClient;
-import exterminatorJeff.undergroundBiomes.common.*;
+import exterminatorJeff.undergroundBiomes.common.CommonProxy;
 
 public class ClientProxy extends CommonProxy{
 

@@ -1,7 +1,7 @@
 package exterminatorJeff.undergroundBiomes.common.block;
 
-import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
 import net.minecraft.world.World;
+import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
 
 public class BlockIgneousCobblestone extends BlockIgneousStone{
 

@@ -2,10 +2,9 @@ package exterminatorJeff.undergroundBiomes.common.block;
 
 import java.util.ArrayList;
 
-import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
-
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
 
 
 public class BlockMetamorphicStoneBrick extends BlockMetamorphicStone{

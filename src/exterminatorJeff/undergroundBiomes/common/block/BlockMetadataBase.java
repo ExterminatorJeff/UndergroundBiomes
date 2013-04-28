@@ -1,10 +1,12 @@
 package exterminatorJeff.undergroundBiomes.common.block;
 
-import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.util.Icon;
+import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
 
 public class BlockMetadataBase extends Block{
 
@@ -22,8 +24,19 @@ public class BlockMetadataBase extends Block{
     	}
     }
 	
+	@SideOnly(Side.CLIENT)
+    @Override
+    public Icon getBlockTextureFromSideAndMetadata(int side, int metadata){
+        return textures[metadata & 7];
+    }
+	
 	public String getBlockName(int index){
 		return "";
+	}
+	
+	public String getBlockName(int index, boolean toCaps){
+		String name = getBlockName(index);
+		return Character.toUpperCase(name.charAt(0)) + name.substring(1);
 	}
 
 }

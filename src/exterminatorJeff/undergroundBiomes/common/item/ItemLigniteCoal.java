@@ -1,9 +1,9 @@
 package exterminatorJeff.undergroundBiomes.common.item;
 
-import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.Item;
 import net.minecraft.util.Icon;
-import net.minecraft.client.renderer.texture.IconRegister;
+import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
 
 public class ItemLigniteCoal extends Item{
 

@@ -1,9 +1,9 @@
 package exterminatorJeff.undergroundBiomes.common.block;
 
-import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.util.Icon;
+import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
 
 public class BlockAnthracite extends Block{
 

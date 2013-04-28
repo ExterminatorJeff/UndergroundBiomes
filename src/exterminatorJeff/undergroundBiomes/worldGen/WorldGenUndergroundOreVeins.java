@@ -3,8 +3,7 @@ package exterminatorJeff.undergroundBiomes.worldGen;
 import java.util.Random;
 
 import net.minecraft.world.World;
-
-import exterminatorJeff.undergroundBiomes.common.*;
+import exterminatorJeff.undergroundBiomes.common.SimplexNoiseGenerator;
 public class WorldGenUndergroundOreVeins{
 	
 	Random randomGenerator;

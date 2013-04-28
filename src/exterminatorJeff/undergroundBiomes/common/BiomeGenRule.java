@@ -2,8 +2,6 @@ package exterminatorJeff.undergroundBiomes.common;
 
 import java.util.ArrayList;
 
-import net.minecraft.block.Block;
-
 import exterminatorJeff.undergroundBiomes.worldGen.StrataLayer;
 
 public class BiomeGenRule {

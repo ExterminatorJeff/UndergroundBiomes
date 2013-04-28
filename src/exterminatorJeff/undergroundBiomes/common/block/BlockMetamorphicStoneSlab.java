@@ -2,7 +2,6 @@ package exterminatorJeff.undergroundBiomes.common.block;
 
 import java.util.ArrayList;
 
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
