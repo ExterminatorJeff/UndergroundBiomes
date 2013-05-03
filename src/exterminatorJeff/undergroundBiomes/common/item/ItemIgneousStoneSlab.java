@@ -1,15 +1,31 @@
 package exterminatorJeff.undergroundBiomes.common.item;
 
+import com.google.common.base.Optional;
+
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockHalfSlab;
+import net.minecraft.item.ItemSlab;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
+import extrabiomes.module.fabrica.block.ItemRedRockSlab;
 
-public class ItemIgneousStoneSlab extends ItemBlockBase{
+public class ItemIgneousStoneSlab extends ItemSlab{
+	
+	private static Optional<BlockHalfSlab>	singleSlab	= Optional.absent();
+	private static Optional<BlockHalfSlab>	doubleSlab	= Optional.absent();
+	
+	public static void setSlabs(BlockHalfSlab singleSlab,
+			BlockHalfSlab doubleSlab)
+	{
+		ItemIgneousStoneSlab.singleSlab = Optional.of(singleSlab);
+		ItemIgneousStoneSlab.doubleSlab = Optional.of(doubleSlab);
+	}
 
-	public ItemIgneousStoneSlab(int par1, Block block) {
-		super(par1);
+	public ItemIgneousStoneSlab(int id, Block block) {
+		super(id, singleSlab.get(), doubleSlab.get(), (id == doubleSlab.get().blockID));
 		this.setMaxDamage(0);
         this.setHasSubtypes(true);
 	}
@@ -22,7 +38,7 @@ public class ItemIgneousStoneSlab extends ItemBlockBase{
     @SideOnly(Side.CLIENT)
     public Icon getIconFromDamage(int par1)
     {
-        return UndergroundBiomes.igneousBrickSlabHalf.getBlockTextureFromSideAndMetadata(0, par1);
+        return UndergroundBiomes.igneousBrickSlabHalf.getIcon(0, par1);
     }
 
     public String getItemName(int index){
@@ -49,5 +65,10 @@ public class ItemIgneousStoneSlab extends ItemBlockBase{
 	    }
     	return getUnlocalizedName() + "." + name;
     }
+    
+    @Override
+	public String getUnlocalizedName(ItemStack itemstack) {
+    	return getItemName(itemstack.getItemDamage());
+	}
 
 }

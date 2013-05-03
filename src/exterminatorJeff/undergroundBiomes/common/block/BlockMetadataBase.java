@@ -26,7 +26,7 @@ public class BlockMetadataBase extends Block{
 	
 	@SideOnly(Side.CLIENT)
     @Override
-    public Icon getBlockTextureFromSideAndMetadata(int side, int metadata){
+    public Icon getIcon(int side, int metadata){
         return textures[metadata & 7];
     }
 	

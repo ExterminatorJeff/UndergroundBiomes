@@ -20,7 +20,7 @@ public class ItemLigniteCoal extends Item{
 	}
 	
 	@Override
-	public void updateIcons(IconRegister iconRegister){
+	public void registerIcons(IconRegister iconRegister){
 		texture = iconRegister.registerIcon(UndergroundBiomes.texturePath + "lignite");
 	}
 	

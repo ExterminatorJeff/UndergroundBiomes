@@ -28,12 +28,7 @@ public class BlockIgneousStoneSlab extends BlockStep{
 		this.useNeighborBrightness[par1] = true;
 	}
 
-	@Override
-	public String getFullSlabName(int var1) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
+
 	@Override
 	public float getBlockHardness(World par1World, int par2, int par3, int par4){
 		return UndergroundBiomes.igneousStoneBrick.getBlockHardness(par1World, par2, par3, par4)+0.25f;
@@ -47,6 +42,11 @@ public class BlockIgneousStoneSlab extends BlockStep{
     	}
        
     }
+	
+	@Override
+	protected ItemStack createStackedBlock(int metadata) {
+		return new ItemStack(UndergroundBiomes.igneousBrickSlabHalfId, 2, metadata & 7);
+	}
     
     @Override
 	public int damageDropped (int metadata) {
@@ -54,21 +54,10 @@ public class BlockIgneousStoneSlab extends BlockStep{
 	}
     
     @Override
-    public Icon getBlockTextureFromSideAndMetadata(int par1, int par2)
+    public Icon getIcon(int par1, int par2)
     {
         return textures[par2 & 7];
     }
-    
-  /*  @Override
-    public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLiving par5EntityLiving){
-    	if(par1World.getBlockId(par2, par3 - 1, par4) == UndergroundBiomes.igneousBrickSlabHalf.blockID){
-    		int metadata = par1World.getBlockMetadata(par2, par3, par4) & 7;
-    		if(par1World.getBlockMetadata(par2, par3 - 1, par4) == metadata ){
-	    		par1World.setBlockWithNotify(par2, par3, par4, 0);
-	    		par1World.setBlockAndMetadataWithNotify(par2, par3 - 1, par4, UndergroundBiomes.igneousBrickSlabFull.blockID, metadata);
-    		}
-    	}
-    }*/
     
     @Override
     public int idPicked(World par1World, int par2, int par3, int par4){

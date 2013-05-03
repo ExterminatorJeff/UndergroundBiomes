@@ -25,7 +25,7 @@ public class ItemSedimentaryStoneBlock extends ItemBlockBase{
     @SideOnly(Side.CLIENT)
     public Icon getIconFromDamage(int par1)
     {
-        return UndergroundBiomes.sedimentaryStone.getBlockTextureFromSideAndMetadata(0, par1);
+        return UndergroundBiomes.sedimentaryStone.getIcon(0, par1);
     }
     
     public String getItemName(int index) {

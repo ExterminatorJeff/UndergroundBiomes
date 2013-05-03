@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockHalfSlab;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -52,7 +53,7 @@ import exterminatorJeff.undergroundBiomes.common.item.ItemMetamorphicStoneSlab;
 import exterminatorJeff.undergroundBiomes.common.item.ItemSedimentaryStoneBlock;
 
 
-@Mod(modid = "UndergroundBiomes", name = "Underground Biomes", version = "0.3.5")
+@Mod(modid = "UndergroundBiomes", name = "Underground Biomes", version = "0.3.6")
 @NetworkMod(clientSideRequired = true, serverSideRequired = true)
 
 
@@ -106,16 +107,16 @@ public class UndergroundBiomes{
 	public static Block anthraciteCoal;
 	public static int anthraciteCoalID = 2004;
 	
-	public static Block igneousBrickSlabHalf;
+	public static BlockHalfSlab igneousBrickSlabHalf;
 	public static int igneousBrickSlabHalfId = 2005;
 	
-	public static Block igneousBrickSlabFull;
+	public static BlockHalfSlab igneousBrickSlabFull;
 	public static int igneousBrickSlabFullId = 2006;
 	
-	public static Block metamorphicBrickSlabHalf;
+	public static BlockHalfSlab metamorphicBrickSlabHalf;
 	public static int metamorphicBrickSlabHalfID = 2007;
 	
-	public static Block metamorphicBrickSlabFull;
+	public static BlockHalfSlab metamorphicBrickSlabFull;
 	public static int metamorphicBrickSlabFullID = 2008;
 	
 	public static float hardnessFactor = 0.25f;
@@ -201,21 +202,23 @@ public class UndergroundBiomes{
 		anthraciteCoal = new BlockAnthracite(anthraciteCoalID).setUnlocalizedName("anthraciteCoal");
 		GameRegistry.registerBlock(anthraciteCoal, "undergroundBiomes_anthraciteBlock");
 		
-		igneousBrickSlabHalf = new BlockIgneousStoneSlab(igneousBrickSlabHalfId, false).setUnlocalizedName("igneousBrickSlab");
+		igneousBrickSlabHalf = (BlockHalfSlab) new BlockIgneousStoneSlab(igneousBrickSlabHalfId, false).setUnlocalizedName("igneousBrickSlab");
+		igneousBrickSlabFull = (BlockHalfSlab) new BlockIgneousStoneSlab(igneousBrickSlabFullId, true).setUnlocalizedName("igneousBrickSlabFull");
+		
+		ItemIgneousStoneSlab.setSlabs(igneousBrickSlabHalf, igneousBrickSlabFull);
+		
+		Item.itemsList[igneousBrickSlabFullId] = new ItemIgneousStoneSlab(igneousBrickSlabFullId - 256, igneousBrickSlabFull).setUnlocalizedName("igneousBrickSlabFull");
 		Item.itemsList[igneousBrickSlabHalfId] = new ItemIgneousStoneSlab(igneousBrickSlabHalfId - 256, igneousBrickSlabHalf).setUnlocalizedName("igneousBrickSlab");
 		
-		igneousBrickSlabFull = new BlockIgneousStoneSlab(igneousBrickSlabFullId, true).setUnlocalizedName("igneousBrickSlabFull");
-		Item.itemsList[igneousBrickSlabFullId] = new ItemIgneousStoneSlab(igneousBrickSlabFullId - 256, igneousBrickSlabFull).setUnlocalizedName("igneousBrickSlabFull");
+		metamorphicBrickSlabHalf = (BlockHalfSlab) new BlockMetamorphicStoneSlab(metamorphicBrickSlabHalfID, false).setUnlocalizedName("metamorphicBrickSlab");
+		metamorphicBrickSlabFull = (BlockHalfSlab) new BlockMetamorphicStoneSlab(metamorphicBrickSlabFullID, true).setUnlocalizedName("metamorphicBrickSlabFull");
 		
-		metamorphicBrickSlabHalf = new BlockMetamorphicStoneSlab(metamorphicBrickSlabHalfID, false).setUnlocalizedName("metamorphicBrickSlab");
+		ItemMetamorphicStoneSlab.setSlabs(metamorphicBrickSlabHalf, metamorphicBrickSlabFull);
+		
 		Item.itemsList[metamorphicBrickSlabHalfID] = new ItemMetamorphicStoneSlab(metamorphicBrickSlabHalfID - 256, metamorphicBrickSlabHalf).setUnlocalizedName("metamorphicBrickSlab");
-		
-		metamorphicBrickSlabFull = new BlockMetamorphicStoneSlab(metamorphicBrickSlabFullID, true).setUnlocalizedName("metamorphicBrickSlabFull");
 		Item.itemsList[metamorphicBrickSlabFullID] = new ItemMetamorphicStoneSlab(metamorphicBrickSlabFullID - 256, metamorphicBrickSlabFull).setUnlocalizedName("metamorphicBrickSlabFull");
 		
 		//items
-		
-		
 		ligniteCoal = new ItemLigniteCoal(ligniteCoalID).setUnlocalizedName("ligniteCoal");
 		
 		setUpBlockNames();
@@ -475,7 +478,7 @@ public class UndergroundBiomes{
 			OreDictionary.registerOre("stoneSmooth", new ItemStack(igneousStone, 1, i));
 			OreDictionary.registerOre("stoneSmooth", new ItemStack(metamorphicStone, 1, i));
 			OreDictionary.registerOre("stoneCobble", new ItemStack(igneousCobblestone, 1, i));
-			OreDictionary.registerOre("blockCobble", new ItemStack(metamorphicCobblestone, 1, i));
+			OreDictionary.registerOre("stoneCobble", new ItemStack(metamorphicCobblestone, 1, i));
 			OreDictionary.registerOre("stoneBricks", new ItemStack(igneousStoneBrick, 1, i));
 			OreDictionary.registerOre("stoneBricks", new ItemStack(metamorphicStoneBrick, 1, i));
 		}
@@ -711,15 +714,6 @@ public class UndergroundBiomes{
 			
 		}
 	}
-	
-	/*@ForgeSubscribe
-	public void onOreGen(OreGenEvent.GenerateMinable event){
-		/*if(oreVeins){
-			if(event.type == EventType.COAL || event.type == EventType.GOLD || event.type == EventType.IRON){
-				event.setResult(Result.DENY);
-			}
-		}
-	}*/
 	
 	public static void addBiomeRule(BiomeGenRule rule){
 		biomeRules.add(rule);

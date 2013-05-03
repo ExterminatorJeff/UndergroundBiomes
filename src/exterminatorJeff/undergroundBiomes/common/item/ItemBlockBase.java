@@ -16,7 +16,7 @@ public class ItemBlockBase extends ItemBlock {
 	}
 	
 	@Override
-	public void updateIcons(IconRegister iconRegister){
+	public void registerIcons(IconRegister iconRegister){
     	for(int i = 0; i < 8; i++){
     		textures[i] = iconRegister.registerIcon(UndergroundBiomes.texturePath + getItemName(i));
     	}

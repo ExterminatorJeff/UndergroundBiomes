@@ -23,7 +23,7 @@ public class ItemIgneousCobblestoneBlock extends ItemBlockBase{
     @SideOnly(Side.CLIENT)
     public Icon getIconFromDamage(int par1)
     {
-        return UndergroundBiomes.igneousCobblestone.getBlockTextureFromSideAndMetadata(0, par1);
+        return UndergroundBiomes.igneousCobblestone.getIcon(0, par1);
     }
     
     public String getItemName(int index){

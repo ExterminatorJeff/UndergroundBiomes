@@ -10,6 +10,8 @@ public class BlockAnthracite extends Block{
 	public BlockAnthracite(int ID) {
 		super(ID, net.minecraft.block.material.Material.rock);
 		this.setCreativeTab(UndergroundBiomes.tabModBlocks);
+		setHardness(1.5f);
+		setResistance(30.0f);
 	}
 	
 	private Icon texture;
@@ -20,7 +22,7 @@ public class BlockAnthracite extends Block{
     }
 	
 	@Override
-	public Icon getBlockTextureFromSideAndMetadata(int side, int metadata){
+	public Icon getIcon(int side, int metadata){
 		return texture;
 	}
 

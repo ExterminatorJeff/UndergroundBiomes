@@ -23,7 +23,7 @@ public class ItemMetamorphicStoneBrickBlock extends ItemBlockBase{
     @SideOnly(Side.CLIENT)
     public Icon getIconFromDamage(int par1)
     {
-        return UndergroundBiomes.metamorphicStoneBrick.getBlockTextureFromSideAndMetadata(0, par1);
+        return UndergroundBiomes.metamorphicStoneBrick.getIcon(0, par1);
     }
     
     

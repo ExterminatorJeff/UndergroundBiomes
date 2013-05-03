@@ -1,6 +1,7 @@
 package exterminatorJeff.undergroundBiomes.common.item;
 
 import net.minecraft.block.Block;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -13,12 +14,6 @@ public class ItemMetamorphicStoneSlab extends ItemIgneousStoneSlab{
 		// TODO Auto-generated constructor stub
 	}
 	
-    @SideOnly(Side.CLIENT)
-    public Icon getIconFromDamage(int par1)
-    {
-        return UndergroundBiomes.metamorphicBrickSlabHalf.getBlockTextureFromSideAndMetadata(0, par1);
-    }
-    
     public String getItemName(int index) {
     	String name = "";
     	switch(index){

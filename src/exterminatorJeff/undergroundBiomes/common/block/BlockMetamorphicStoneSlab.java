@@ -18,17 +18,6 @@ public class BlockMetamorphicStoneSlab extends BlockIgneousStoneSlab{
 		return UndergroundBiomes.metamorphicStoneBrick.getBlockHardness(par1World, par2, par3, par4)+0.25f;
 	}
 	
-	/*@Override
-    public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLiving par5EntityLiving){
-    	if(par1World.getBlockId(par2, par3 - 1, par4) == UndergroundBiomes.metamorphicBrickSlabHalf.blockID){
-    		int metadata = par1World.getBlockMetadata(par2, par3, par4) & 7;
-    		if(par1World.getBlockMetadata(par2, par3 - 1, par4) == metadata ){
-	    		par1World.setBlockWithNotify(par2, par3, par4, 0);
-	    		par1World.setBlockAndMetadataWithNotify(par2, par3 - 1, par4, UndergroundBiomes.metamorphicBrickSlabFull.blockID, metadata);
-    		}
-    	}
-    }*/
-	
 	@Override
     public int idPicked(World par1World, int par2, int par3, int par4){
     	return UndergroundBiomes.metamorphicBrickSlabHalfID;

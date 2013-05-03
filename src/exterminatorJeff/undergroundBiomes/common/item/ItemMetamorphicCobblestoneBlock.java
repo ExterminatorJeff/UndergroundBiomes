@@ -23,7 +23,7 @@ public class ItemMetamorphicCobblestoneBlock extends ItemBlockBase{
     @SideOnly(Side.CLIENT)
     public Icon getIconFromDamage(int par1)
     {
-        return UndergroundBiomes.metamorphicCobblestone.getBlockTextureFromSideAndMetadata(0, par1);
+        return UndergroundBiomes.metamorphicCobblestone.getIcon(0, par1);
     }
     
     public String getItemName(int index){
