@@ -17,6 +17,7 @@ public class BlockMetadataBase extends Block{
 		
 	}
 	
+	@SideOnly(Side.CLIENT)
 	@Override
 	public void registerIcons(IconRegister iconRegister){
     	for(int i = 0; i < 8; i++){

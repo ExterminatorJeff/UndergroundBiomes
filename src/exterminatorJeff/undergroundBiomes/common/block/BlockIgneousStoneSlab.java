@@ -9,6 +9,8 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
 
 public class BlockIgneousStoneSlab extends BlockStep{
@@ -53,6 +55,7 @@ public class BlockIgneousStoneSlab extends BlockStep{
 		return metadata;
 	}
     
+    @SideOnly(Side.CLIENT)
     @Override
     public Icon getIcon(int par1, int par2)
     {
@@ -82,6 +85,7 @@ public class BlockIgneousStoneSlab extends BlockStep{
         return ret;
     }
     
+	@SideOnly(Side.CLIENT)
 	@Override
 	public void registerIcons(IconRegister iconRegister){
     	for(int i = 0; i < 8; i++){
