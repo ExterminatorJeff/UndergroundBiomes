@@ -10,7 +10,6 @@ import net.minecraft.util.Icon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
-import extrabiomes.module.fabrica.block.ItemRedRockSlab;
 
 public class ItemIgneousStoneSlab extends ItemSlab{
 	
