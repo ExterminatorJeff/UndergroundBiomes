@@ -4,6 +4,8 @@ import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
 
 public class ItemBlockBase extends ItemBlock {
@@ -15,6 +17,7 @@ public class ItemBlockBase extends ItemBlock {
 		
 	}
 	
+	@SideOnly(Side.CLIENT)
 	@Override
 	public void registerIcons(IconRegister iconRegister){
     	for(int i = 0; i < 8; i++){
