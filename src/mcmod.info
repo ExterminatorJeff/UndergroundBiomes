@@ -1,19 +1,17 @@
-[
 {
-"modid": "Underground Biomes",
-"name": "Underground Biomes",
-"description": "Adds underground biomes composed of layers of new rock types",
-"version": "0.3.6",
-"credits": "Created by Exterminator Jeff",
-"logoFile": "",
-"mcversion": "1.5.2",
-"url": "http://www.minecraftforum.net/topic/1593704-146-underground-biomes/",
-"updateUrl": "",
-"authors": [ "Exterminator Jeff" ],
-"parent":"",
-"screenshots": [],
-"dependencies": [
-"mod_MinecraftForge"
-]
+  "modinfoversion": 1,
+  "modlist": [{
+    "modid": "UndergroundBiomes",
+    "name": "Underground Biomes",
+    "description": "Adds underground biomes composed of layers of new rock types",
+    "version": "0.3.7",
+    "mcversion": "1.5.2",
+    "url": "http://www.minecraftforum.net/topic/1593704-",
+    "updateUrl": "",
+    "authors": [ "Exterminator Jeff", "Grom PE" ],
+    "credits": "Created by Exterminator Jeff",
+    "logoFile": "",
+    "requiredMods": [ "Forge" ],
+    "useDependencyInformation": "false"
+  }]
 }
-]

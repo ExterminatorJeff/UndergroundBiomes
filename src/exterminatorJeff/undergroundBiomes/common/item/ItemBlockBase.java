@@ -10,20 +10,10 @@ import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
 
 public class ItemBlockBase extends ItemBlock {
 
-	private Icon[] textures = {null, null, null, null, null, null, null, null};
-	
 	public ItemBlockBase(int par1) {
 		super(par1);
 		
 	}
-	
-	@SideOnly(Side.CLIENT)
-	@Override
-	public void registerIcons(IconRegister iconRegister){
-    	for(int i = 0; i < 8; i++){
-    		textures[i] = iconRegister.registerIcon(UndergroundBiomes.texturePath + getItemName(i));
-    	}
-    }
 	
 	public String getItemName(int index) {
 		return "";
