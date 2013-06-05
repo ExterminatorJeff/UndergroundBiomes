@@ -2,6 +2,7 @@ package exterminatorJeff.undergroundBiomes.common.block;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -84,25 +85,15 @@ public class BlockIgneousStone extends BlockMetadataBase{
     }
     
     @Override
+    public int idDropped(int par1, Random par2Random, int par3)
+    {
+        return UndergroundBiomes.igneousCobblestoneID;
+    }
+
+    @Override
 	public int damageDropped (int metadata) {
 		return metadata;
 	}
-    
-    public ArrayList<ItemStack> getBlockDropped(World world, int x, int y, int z, int metadata, int fortune)
-    {
-        ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
-        
-        int count = quantityDropped(metadata, fortune, world.rand);
-        for(int i = 0; i < count; i++)
-        {
-            int id = idDropped(metadata, world.rand, 0);
-            if (id > 0)
-            {
-                ret.add(new ItemStack(UndergroundBiomes.igneousCobblestoneID, 1, damageDropped(metadata)));
-            }
-        }
-        return ret;
-    }
     
     @Override
     public String getBlockName(int index){

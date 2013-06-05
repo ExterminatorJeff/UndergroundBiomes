@@ -2,6 +2,7 @@ package exterminatorJeff.undergroundBiomes.common.block;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import net.minecraft.block.BlockStep;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -50,11 +51,6 @@ public class BlockIgneousStoneSlab extends BlockStep{
 		return new ItemStack(UndergroundBiomes.igneousBrickSlabHalfId, 2, metadata & 7);
 	}
     
-    @Override
-	public int damageDropped (int metadata) {
-		return metadata;
-	}
-    
     @SideOnly(Side.CLIENT)
     @Override
     public Icon getIcon(int par1, int par2)
@@ -74,17 +70,11 @@ public class BlockIgneousStoneSlab extends BlockStep{
     }
     
     @Override
-    public ArrayList<ItemStack> getBlockDropped(World world, int x, int y, int z, int metadata, int fortune)
+    public int idDropped(int par1, Random par2Random, int par3)
     {
-        ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
-        if(isFullSlab){
-        	ret.add(new ItemStack(UndergroundBiomes.igneousBrickSlabHalfId, 2, damageDropped(metadata)%8));
-        }else{
-        	ret.add(new ItemStack(UndergroundBiomes.igneousBrickSlabHalfId, 1, damageDropped(metadata)%8));
-        }
-        return ret;
+        return UndergroundBiomes.igneousBrickSlabHalfId;
     }
-    
+
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void registerIcons(IconRegister iconRegister){

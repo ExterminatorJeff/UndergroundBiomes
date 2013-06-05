@@ -2,6 +2,7 @@ package exterminatorJeff.undergroundBiomes.common.block;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -80,30 +81,25 @@ public class BlockSedimentaryStone extends BlockMetadataBase{
     }
     
     @Override
+    public int idDropped(int metadata, Random par2Random, int par3)
+    {
+        return metadata == 4 ? UndergroundBiomes.ligniteCoal.itemID : this.blockID;
+    }
+
+    @Override
 	public int damageDropped (int metadata) {
-		return metadata;
+		return metadata == 4 ? 0 : metadata;
 	}
     
-    public ArrayList<ItemStack> getBlockDropped(World world, int x, int y, int z, int metadata, int fortune)
+    @Override
+    public int quantityDropped(int meta, int fortune, Random random)
     {
-        ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
-        
-        int count = quantityDropped(metadata, fortune, world.rand);
-        for(int i = 0; i < count; i++)
-        {
-            int id = idDropped(metadata, world.rand, 0);
-            if (id > 0){
-            	
-                if(metadata == 4){
-                	ret.add(new ItemStack(UndergroundBiomes.ligniteCoal.itemID, 1, damageDropped(metadata)));
-                }else{
-                	ret.add(new ItemStack(this, 1, damageDropped(metadata)));
-                }
-            }
-        }
-        return ret;
+        if (fortune == 0 || meta != 4) return 1;
+        // Lignite is affected by fortune: Fortune III gives up to 4 items
+        int j = random.nextInt(fortune + 2);
+        return (j < 1) ? 1 : j;
     }
-    
+
     public String getBlockName(int index) {
     	String name = "";
     	switch(index){
