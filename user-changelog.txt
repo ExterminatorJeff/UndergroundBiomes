@@ -1,0 +1,10 @@
+0.3.7
+
+- Killed Thumbs.db
+- Fixed lignite drop incorrect metadata leading to inability to craft it to coal
+- Fixed lignite not working with fortune enchantment
+- Fixed slabs giving wrong block when harvested with fortune enchantment
+- Resolved missing textures warning
+- Optimized texture files
+
+0.3.6
