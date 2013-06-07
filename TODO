@@ -1,0 +1,19 @@
+Bugs
+====
+
+- Figure out what's with worldgen not always working as intended
+  (vanilla stone left and ores missing?)
+
+
+Features
+========
+
+- Prepare anthracite block to be replaced by Minecraft 1.6 coal block
+- Configure which dimension IDs to include, which to exclude for generation
+- Configure UB layers depth and height
+- Stairs, more slabs
+- Make ore textures look smooth beside UB stone
+- Mystcraft interaction - http://binarymage.com/
+- Chisel mod interaction - http://www.minecraftforum.net/topic/1749374-/
+- Thut's Concrete mod interaction - http://www.minecraftforum.net/topic/1810433-/
+- Compatibility with ID resolver - http://www.minecraftforum.net/topic/366377-/
