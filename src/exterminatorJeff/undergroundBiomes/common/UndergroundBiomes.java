@@ -53,7 +53,7 @@ import exterminatorJeff.undergroundBiomes.common.item.ItemMetamorphicStoneSlab;
 import exterminatorJeff.undergroundBiomes.common.item.ItemSedimentaryStoneBlock;
 
 
-@Mod(modid = "UndergroundBiomes", name = "Underground Biomes", version = "0.3.7")
+@Mod(modid = "UndergroundBiomes", name = "Underground Biomes", version = "0.3.8")
 @NetworkMod(clientSideRequired = true, serverSideRequired = true)
 
 
@@ -702,17 +702,11 @@ public class UndergroundBiomes{
 	}
 	
 	@ForgeSubscribe
-	public void onBiomeDecorate(DecorateBiomeEvent event){
-		try{
-			if(worldGen != null){
-				worldGen.onBiomeDecorate(event);
-			}else{
-				worldGen = new WorldGenManager(worldSeed, world.getWorldInfo().getTerrainType(), world);
-				worldGen.onBiomeDecorate(event);
-			}
-		}catch(Exception e){
-			
+	public void onBiomeDecorate(DecorateBiomeEvent.Post event){
+		if(worldGen == null){
+			worldGen = new WorldGenManager(worldSeed, world.getWorldInfo().getTerrainType(), world);
 		}
+		worldGen.onBiomeDecorate(event);
 	}
 	
 	public static void addBiomeRule(BiomeGenRule rule){

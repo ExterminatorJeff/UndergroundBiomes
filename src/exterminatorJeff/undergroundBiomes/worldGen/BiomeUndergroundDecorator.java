@@ -90,7 +90,7 @@ public class BiomeUndergroundDecorator {
     public void decorate(boolean[] ores){
     	worldGen = UndergroundBiomes.getWorldGenManager();
     	replaceBlocksForUndergroundBiome(chunk_X, chunk_Z);
-    	currentWorld.getChunkProvider().loadChunk(chunk_X, chunk_Z);
+    	//currentWorld.getChunkProvider().loadChunk(chunk_X, chunk_Z);
     	//this.generateOres(ores);
     }
     

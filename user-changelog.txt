@@ -1,4 +1,5 @@
 - Fixed metamorphic stone not dropping cobblestone
+- Hopefully fixed worldgen
 
 0.3.7
 

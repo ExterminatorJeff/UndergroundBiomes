@@ -8,7 +8,7 @@ import net.minecraft.world.World;
 import exterminatorJeff.undergroundBiomes.common.PerlinNoiseGenerator;
 import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
 
-public abstract class BiomeGenUndergroundBase {
+public class BiomeGenUndergroundBase {
 	
 	static final BiomeGenStrataLayers strataLayers = new BiomeGenStrataLayers();
 	
@@ -16,83 +16,83 @@ public abstract class BiomeGenUndergroundBase {
 	
 	static int igneousID = UndergroundBiomes.igneousStoneID;
 	
-	public static final BiomeGenUndergroundBase igneous1 = (new BiomeGenUndergroundIgneous(0, igneousID, 0))
+	public static final BiomeGenUndergroundBase igneous1 = (new BiomeGenUndergroundBase(0, igneousID, 0))
 			.setName("Igneous").AddStrataLayers(strataLayers.layers[0]).setOres(new boolean[]{true, false, true});
-	public static final BiomeGenUndergroundBase igneous2 = (new BiomeGenUndergroundIgneous(1, igneousID, 1))
+	public static final BiomeGenUndergroundBase igneous2 = (new BiomeGenUndergroundBase(1, igneousID, 1))
 			.setName("Igneous").AddStrataLayers(strataLayers.layers[1]).setOres(new boolean[]{true, true, false});
-	public static final BiomeGenUndergroundBase igneous3 = (new BiomeGenUndergroundIgneous(2, igneousID, 2))
+	public static final BiomeGenUndergroundBase igneous3 = (new BiomeGenUndergroundBase(2, igneousID, 2))
 			.setName("Igneous").AddStrataLayers(strataLayers.layers[2]).setOres(new boolean[]{false, true, false});
-	public static final BiomeGenUndergroundBase igneous4 = (new BiomeGenUndergroundIgneous(3, igneousID, 3))
+	public static final BiomeGenUndergroundBase igneous4 = (new BiomeGenUndergroundBase(3, igneousID, 3))
 			.setName("Igneous").AddStrataLayers(strataLayers.layers[3]).setOres(new boolean[]{true, false, true});
-	public static final BiomeGenUndergroundBase igneous5 = (new BiomeGenUndergroundIgneous(4, igneousID, 4))
+	public static final BiomeGenUndergroundBase igneous5 = (new BiomeGenUndergroundBase(4, igneousID, 4))
 			.setName("Igneous").AddStrataLayers(strataLayers.layers[4]).setOres(new boolean[]{true, true, false});
-	public static final BiomeGenUndergroundBase igneous6 = (new BiomeGenUndergroundIgneous(5, igneousID, 5))
+	public static final BiomeGenUndergroundBase igneous6 = (new BiomeGenUndergroundBase(5, igneousID, 5))
 			.setName("Igneous").AddStrataLayers(strataLayers.layers[5]).setOres(new boolean[]{true, true, true});
-	public static final BiomeGenUndergroundBase igneous7 = (new BiomeGenUndergroundIgneous(6, igneousID, 6))
+	public static final BiomeGenUndergroundBase igneous7 = (new BiomeGenUndergroundBase(6, igneousID, 6))
 			.setName("Igneous").AddStrataLayers(strataLayers.layers[6]).setOres(new boolean[]{false, false, true});
-	public static final BiomeGenUndergroundBase igneous8 = (new BiomeGenUndergroundIgneous(7, igneousID, 7))
+	public static final BiomeGenUndergroundBase igneous8 = (new BiomeGenUndergroundBase(7, igneousID, 7))
 			.setName("Igneous").AddStrataLayers(strataLayers.layers[7]).setOres(new boolean[]{true, true, false});
 	
-	public static final BiomeGenUndergroundBase igneous9 = (new BiomeGenUndergroundIgneous(8, igneousID, 0))
+	public static final BiomeGenUndergroundBase igneous9 = (new BiomeGenUndergroundBase(8, igneousID, 0))
 			.setName("Igneous").AddStrataLayers(strataLayers.layers[8]).setOres(new boolean[]{false, false, true});
-	public static final BiomeGenUndergroundBase igneous10 = (new BiomeGenUndergroundIgneous(9, igneousID, 1))
+	public static final BiomeGenUndergroundBase igneous10 = (new BiomeGenUndergroundBase(9, igneousID, 1))
 			.setName("Igneous").AddStrataLayers(strataLayers.layers[9]).setOres(new boolean[]{false, true, true});
-	public static final BiomeGenUndergroundBase igneous11 = (new BiomeGenUndergroundIgneous(10, igneousID, 2))
+	public static final BiomeGenUndergroundBase igneous11 = (new BiomeGenUndergroundBase(10, igneousID, 2))
 			.setName("Igneous").AddStrataLayers(strataLayers.layers[0]).setOres(new boolean[]{true, false, true});
-	public static final BiomeGenUndergroundBase igneous12 = (new BiomeGenUndergroundIgneous(11, igneousID, 3))
+	public static final BiomeGenUndergroundBase igneous12 = (new BiomeGenUndergroundBase(11, igneousID, 3))
 			.setName("Igneous").AddStrataLayers(strataLayers.layers[1]).setOres(new boolean[]{false, true, true});
-	public static final BiomeGenUndergroundBase igneous13 = (new BiomeGenUndergroundIgneous(12, igneousID, 4))
+	public static final BiomeGenUndergroundBase igneous13 = (new BiomeGenUndergroundBase(12, igneousID, 4))
 			.setName("Igneous").AddStrataLayers(strataLayers.layers[2]).setOres(new boolean[]{true, false, false});
-	public static final BiomeGenUndergroundBase igneous14 = (new BiomeGenUndergroundIgneous(13, igneousID, 5))
+	public static final BiomeGenUndergroundBase igneous14 = (new BiomeGenUndergroundBase(13, igneousID, 5))
 			.setName("Igneous").AddStrataLayers(strataLayers.layers[3]).setOres(new boolean[]{false, true, true});
-	public static final BiomeGenUndergroundBase igneous15 = (new BiomeGenUndergroundIgneous(14, igneousID, 6))
+	public static final BiomeGenUndergroundBase igneous15 = (new BiomeGenUndergroundBase(14, igneousID, 6))
 			.setName("Igneous").AddStrataLayers(strataLayers.layers[4]).setOres(new boolean[]{false, true, true});
-	public static final BiomeGenUndergroundBase igneous16 = (new BiomeGenUndergroundIgneous(15, igneousID, 7))
+	public static final BiomeGenUndergroundBase igneous16 = (new BiomeGenUndergroundBase(15, igneousID, 7))
 			.setName("Igneous").AddStrataLayers(strataLayers.layers[5]).setOres(new boolean[]{true, false, false});
 	
 	static int metamorphicID = UndergroundBiomes.metamorphicStoneID;
 	
-	public static final BiomeGenUndergroundBase metamorphic1 = (new BiomeGenUndergroundMetamorphic(16, metamorphicID, 0))
+	public static final BiomeGenUndergroundBase metamorphic1 = (new BiomeGenUndergroundBase(16, metamorphicID, 0))
 			.setName("Metamorphic").AddStrataLayers(strataLayers.layers[6]).setOres(new boolean[]{true, false, false});
-	public static final BiomeGenUndergroundBase metamorphic2 = (new BiomeGenUndergroundMetamorphic(17, metamorphicID, 1))
+	public static final BiomeGenUndergroundBase metamorphic2 = (new BiomeGenUndergroundBase(17, metamorphicID, 1))
 			.setName("Metamorphic").AddStrataLayers(strataLayers.layers[7]).setOres(new boolean[]{true, true, true});
-	public static final BiomeGenUndergroundBase metamorphic3 = (new BiomeGenUndergroundMetamorphic(18, metamorphicID, 1))//to stop marble from being a base rock
+	public static final BiomeGenUndergroundBase metamorphic3 = (new BiomeGenUndergroundBase(18, metamorphicID, 1))//to stop marble from being a base rock
 			.setName("Metamorphic").AddStrataLayers(strataLayers.layers[8]).setOres(new boolean[]{false, false, true});
-	public static final BiomeGenUndergroundBase metamorphic4 = (new BiomeGenUndergroundMetamorphic(19, metamorphicID, 3))
+	public static final BiomeGenUndergroundBase metamorphic4 = (new BiomeGenUndergroundBase(19, metamorphicID, 3))
 			.setName("Metamorphic").AddStrataLayers(strataLayers.layers[9]).setOres(new boolean[]{false, true, true});
-	public static final BiomeGenUndergroundBase metamorphic5 = (new BiomeGenUndergroundMetamorphic(20, metamorphicID, 4))
+	public static final BiomeGenUndergroundBase metamorphic5 = (new BiomeGenUndergroundBase(20, metamorphicID, 4))
 			.setName("Metamorphic").AddStrataLayers(strataLayers.layers[0]).setOres(new boolean[]{true, true, true});
-	public static final BiomeGenUndergroundBase metamorphic6 = (new BiomeGenUndergroundMetamorphic(21, metamorphicID, 5))
+	public static final BiomeGenUndergroundBase metamorphic6 = (new BiomeGenUndergroundBase(21, metamorphicID, 5))
 			.setName("Metamorphic").AddStrataLayers(strataLayers.layers[1]).setOres(new boolean[]{true, false, false});
-	public static final BiomeGenUndergroundBase metamorphic7 = (new BiomeGenUndergroundMetamorphic(22, metamorphicID, 6))
+	public static final BiomeGenUndergroundBase metamorphic7 = (new BiomeGenUndergroundBase(22, metamorphicID, 6))
 			.setName("Metamorphic").AddStrataLayers(strataLayers.layers[2]).setOres(new boolean[]{true, false, true});
-	public static final BiomeGenUndergroundBase metamorphic8 = (new BiomeGenUndergroundMetamorphic(23, metamorphicID, 7))
+	public static final BiomeGenUndergroundBase metamorphic8 = (new BiomeGenUndergroundBase(23, metamorphicID, 7))
 			.setName("Metamorphic").AddStrataLayers(strataLayers.layers[3]).setOres(new boolean[]{false, false, false});
 	
-	public static final BiomeGenUndergroundBase metamorphic9 = (new BiomeGenUndergroundMetamorphic(24, metamorphicID, 0))
+	public static final BiomeGenUndergroundBase metamorphic9 = (new BiomeGenUndergroundBase(24, metamorphicID, 0))
 			.setName("Metamorphic").AddStrataLayers(strataLayers.layers[4]).setOres(new boolean[]{true, false, true});
-	public static final BiomeGenUndergroundBase metamorphic10 = (new BiomeGenUndergroundMetamorphic(25, metamorphicID, 1))
+	public static final BiomeGenUndergroundBase metamorphic10 = (new BiomeGenUndergroundBase(25, metamorphicID, 1))
 			.setName("Metamorphic").AddStrataLayers(strataLayers.layers[5]).setOres(new boolean[]{true, true, false});
-	public static final BiomeGenUndergroundBase metamorphic11 = (new BiomeGenUndergroundMetamorphic(26, metamorphicID, 1))//to stop marble from being a base rock
+	public static final BiomeGenUndergroundBase metamorphic11 = (new BiomeGenUndergroundBase(26, metamorphicID, 1))//to stop marble from being a base rock
 			.setName("Metamorphic").AddStrataLayers(strataLayers.layers[6]).setOres(new boolean[]{false, true, true});
-	public static final BiomeGenUndergroundBase metamorphic12 = (new BiomeGenUndergroundMetamorphic(27, metamorphicID, 3))
+	public static final BiomeGenUndergroundBase metamorphic12 = (new BiomeGenUndergroundBase(27, metamorphicID, 3))
 			.setName("Metamorphic").AddStrataLayers(strataLayers.layers[7]).setOres(new boolean[]{true, false, true});
-	public static final BiomeGenUndergroundBase metamorphic13 = (new BiomeGenUndergroundMetamorphic(28, metamorphicID, 4))
+	public static final BiomeGenUndergroundBase metamorphic13 = (new BiomeGenUndergroundBase(28, metamorphicID, 4))
 			.setName("Metamorphic").AddStrataLayers(strataLayers.layers[8]).setOres(new boolean[]{false, false, false});
-	public static final BiomeGenUndergroundBase metamorphic14 = (new BiomeGenUndergroundMetamorphic(29, metamorphicID, 5))
+	public static final BiomeGenUndergroundBase metamorphic14 = (new BiomeGenUndergroundBase(29, metamorphicID, 5))
 			.setName("Metamorphic").AddStrataLayers(strataLayers.layers[9]).setOres(new boolean[]{true, true, false});
-	public static final BiomeGenUndergroundBase metamorphic15 = (new BiomeGenUndergroundMetamorphic(30, metamorphicID, 6))
+	public static final BiomeGenUndergroundBase metamorphic15 = (new BiomeGenUndergroundBase(30, metamorphicID, 6))
 			.setName("Metamorphic").AddStrataLayers(strataLayers.layers[0]).setOres(new boolean[]{true, false, true});
-	public static final BiomeGenUndergroundBase metamorphic16 = (new BiomeGenUndergroundMetamorphic(31, metamorphicID, 7))
+	public static final BiomeGenUndergroundBase metamorphic16 = (new BiomeGenUndergroundBase(31, metamorphicID, 7))
 			.setName("Metamorphic").AddStrataLayers(strataLayers.layers[1]).setOres(new boolean[]{true, true, true});
 	
-	public static final BiomeGenUndergroundBase vanillaStone1 = (new BiomeGenUndergroundMetamorphic(32, Block.stone.blockID, 0, true))
+	public static final BiomeGenUndergroundBase vanillaStone1 = (new BiomeGenUndergroundBase(32, Block.stone.blockID, 0))
 			.setName("Metamorphic").AddStrataLayers(strataLayers.layers[0]).setOres(new boolean[]{true, true, true});
-	public static final BiomeGenUndergroundBase vanillaStone2 = (new BiomeGenUndergroundMetamorphic(33, Block.stone.blockID, 0, true))
+	public static final BiomeGenUndergroundBase vanillaStone2 = (new BiomeGenUndergroundBase(33, Block.stone.blockID, 0))
 			.setName("Metamorphic").AddStrataLayers(strataLayers.layers[1]).setOres(new boolean[]{true, true, true});
-	public static final BiomeGenUndergroundBase vanillaStone3 = (new BiomeGenUndergroundMetamorphic(34, Block.stone.blockID, 0, true))
+	public static final BiomeGenUndergroundBase vanillaStone3 = (new BiomeGenUndergroundBase(34, Block.stone.blockID, 0))
 			.setName("Metamorphic").AddStrataLayers(strataLayers.layers[2]).setOres(new boolean[]{true, true, true});
-	public static final BiomeGenUndergroundBase vanillaStone4 = (new BiomeGenUndergroundMetamorphic(35, Block.stone.blockID, 0, true))
+	public static final BiomeGenUndergroundBase vanillaStone4 = (new BiomeGenUndergroundBase(35, Block.stone.blockID, 0))
 			.setName("Metamorphic").AddStrataLayers(strataLayers.layers[3]).setOres(new boolean[]{true, true, true});
 	
 	public String biomeName;
@@ -127,18 +127,6 @@ public abstract class BiomeGenUndergroundBase {
 		this.theBiomeDecorator = this.createBiomeDecorator();
 		biomeList[ID] = this;
 		strataNoise = new PerlinNoiseGenerator(1);
-	}
-	
-	protected BiomeGenUndergroundBase(int ID, int filler, int metadataValue, boolean vanillaStone){
-		this.biomeID = ID;
-		if(vanillaStone && UndergroundBiomes.vanillaStoneBiomes){
-			this.fillerBlock =  filler;
-			this.fillerBlockMetadata = (byte) metadataValue;
-			this.theBiomeDecorator = this.createBiomeDecorator();
-			biomeList[ID] = this;
-			strataNoise = new PerlinNoiseGenerator(1);
-		}
-		
 	}
 	
 	protected BiomeGenUndergroundBase AddStrataLayers(StrataLayer[] strata){
