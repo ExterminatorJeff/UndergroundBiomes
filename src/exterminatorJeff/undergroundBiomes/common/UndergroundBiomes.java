@@ -59,44 +59,33 @@ public class UndergroundBiomes{
 	private boolean gotWorldSeed;
 	
 	public static Block igneousStone;
-	public static int igneousStoneID = 250;
-	
 	public static Block igneousCobblestone;
-	public static int igneousCobblestoneID = 2000;
-	
 	public static Block igneousStoneBrick;
-	public static int igneousStoneBrickID = 2002;
-	
 	public static Block metamorphicStone;
-	public static int metamorphicStoneID = 251;
-	
 	public static Block metamorphicCobblestone;
-	public static int metamorphicCobblestoneID = 2001;
-	
 	public static Block metamorphicStoneBrick;
-	public static int metamorphicStoneBrickID = 2003;
-	
 	public static Block sedimentaryStone;
-	public static int sedimentaryStoneID = 252;
-	
 	public static Item ligniteCoal;
-	public static int ligniteCoalID = 550;
-	
-	public static Block anthraciteCoal;
-	public static int anthraciteCoalID = 2004;
-	
+	public static Block anthracite;
 	public static BlockHalfSlab igneousBrickSlabHalf;
-	public static int igneousBrickSlabHalfId = 2005;
-	
 	public static BlockHalfSlab igneousBrickSlabFull;
-	public static int igneousBrickSlabFullId = 2006;
-	
 	public static BlockHalfSlab metamorphicBrickSlabHalf;
-	public static int metamorphicBrickSlabHalfID = 2007;
-	
 	public static BlockHalfSlab metamorphicBrickSlabFull;
-	public static int metamorphicBrickSlabFullID = 2008;
 	
+	private int igneousStoneID;
+	private int igneousCobblestoneID;
+	private int igneousStoneBrickID;
+	private int metamorphicStoneID;
+	private int metamorphicCobblestoneID;
+	private int metamorphicStoneBrickID;
+	private int sedimentaryStoneID;
+	private int ligniteCoalID;
+	private int anthraciteCoalID;
+	private int igneousBrickSlabHalfId;
+	private int igneousBrickSlabFullId;
+	private int metamorphicBrickSlabHalfID;
+	private int metamorphicBrickSlabFullID;
+
 	public static float hardnessFactor = 0.25f;
 	public static float resistanceFactor = 1.5f;
 	public static int biomeSize = 45;
@@ -175,8 +164,8 @@ public class UndergroundBiomes{
 		sedimentaryStone = new BlockSedimentaryStone(sedimentaryStoneID).setUnlocalizedName("sedimentaryStone");
 		new ItemMetadataBlock(sedimentaryStone);
 		
-		anthraciteCoal = new BlockAnthracite(anthraciteCoalID).setUnlocalizedName("anthraciteCoal");
-		GameRegistry.registerBlock(anthraciteCoal, "anthraciteBlock");
+		anthracite = new BlockAnthracite(anthraciteCoalID).setUnlocalizedName("anthraciteCoal");
+		GameRegistry.registerBlock(anthracite, "anthraciteBlock");
 		
 		igneousBrickSlabHalf = (BlockHalfSlab) new BlockIgneousStoneSlab(igneousBrickSlabHalfId, false).setUnlocalizedName("igneousBrickSlab");
 		igneousBrickSlabFull = (BlockHalfSlab) new BlockIgneousStoneSlab(igneousBrickSlabFullId, true).setUnlocalizedName("igneousBrickSlabFull");
@@ -308,7 +297,7 @@ public class UndergroundBiomes{
 		LanguageRegistry.instance().addStringLocalization("tile.metamorphicBrickSlab.migmatiteBrickSlab.name", "Migmatite Brick Slab");
 		
 		//other blocks
-		LanguageRegistry.addName(anthraciteCoal, "Anthracite Coal Block");
+		LanguageRegistry.addName(anthracite, "Anthracite Coal Block");
 		
 		//items
 		LanguageRegistry.addName(ligniteCoal, "Lignite");
@@ -401,7 +390,7 @@ public class UndergroundBiomes{
 		}
 		
 		//anthracite
-		GameRegistry.addRecipe(new ItemStack(anthraciteCoal, 1), new Object[]{"XX", "XX", 'X', Item.coal});
+		GameRegistry.addRecipe(new ItemStack(anthracite, 1), new Object[]{"XX", "XX", 'X', Item.coal});
 		GameRegistry.addRecipe(new ItemStack(Item.coal, 1), "XXX", "XXX", "XXX", 'X', (Item)ligniteCoal);
 		
 		//temp

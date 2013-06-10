@@ -21,18 +21,18 @@ public class BlockMetamorphicStoneSlab extends BlockIgneousStoneSlab{
 	
     @Override
     protected ItemStack createStackedBlock(int metadata) {
-        return new ItemStack(UndergroundBiomes.metamorphicBrickSlabHalfID, 2, metadata & 7);
+        return new ItemStack(UndergroundBiomes.metamorphicBrickSlabHalf.blockID, 2, metadata & 7);
     }
 
     @Override
     public int idPicked(World par1World, int par2, int par3, int par4){
-    	return UndergroundBiomes.metamorphicBrickSlabHalfID;
+    	return UndergroundBiomes.metamorphicBrickSlabHalf.blockID;
     }
 	
     @Override
     public int idDropped(int par1, Random par2Random, int par3)
     {
-        return UndergroundBiomes.metamorphicBrickSlabHalfID;
+        return UndergroundBiomes.metamorphicBrickSlabHalf.blockID;
     }
 
     public String getBlockName(int index){

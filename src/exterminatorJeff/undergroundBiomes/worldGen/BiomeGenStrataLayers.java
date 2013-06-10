@@ -9,10 +9,6 @@ public class BiomeGenStrataLayers {
 	
 	public static StrataLayer[][] layers;
 	
-	private int sedimentaryBlockID;
-	private int metamorphicBlockID;
-	private int igneousBlockID;
-	
 	/*Sedimentary rock IDs:
 	 * 0 - limestone
 	 * 1 - chalk
@@ -29,14 +25,14 @@ public class BiomeGenStrataLayers {
 	 */
 	
 	public BiomeGenStrataLayers(){
-		this.sedimentaryBlockID = UndergroundBiomes.sedimentaryStoneID;
-		this.metamorphicBlockID = UndergroundBiomes.metamorphicStoneID;
-		this.igneousBlockID = UndergroundBiomes.igneousStoneID;
 		layers = new StrataLayer[30][];
 		createLayers();
 	}
 	
 	public void createLayers(){
+		int sedimentaryBlockID = UndergroundBiomes.sedimentaryStone.blockID;
+		int metamorphicBlockID = UndergroundBiomes.metamorphicStone.blockID;
+		int igneousBlockID = UndergroundBiomes.igneousStone.blockID;
 		layers[0] = new StrataLayer[]{new StrataLayer(sedimentaryBlockID, 0, 30, 32), new StrataLayer(sedimentaryBlockID, 1, 38, 41), new StrataLayer(sedimentaryBlockID, 6, 65, 70)};
 		layers[1] = new StrataLayer[]{new StrataLayer(sedimentaryBlockID, 2, 33, 36), new StrataLayer(sedimentaryBlockID, 1, 38, 41), new StrataLayer(sedimentaryBlockID, 5, 60, 62), new StrataLayer(sedimentaryBlockID, 7, 75, 80)};
 		layers[2] = new StrataLayer[]{new StrataLayer(sedimentaryBlockID, 3, 30, 35), new StrataLayer(sedimentaryBlockID, 4, 26, 29), new StrataLayer(metamorphicBlockID, 2, 70, 74)};

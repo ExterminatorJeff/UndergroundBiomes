@@ -87,7 +87,7 @@ public class BlockIgneousStone extends BlockMetadataBase{
     @Override
     public int idDropped(int par1, Random par2Random, int par3)
     {
-        return UndergroundBiomes.igneousCobblestoneID;
+        return UndergroundBiomes.igneousCobblestone.blockID;
     }
 
     @Override

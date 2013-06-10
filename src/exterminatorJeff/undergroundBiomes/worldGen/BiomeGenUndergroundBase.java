@@ -14,7 +14,7 @@ public class BiomeGenUndergroundBase {
 	
 	public static final BiomeGenUndergroundBase[] biomeList = new BiomeGenUndergroundBase[256];
 	
-	static int igneousID = UndergroundBiomes.igneousStoneID;
+	static int igneousID = UndergroundBiomes.igneousStone.blockID;
 	
 	public static final BiomeGenUndergroundBase igneous1 = (new BiomeGenUndergroundBase(0, igneousID, 0))
 			.setName("Igneous").AddStrataLayers(strataLayers.layers[0]);
@@ -50,7 +50,7 @@ public class BiomeGenUndergroundBase {
 	public static final BiomeGenUndergroundBase igneous16 = (new BiomeGenUndergroundBase(15, igneousID, 7))
 			.setName("Igneous").AddStrataLayers(strataLayers.layers[5]);
 	
-	static int metamorphicID = UndergroundBiomes.metamorphicStoneID;
+	static int metamorphicID = UndergroundBiomes.metamorphicStone.blockID;
 	
 	public static final BiomeGenUndergroundBase metamorphic1 = (new BiomeGenUndergroundBase(16, metamorphicID, 0))
 			.setName("Metamorphic").AddStrataLayers(strataLayers.layers[6]);

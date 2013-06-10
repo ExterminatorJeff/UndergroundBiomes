@@ -48,7 +48,7 @@ public class BlockIgneousStoneSlab extends BlockStep{
 	
 	@Override
 	protected ItemStack createStackedBlock(int metadata) {
-		return new ItemStack(UndergroundBiomes.igneousBrickSlabHalfId, 2, metadata & 7);
+		return new ItemStack(UndergroundBiomes.igneousBrickSlabHalf.blockID, 2, metadata & 7);
 	}
     
     @SideOnly(Side.CLIENT)
@@ -60,7 +60,7 @@ public class BlockIgneousStoneSlab extends BlockStep{
     
     @Override
     public int idPicked(World par1World, int par2, int par3, int par4){
-    	return UndergroundBiomes.igneousBrickSlabHalfId;
+    	return UndergroundBiomes.igneousBrickSlabHalf.blockID;
     }
     
     @Override
@@ -72,7 +72,7 @@ public class BlockIgneousStoneSlab extends BlockStep{
     @Override
     public int idDropped(int par1, Random par2Random, int par3)
     {
-        return UndergroundBiomes.igneousBrickSlabHalfId;
+        return UndergroundBiomes.igneousBrickSlabHalf.blockID;
     }
 
 	@SideOnly(Side.CLIENT)
