@@ -65,7 +65,6 @@ public class UndergroundBiomes{
 	public static boolean vanillaStoneBiomes = false;
 	
 	public Configuration config;
-	public static boolean oreVeins = true;
 	
 	public static WorldGenManager worldGen;
 	public static ArrayList<BiomeGenRule> biomeRules;

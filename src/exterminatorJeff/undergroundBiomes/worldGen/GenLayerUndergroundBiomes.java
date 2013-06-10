@@ -1,16 +1,16 @@
 package exterminatorJeff.undergroundBiomes.worldGen;
 
 import net.minecraft.world.WorldType;
-import net.minecraft.world.gen.layer.IntCache;
+import net.minecraft.world.gen.layer.*;
 
 import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
 
-public class GenLayerUndergroundBiomes extends GenLayerUnderground
+public class GenLayerUndergroundBiomes extends GenLayer
 {
     /** this sets all the biomes that are allowed to appear in the overworld */
     private BiomeGenUndergroundBase[] allowedBiomes;
 
-    public GenLayerUndergroundBiomes(long par1, GenLayerUnderground par3GenLayer, WorldType par4WorldType)
+    public GenLayerUndergroundBiomes(long par1, GenLayer par3GenLayer, WorldType par4WorldType)
     {
         super(par1);
         if (!UndergroundBiomes.vanillaStoneBiomes)

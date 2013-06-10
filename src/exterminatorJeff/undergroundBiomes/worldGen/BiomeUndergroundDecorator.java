@@ -13,8 +13,6 @@ import exterminatorJeff.undergroundBiomes.common.WorldGenManager;
 
 public class BiomeUndergroundDecorator {
 	
-	boolean oreVeins = true;
-	
     /** The world the BiomeDecorator is currently decorating */
     protected World currentWorld;
 
@@ -30,12 +28,6 @@ public class BiomeUndergroundDecorator {
     /** The biome generator object. */
     protected BiomeGenUndergroundBase biome;
     
-    
-    //veins ores
-    protected WorldGenUndergroundOreVeins coalGenVeins;
-    protected WorldGenUndergroundOreVeins ironGenVeins;
-    protected WorldGenUndergroundOreVeins goldGenVeins;   
-    
     BiomeGenUndergroundBase[] undergroundBiomesForGeneration;
     public boolean compatibilityMode = false;
     public WorldGenManager worldGen;
@@ -49,9 +41,6 @@ public class BiomeUndergroundDecorator {
 	boolean done = false;    
     
     public BiomeUndergroundDecorator(BiomeGenUndergroundBase biome){
-    	if(UndergroundBiomes.oreVeins == false){
-    		oreVeins = false;
-    	}
     	
     	cavernNoise = new PerlinNoiseGenerator(UndergroundBiomes.getWorld().getSeed() * 10);
     	
@@ -60,13 +49,6 @@ public class BiomeUndergroundDecorator {
     	worldGen = UndergroundBiomes.getWorldGenManager();
     	
     	this.biome = biome;
-    	
-        //veins
-        this.coalGenVeins = new WorldGenUndergroundOreVeins(Block.oreCoal.blockID, biome.fillerBlock, 0, 90);
-        this.ironGenVeins = new WorldGenUndergroundOreVeins(Block.oreIron.blockID, biome.fillerBlock, 0, 60);
-        this.goldGenVeins = new WorldGenUndergroundOreVeins(Block.oreGold.blockID, biome.fillerBlock, 0, 30);
-
-    	
     }
     
     public void decorate(World par1World, Random par2Random, int x, int y, boolean[] ores)
@@ -91,7 +73,6 @@ public class BiomeUndergroundDecorator {
     	worldGen = UndergroundBiomes.getWorldGenManager();
     	replaceBlocksForUndergroundBiome(chunk_X, chunk_Z);
     	//currentWorld.getChunkProvider().loadChunk(chunk_X, chunk_Z);
-    	//this.generateOres(ores);
     }
     
     protected void genStandardOre1(int par1, WorldGenerator par2WorldGenerator, int par3, int par4)
@@ -119,27 +100,6 @@ public class BiomeUndergroundDecorator {
         }
     }
 
-    /**
-     * Generates ores in the current chunk
-     */
-    protected void generateOres(boolean[] ores)
-    {
-        if(oreVeins){
-        long seed = currentWorld.getSeed();
-	        if(ores[0]){
-	        	ironGenVeins.generate(currentWorld, randomGenerator, chunk_X, chunk_Z, 0.5, 0.5, seed + 1000, 0.125);
-	        }
-	        if(ores[1]){
-	        	coalGenVeins.generate(currentWorld, randomGenerator, chunk_X, chunk_Z, 0.5, 0.6, seed + 1001, 0.125);
-	        }
-	        if(ores[2]){
-	        	goldGenVeins.generate(currentWorld, randomGenerator, chunk_X, chunk_Z, 0.6, 0.75, seed + 1002, 0.06);
-	        }
-        }else if(!oreVeins){
-
-        }
-    }
-    
 	public void replaceBlocksForUndergroundBiome(int par1, int par2){
 		BiomeGenRule[] rule = worldGen.BiomeGenRules;
 		

@@ -6,7 +6,7 @@ import java.util.Random;
 import net.minecraft.world.ChunkPosition;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldType;
-import net.minecraft.world.gen.layer.IntCache;
+import net.minecraft.world.gen.layer.*;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
 import exterminatorJeff.undergroundBiomes.worldGen.BiomeGenUndergroundBase;
 import exterminatorJeff.undergroundBiomes.worldGen.CavernGenerator;
@@ -14,9 +14,9 @@ import exterminatorJeff.undergroundBiomes.worldGen.GenLayerUnderground;
 
 public class WorldGenManager {
 	
-	private GenLayerUnderground genUndergroundBiomes;
+    private GenLayer genUndergroundBiomes;
     
-    private GenLayerUnderground undergroundBiomeIndexLayer;
+    private GenLayer undergroundBiomeIndexLayer;
     
     private UBiomeCache biomeCache;
     
@@ -39,7 +39,7 @@ public class WorldGenManager {
 		
 		this.biomeCache = new UBiomeCache(this);
 		
-		GenLayerUnderground[] gen = GenLayerUnderground.initializeAllBiomeGenerators(par1, par3WorldType, UndergroundBiomes.biomeSize);
+		GenLayer[] gen = GenLayerUnderground.initializeAllBiomeGenerators(par1, par3WorldType, UndergroundBiomes.biomeSize);
         this.genUndergroundBiomes = gen[0];
         this.undergroundBiomeIndexLayer = gen[1];
         
