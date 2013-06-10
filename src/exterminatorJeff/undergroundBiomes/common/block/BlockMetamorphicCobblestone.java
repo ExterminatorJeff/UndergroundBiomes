@@ -1,18 +1,19 @@
 package exterminatorJeff.undergroundBiomes.common.block;
 
+public class BlockMetamorphicCobblestone extends BlockMetamorphicStone
+{
+    public BlockMetamorphicCobblestone(int id)
+    {
+        super(id);
+    }
+    
+    public float getBlockHardness(int meta)
+    {
+        return super.getBlockHardness(meta)*1.333333f;
+    }
 
-public class BlockMetamorphicCobblestone extends BlockMetamorphicStone{
-
-	public BlockMetamorphicCobblestone(int id) {
-		super(id);
-		// TODO Auto-generated constructor stub
-	}
-	
-	public String getBlockName(int index){
-		String s = this.getUnlocalizedName();
-		return super.getBlockName(index) + "Cobble";
-	}
-	
-	
-
+    public String getBlockName(int index)
+    {
+        return super.getBlockName(index) + "Cobble";
+    }
 }

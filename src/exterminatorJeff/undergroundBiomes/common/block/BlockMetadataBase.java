@@ -1,43 +1,91 @@
 package exterminatorJeff.undergroundBiomes.common.block;
 
+import java.util.List;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.item.ItemStack;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.util.Icon;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.world.World;
+import net.minecraft.entity.Entity;
+
 import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
 
-public class BlockMetadataBase extends Block{
+public abstract class BlockMetadataBase extends Block
+{
+    protected Icon[] textures = {null, null, null, null, null, null, null, null};
 
-	protected Icon[] textures = {null, null, null, null, null, null, null, null};
-	
-	public BlockMetadataBase(int par1, Material par2Material) {
-		super(par1, par2Material);
-		
-	}
-	
-	@SideOnly(Side.CLIENT)
-	@Override
-	public void registerIcons(IconRegister iconRegister){
-    	for(int i = 0; i < 8; i++){
-    		textures[i] = iconRegister.registerIcon(UndergroundBiomes.texturePath + getBlockName(i));
-    	}
+    public BlockMetadataBase(int id)
+    {
+        super(id, Material.rock);
+        this.setHardness(1.5f);
+        this.setResistance(10.0f);
+        this.setCreativeTab(UndergroundBiomes.tabModBlocks);
     }
-	
-	@SideOnly(Side.CLIENT)
-    @Override
-    public Icon getIcon(int side, int metadata){
+    
+    @SideOnly(Side.CLIENT)
+    public void registerIcons(IconRegister iconRegister)
+    {
+        for(int i = 0; i < 8; i++)
+        {
+            textures[i] = iconRegister.registerIcon(UndergroundBiomes.texturePath + getBlockName(i));
+        }
+    }
+    
+    @SideOnly(Side.CLIENT)
+    public Icon getIcon(int side, int metadata)
+    {
         return textures[metadata & 7];
     }
-	
-	public String getBlockName(int index){
-		return "";
-	}
-	
-	public String getBlockName(int index, boolean toCaps){
-		String name = getBlockName(index);
-		return Character.toUpperCase(name.charAt(0)) + name.substring(1);
-	}
+    
+    public void getSubBlocks(int id, CreativeTabs tabs, List list)
+    {
+        for (int i = 0; i < 8; i++)
+        {
+            list.add(new ItemStack(id, 1, i));
+        } 
+    }
 
+    public boolean isGenMineableReplaceable(World world, int x, int y, int z)
+    {
+        return true;
+    }
+
+    public float getBlockHardness(int meta)
+    {
+        return 1.5f;
+    }
+
+    public float getBlockExplosionResistance(int meta)
+    {
+        return 10.0f;
+    }
+
+    public float getExplosionResistance(Entity entity, World world, int x, int y, int z, double explosionX, double explosionY, double explosionZ)
+    {
+        return getBlockExplosionResistance(getDamageValue(world, x, y, z) & 7);
+    }
+    
+    public float getBlockHardness(World world, int x, int y, int z)
+    {
+        return getBlockHardness(getDamageValue(world, x, y, z) & 7);
+    }
+
+    public int damageDropped(int metadata)
+    {
+        return metadata;
+    }
+
+    public abstract String getBlockName(int index);
+    
+    public String getOreName(int index)
+    {
+        String name = getBlockName(index);
+        return "stone" + Character.toUpperCase(name.charAt(0)) + name.substring(1);
+    }
 }

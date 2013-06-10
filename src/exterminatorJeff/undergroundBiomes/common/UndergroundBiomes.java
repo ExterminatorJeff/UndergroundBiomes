@@ -86,8 +86,6 @@ public class UndergroundBiomes{
 	private int metamorphicBrickSlabHalfID;
 	private int metamorphicBrickSlabFullID;
 
-	public static float hardnessFactor = 0.25f;
-	public static float resistanceFactor = 1.5f;
 	public static int biomeSize = 45;
 	
 	//no grass
@@ -143,13 +141,13 @@ public class UndergroundBiomes{
 		
 		//rocks
 		
-		igneousStone = new BlockIgneousStone(igneousStoneID, 0).setUnlocalizedName("igneousStone");
+		igneousStone = new BlockIgneousStone(igneousStoneID).setUnlocalizedName("igneousStone");
 		new ItemMetadataBlock(igneousStone);
 		
-		igneousCobblestone = new BlockIgneousCobblestone(igneousCobblestoneID, 8).setUnlocalizedName("igneousCobblestone");
+		igneousCobblestone = new BlockIgneousCobblestone(igneousCobblestoneID).setUnlocalizedName("igneousCobblestone");
 		new ItemMetadataBlock(igneousCobblestone);
 		
-		igneousStoneBrick = new BlockIgneousStoneBrick(igneousStoneBrickID, 16).setUnlocalizedName("igneousStoneBrick");
+		igneousStoneBrick = new BlockIgneousStoneBrick(igneousStoneBrickID).setUnlocalizedName("igneousStoneBrick");
 		new ItemMetadataBlock(igneousStoneBrick);
 		
 		metamorphicStone = new BlockMetamorphicStone(metamorphicStoneID).setUnlocalizedName("metamorphicStone");
@@ -429,15 +427,15 @@ public class UndergroundBiomes{
 			//proper names
 			
 			//stones
-			OreDictionary.registerOre("stone" + ((BlockIgneousStone)igneousStone).getBlockName(i, true),  igStone);
-			OreDictionary.registerOre("stone" + ((BlockMetamorphicStone)metamorphicStone).getBlockName(i, true),  metStone);
-			OreDictionary.registerOre("stone" + ((BlockSedimentaryStone)sedimentaryStone).getBlockName(i, true),  sedStone);
+			OreDictionary.registerOre(((BlockIgneousStone)igneousStone).getOreName(i),  igStone);
+			OreDictionary.registerOre(((BlockMetamorphicStone)metamorphicStone).getOreName(i),  metStone);
+			OreDictionary.registerOre(((BlockSedimentaryStone)sedimentaryStone).getOreName(i),  sedStone);
 			//cobble
-			OreDictionary.registerOre("stone" + ((BlockIgneousCobblestone)igneousCobblestone).getBlockName(i, true),  igStoneCobble);
-			OreDictionary.registerOre("stone" + ((BlockMetamorphicCobblestone)metamorphicCobblestone).getBlockName(i, true),  metStoneCobble);
+			OreDictionary.registerOre(((BlockIgneousCobblestone)igneousCobblestone).getOreName(i),  igStoneCobble);
+			OreDictionary.registerOre(((BlockMetamorphicCobblestone)metamorphicCobblestone).getOreName(i),  metStoneCobble);
 			//bricks
-			OreDictionary.registerOre("stone" + ((BlockIgneousStoneBrick)igneousStoneBrick).getBlockName(i, true),  igStoneBrick);
-			OreDictionary.registerOre("stone" + ((BlockMetamorphicStoneBrick)metamorphicStoneBrick).getBlockName(i, true),  metStoneBrick);
+			OreDictionary.registerOre(((BlockIgneousStoneBrick)igneousStoneBrick).getOreName(i),  igStoneBrick);
+			OreDictionary.registerOre(((BlockMetamorphicStoneBrick)metamorphicStoneBrick).getOreName(i),  metStoneBrick);
 			
 			//base name
 			OreDictionary.registerOre("stoneSmooth", new ItemStack(igneousStone, 1, i));

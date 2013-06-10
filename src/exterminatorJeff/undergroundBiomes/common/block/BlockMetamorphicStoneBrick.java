@@ -1,23 +1,21 @@
 package exterminatorJeff.undergroundBiomes.common.block;
 
-import java.util.ArrayList;
+import java.util.Random;
 
-import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
-import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
-
-
-public class BlockMetamorphicStoneBrick extends BlockMetamorphicStone{
-
-	public BlockMetamorphicStoneBrick(int id) {
-		super(id);
-		// TODO Auto-generated constructor stub
-	}
-	
-    @Override
-    public String getBlockName(int index){
-    	return super.getBlockName(index) + "Brick";
+public class BlockMetamorphicStoneBrick extends BlockMetamorphicStone
+{
+    public BlockMetamorphicStoneBrick(int id)
+    {
+        super(id);
     }
-	
+    
+    public int idDropped(int metadata, Random random, int par3)
+    {
+        return this.blockID;
+    }
 
+    public String getBlockName(int index)
+    {
+        return super.getBlockName(index) + "Brick";
+    }
 }

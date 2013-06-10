@@ -15,41 +15,29 @@ import cpw.mods.fml.relauncher.SideOnly;
 import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
 
 public class BlockIgneousStoneSlab extends BlockStep{
-	
-	boolean isFullSlab = false;
-	
-	protected Icon[] textures = {null, null, null, null, null, null, null, null};
-	
-	public BlockIgneousStoneSlab(int par1, boolean par2){
-		super(par1, par2);
-		isFullSlab = par2;
-		if(!par2){
-			this.setCreativeTab(UndergroundBiomes.tabModBlocks);
-		}else{
-			this.setCreativeTab(null);
-		}
-		this.useNeighborBrightness[par1] = true;
-	}
-
-
-	@Override
-	public float getBlockHardness(World par1World, int par2, int par3, int par4){
-		return UndergroundBiomes.igneousStoneBrick.getBlockHardness(par1World, par2, par3, par4)+0.25f;
-	}
-	
-	@Override
-	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List)
-    {
-    	for(int i = 0; i < 8; i++){
-    		par3List.add(new ItemStack(par1, 1, i));
-    	}
-       
+    
+    protected Icon[] textures = {null, null, null, null, null, null, null, null};
+    
+    public BlockIgneousStoneSlab(int par1, boolean par2){
+        super(par1, par2);
+        if(!par2){
+            this.setCreativeTab(UndergroundBiomes.tabModBlocks);
+        }else{
+            this.setCreativeTab(null);
+        }
+        this.useNeighborBrightness[par1] = true;
     }
-	
-	@Override
-	protected ItemStack createStackedBlock(int metadata) {
-		return new ItemStack(UndergroundBiomes.igneousBrickSlabHalf.blockID, 2, metadata & 7);
-	}
+
+
+    @Override
+    public float getBlockHardness(World par1World, int par2, int par3, int par4){
+        return UndergroundBiomes.igneousStoneBrick.getBlockHardness(par1World, par2, par3, par4)+0.25f;
+    }
+    
+    @Override
+    protected ItemStack createStackedBlock(int metadata) {
+        return new ItemStack(UndergroundBiomes.igneousBrickSlabHalf.blockID, 2, metadata & 7);
+    }
     
     @SideOnly(Side.CLIENT)
     @Override
@@ -60,7 +48,7 @@ public class BlockIgneousStoneSlab extends BlockStep{
     
     @Override
     public int idPicked(World par1World, int par2, int par3, int par4){
-    	return UndergroundBiomes.igneousBrickSlabHalf.blockID;
+        return UndergroundBiomes.igneousBrickSlabHalf.blockID;
     }
     
     @Override
@@ -70,42 +58,22 @@ public class BlockIgneousStoneSlab extends BlockStep{
     }
     
     @Override
-    public int idDropped(int par1, Random par2Random, int par3)
+    public int idDropped(int metadata, Random random, int par3)
     {
         return UndergroundBiomes.igneousBrickSlabHalf.blockID;
     }
 
-	@SideOnly(Side.CLIENT)
-	@Override
-	public void registerIcons(IconRegister iconRegister){
-    	for(int i = 0; i < 8; i++){
-    		textures[i] = iconRegister.registerIcon(UndergroundBiomes.texturePath + getBlockName(i));
-    	}
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void registerIcons(IconRegister iconRegister){
+        for(int i = 0; i < 8; i++){
+            textures[i] = iconRegister.registerIcon(UndergroundBiomes.texturePath + getBlockName(i));
+        }
     }
-	
-	public String getBlockName(int index){
-		String name = "";
-    	switch(index){
-    		case(0): name = "redGranite";
-    			break;
-    		case(1): name = "blackGranite";
-    			break;
-    		case(2): name = "rhyolite";
-    			break;
-    		case(3): name = "andesite";
-    			break;
-    		case(4): name = "gabbro";
-    			break;
-    		case(5): name = "basalt";
-    			break;
-    		case(6): name = "komatiite";
-    			break;
-    		case(7): name = "epidote";
-    			break;
-    		default: name="default";
-    		
-	    }
-    	return name + "Brick";
-	}
+    
+    public String getBlockName(int index)
+    {
+        return ((BlockMetadataBase)UndergroundBiomes.igneousStoneBrick).getBlockName(index);
+    }
 
 }
