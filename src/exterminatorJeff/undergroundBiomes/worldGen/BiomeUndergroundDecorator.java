@@ -27,7 +27,6 @@ public class BiomeUndergroundDecorator {
     protected BiomeGenUndergroundBase biome;
     
     BiomeGenUndergroundBase[] undergroundBiomesForGeneration;
-    public boolean compatibilityMode = false;
     public WorldGenManager worldGen;
     
 	int maxHeight = 60;

@@ -31,27 +31,8 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
-import exterminatorJeff.undergroundBiomes.common.block.BlockAnthracite;
-import exterminatorJeff.undergroundBiomes.common.block.BlockIgneousCobblestone;
-import exterminatorJeff.undergroundBiomes.common.block.BlockIgneousStone;
-import exterminatorJeff.undergroundBiomes.common.block.BlockIgneousStoneBrick;
-import exterminatorJeff.undergroundBiomes.common.block.BlockIgneousStoneSlab;
-import exterminatorJeff.undergroundBiomes.common.block.BlockMetamorphicCobblestone;
-import exterminatorJeff.undergroundBiomes.common.block.BlockMetamorphicStone;
-import exterminatorJeff.undergroundBiomes.common.block.BlockMetamorphicStoneBrick;
-import exterminatorJeff.undergroundBiomes.common.block.BlockMetamorphicStoneSlab;
-import exterminatorJeff.undergroundBiomes.common.block.BlockSedimentaryStone;
-import exterminatorJeff.undergroundBiomes.common.item.ItemIgneousCobblestoneBlock;
-import exterminatorJeff.undergroundBiomes.common.item.ItemIgneousStoneBlock;
-import exterminatorJeff.undergroundBiomes.common.item.ItemIgneousStoneBrickBlock;
-import exterminatorJeff.undergroundBiomes.common.item.ItemIgneousStoneSlab;
-import exterminatorJeff.undergroundBiomes.common.item.ItemLigniteCoal;
-import exterminatorJeff.undergroundBiomes.common.item.ItemMetamorphicCobblestoneBlock;
-import exterminatorJeff.undergroundBiomes.common.item.ItemMetamorphicStoneBlock;
-import exterminatorJeff.undergroundBiomes.common.item.ItemMetamorphicStoneBrickBlock;
-import exterminatorJeff.undergroundBiomes.common.item.ItemMetamorphicStoneSlab;
-import exterminatorJeff.undergroundBiomes.common.item.ItemSedimentaryStoneBlock;
-
+import exterminatorJeff.undergroundBiomes.common.block.*;
+import exterminatorJeff.undergroundBiomes.common.item.*;
 
 @Mod(modid = "UndergroundBiomes", name = "Underground Biomes", version = "0.3.9")
 @NetworkMod(clientSideRequired = true, serverSideRequired = true)
@@ -60,7 +41,6 @@ import exterminatorJeff.undergroundBiomes.common.item.ItemSedimentaryStoneBlock;
 public class UndergroundBiomes{
 	
 	public static World world;
-	public static boolean compatibilityMode = false;
 	public static boolean addOreDictRecipes = true;
 	public static boolean vanillaStoneBiomes = false;
 	
@@ -175,28 +155,28 @@ public class UndergroundBiomes{
 		//rocks
 		
 		igneousStone = new BlockIgneousStone(igneousStoneID, 0).setUnlocalizedName("igneousStone");
-		Item.itemsList[igneousStoneID] = new ItemIgneousStoneBlock(igneousStoneID - 256, igneousStone).setUnlocalizedName("igneousStone");
+		new ItemMetadataBlock(igneousStone);
 		
 		igneousCobblestone = new BlockIgneousCobblestone(igneousCobblestoneID, 8).setUnlocalizedName("igneousCobblestone");
-		Item.itemsList[igneousCobblestoneID] = new ItemIgneousCobblestoneBlock(igneousCobblestoneID - 256, igneousCobblestone).setUnlocalizedName("igneousCobblestone");
+		new ItemMetadataBlock(igneousCobblestone);
 		
 		igneousStoneBrick = new BlockIgneousStoneBrick(igneousStoneBrickID, 16).setUnlocalizedName("igneousStoneBrick");
-		Item.itemsList[igneousStoneBrickID] = new ItemIgneousStoneBrickBlock(igneousStoneBrickID - 256, igneousStoneBrick).setUnlocalizedName("igneousStoneBrick");
+		new ItemMetadataBlock(igneousStoneBrick);
 		
 		metamorphicStone = new BlockMetamorphicStone(metamorphicStoneID).setUnlocalizedName("metamorphicStone");
-		Item.itemsList[metamorphicStoneID] = new ItemMetamorphicStoneBlock(metamorphicStoneID - 256, metamorphicStone).setUnlocalizedName("metamorphicStone");
+		new ItemMetadataBlock(metamorphicStone);
 		
 		metamorphicCobblestone = new BlockMetamorphicCobblestone(metamorphicCobblestoneID).setUnlocalizedName("metamorphicCobblestone");
-		Item.itemsList[metamorphicCobblestoneID] = new ItemMetamorphicCobblestoneBlock(metamorphicCobblestoneID - 256, metamorphicCobblestone).setUnlocalizedName("metamorphicCobblestone");
+		new ItemMetadataBlock(metamorphicCobblestone);
 		
 		metamorphicStoneBrick = new BlockMetamorphicStoneBrick(metamorphicStoneBrickID).setUnlocalizedName("metamorphicStoneBrick");
-		Item.itemsList[metamorphicStoneBrickID] = new ItemMetamorphicStoneBrickBlock(metamorphicStoneBrickID - 256, metamorphicStoneBrick).setUnlocalizedName("metamorphicStoneBrick");
+		new ItemMetadataBlock(metamorphicStoneBrick);
 		
 		sedimentaryStone = new BlockSedimentaryStone(sedimentaryStoneID).setUnlocalizedName("sedimentaryStone");
-		Item.itemsList[sedimentaryStoneID] = new ItemSedimentaryStoneBlock(sedimentaryStoneID - 256, sedimentaryStone).setUnlocalizedName("sedimentaryStone");
+		new ItemMetadataBlock(sedimentaryStone);
 		
 		anthraciteCoal = new BlockAnthracite(anthraciteCoalID).setUnlocalizedName("anthraciteCoal");
-		GameRegistry.registerBlock(anthraciteCoal, "undergroundBiomes_anthraciteBlock");
+		GameRegistry.registerBlock(anthraciteCoal, "anthraciteBlock");
 		
 		igneousBrickSlabHalf = (BlockHalfSlab) new BlockIgneousStoneSlab(igneousBrickSlabHalfId, false).setUnlocalizedName("igneousBrickSlab");
 		igneousBrickSlabFull = (BlockHalfSlab) new BlockIgneousStoneSlab(igneousBrickSlabFullId, true).setUnlocalizedName("igneousBrickSlabFull");
