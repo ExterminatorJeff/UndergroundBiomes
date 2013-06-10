@@ -16,7 +16,7 @@ import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
 
 public class BlockSedimentaryStone extends BlockMetadataBase
 {
-    private static final float[] hardness = {0.5f, 0.5f, 0.5f, 0.6f, 0.5f, 1.2f, 1.0f, 1.0f};
+    private static final float[] hardness = {0.5f, 0.5f, 0.5f, 0.6f, 0.5f, 1.0f, 1.0f, 0.9f};
     private static final String[] blockName = {
         "limestone", "chalk", "shale", "siltstone", "ligniteBlock", "flint", "greywacke", "chert"
     };

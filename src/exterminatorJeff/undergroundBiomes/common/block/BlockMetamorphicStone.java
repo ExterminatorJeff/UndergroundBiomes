@@ -6,7 +6,7 @@ import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
 
 public class BlockMetamorphicStone extends BlockMetadataBase
 {
-    private static final float[] hardness = {0.8f, 0.8f, 0.6f, 1.2f, 1.0f, 1.0f, 0.5f, 1.0f};
+    private static final float[] hardness = {1.1f, 1.0f, 1.1f, 1.3f, 0.7f, 0.7f, 0.4f, 0.9f};
     private static final String[] blockName = {
         "gneiss", "eclogite", "marble", "quartzite", "blueschist", "greenschist", "soapstone", "migmatite"
     };

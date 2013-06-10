@@ -1,3 +1,8 @@
+0.3.9
+
+- Refactored code
+- Rebalanced rocks hardness
+
 0.3.8
 
 - Fixed metamorphic stone not dropping cobblestone

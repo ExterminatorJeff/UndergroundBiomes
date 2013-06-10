@@ -6,7 +6,7 @@ import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
 
 public class BlockIgneousStone extends BlockMetadataBase
 {
-    private static final float[] hardness = {1.0f, 1.0f, 1.0f, 1.2f, 0.8f, 1.0f, 1.0f, 1.2f};
+    private static final float[] hardness = {1.5f, 1.4f, 1.1f, 1.2f, 0.8f, 1.2f, 1.3f, 1.0f};
     private static final String[] blockName = {
         "redGranite", "blackGranite", "rhyolite", "andesite", "gabbro", "basalt", "komatiite", "epidote"
     };
