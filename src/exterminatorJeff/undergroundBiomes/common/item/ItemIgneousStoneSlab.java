@@ -12,24 +12,24 @@ import cpw.mods.fml.relauncher.SideOnly;
 import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
 
 public class ItemIgneousStoneSlab extends ItemSlab{
-	
-	private static Optional<BlockHalfSlab>	singleSlab	= Optional.absent();
-	private static Optional<BlockHalfSlab>	doubleSlab	= Optional.absent();
-	
-	public static void setSlabs(BlockHalfSlab singleSlab,
-			BlockHalfSlab doubleSlab)
-	{
-		ItemIgneousStoneSlab.singleSlab = Optional.of(singleSlab);
-		ItemIgneousStoneSlab.doubleSlab = Optional.of(doubleSlab);
-	}
+    
+    private static Optional<BlockHalfSlab>    singleSlab    = Optional.absent();
+    private static Optional<BlockHalfSlab>    doubleSlab    = Optional.absent();
+    
+    public static void setSlabs(BlockHalfSlab singleSlab,
+            BlockHalfSlab doubleSlab)
+    {
+        ItemIgneousStoneSlab.singleSlab = Optional.of(singleSlab);
+        ItemIgneousStoneSlab.doubleSlab = Optional.of(doubleSlab);
+    }
 
-	public ItemIgneousStoneSlab(int id, Block block) {
-		super(id, singleSlab.get(), doubleSlab.get(), (id == doubleSlab.get().blockID));
-		this.setMaxDamage(0);
+    public ItemIgneousStoneSlab(int id, Block block) {
+        super(id, singleSlab.get(), doubleSlab.get(), (id == doubleSlab.get().blockID));
+        this.setMaxDamage(0);
         this.setHasSubtypes(true);
-	}
-	
-	public int getMetadata(int par1)
+    }
+    
+    public int getMetadata(int par1)
     {
         return par1;
     }
@@ -41,33 +41,33 @@ public class ItemIgneousStoneSlab extends ItemSlab{
     }
 
     public String getItemName(int index){
-    	String name = "";
-    	switch(index){
-			case(0): name = "redGraniteBrickSlab";
-				break;
-			case(1): name = "blackGraniteBrickSlab";
-				break;
-			case(2): name = "rhyoliteBrickSlab";
-				break;
-			case(3): name = "andesiteBrickSlab";
-				break;
-			case(4): name = "gabbroBrickSlab";
-				break;
-			case(5): name = "basaltBrickSlab";
-				break;
-			case(6): name = "komatiiteBrickSlab";
-				break;
-			case(7): name = "epidoteBrickSlab";
-				break;
-			default: name="default";
-			
-	    }
-    	return getUnlocalizedName() + "." + name;
+        String name = "";
+        switch(index){
+            case(0): name = "redGraniteBrickSlab";
+                break;
+            case(1): name = "blackGraniteBrickSlab";
+                break;
+            case(2): name = "rhyoliteBrickSlab";
+                break;
+            case(3): name = "andesiteBrickSlab";
+                break;
+            case(4): name = "gabbroBrickSlab";
+                break;
+            case(5): name = "basaltBrickSlab";
+                break;
+            case(6): name = "komatiiteBrickSlab";
+                break;
+            case(7): name = "epidoteBrickSlab";
+                break;
+            default: name="default";
+            
+        }
+        return getUnlocalizedName() + "." + name;
     }
     
     @Override
-	public String getUnlocalizedName(ItemStack itemstack) {
-    	return getItemName(itemstack.getItemDamage());
-	}
+    public String getUnlocalizedName(ItemStack itemstack) {
+        return getItemName(itemstack.getItemDamage());
+    }
 
 }

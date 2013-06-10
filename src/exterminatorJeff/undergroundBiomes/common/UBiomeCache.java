@@ -9,15 +9,15 @@ import exterminatorJeff.undergroundBiomes.worldGen.BiomeUndergroundCacheBlock;
 
 public class UBiomeCache{
 
-	private List cacheUnderground = new ArrayList();
-	private LongHashMap undergroundCacheMap = new LongHashMap();
-	public WorldGenManager worldGen;
-	
-	public UBiomeCache(WorldGenManager gen){
-		this.worldGen = gen;
-	}
-	
-	public BiomeUndergroundCacheBlock getUndergroundBiomeCacheBlock(int par1, int par2)
+    private List cacheUnderground = new ArrayList();
+    private LongHashMap undergroundCacheMap = new LongHashMap();
+    public WorldGenManager worldGen;
+    
+    public UBiomeCache(WorldGenManager gen){
+        this.worldGen = gen;
+    }
+    
+    public BiomeUndergroundCacheBlock getUndergroundBiomeCacheBlock(int par1, int par2)
     {
         par1 >>= 4;
         par2 >>= 4;
@@ -34,13 +34,13 @@ public class UBiomeCache{
         var5.lastAccessTime = System.currentTimeMillis();
         return var5;
     }
-	
-	public BiomeGenUndergroundBase getUndergroundBiomeGetAt(int xPos, int yPos){
-    	return this.getUndergroundBiomeCacheBlock(xPos, yPos).getBiomeGenAt(xPos, yPos);
+    
+    public BiomeGenUndergroundBase getUndergroundBiomeGetAt(int xPos, int yPos){
+        return this.getUndergroundBiomeCacheBlock(xPos, yPos).getBiomeGenAt(xPos, yPos);
     }
-	
-	public BiomeGenUndergroundBase[] getCachedUndergroundBiomes(int xPos, int yPos){
-    	return this.getUndergroundBiomeCacheBlock(xPos, yPos).biomes;
+    
+    public BiomeGenUndergroundBase[] getCachedUndergroundBiomes(int xPos, int yPos){
+        return this.getUndergroundBiomeCacheBlock(xPos, yPos).biomes;
     }
-	
+    
 }

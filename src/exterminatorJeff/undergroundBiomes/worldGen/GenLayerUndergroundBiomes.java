@@ -16,33 +16,33 @@ public class GenLayerUndergroundBiomes extends GenLayer
         if (!UndergroundBiomes.vanillaStoneBiomes)
         {
             this.allowedBiomes = new BiomeGenUndergroundBase[] {BiomeGenUndergroundBase.igneous1, BiomeGenUndergroundBase.igneous2, 
-            		BiomeGenUndergroundBase.igneous3, BiomeGenUndergroundBase.igneous4,
-            		BiomeGenUndergroundBase.igneous5, BiomeGenUndergroundBase.igneous6, BiomeGenUndergroundBase.igneous7, 
-            		BiomeGenUndergroundBase.igneous8, BiomeGenUndergroundBase.igneous9, BiomeGenUndergroundBase.igneous10, 
-            		BiomeGenUndergroundBase.igneous11, BiomeGenUndergroundBase.igneous12, BiomeGenUndergroundBase.igneous13, 
-            		BiomeGenUndergroundBase.igneous14, BiomeGenUndergroundBase.igneous15, BiomeGenUndergroundBase.igneous16,
-            		BiomeGenUndergroundBase.metamorphic1, BiomeGenUndergroundBase.metamorphic2, BiomeGenUndergroundBase.metamorphic3, 
-            		BiomeGenUndergroundBase.metamorphic4, BiomeGenUndergroundBase.metamorphic5, BiomeGenUndergroundBase.metamorphic6,
-            		BiomeGenUndergroundBase.metamorphic7, BiomeGenUndergroundBase.metamorphic8, BiomeGenUndergroundBase.metamorphic9, 
-            		BiomeGenUndergroundBase.metamorphic10, BiomeGenUndergroundBase.metamorphic11, BiomeGenUndergroundBase.metamorphic12, 
-            		BiomeGenUndergroundBase.metamorphic13, BiomeGenUndergroundBase.metamorphic14, BiomeGenUndergroundBase.metamorphic15, 
-            		BiomeGenUndergroundBase.metamorphic16};
+                    BiomeGenUndergroundBase.igneous3, BiomeGenUndergroundBase.igneous4,
+                    BiomeGenUndergroundBase.igneous5, BiomeGenUndergroundBase.igneous6, BiomeGenUndergroundBase.igneous7, 
+                    BiomeGenUndergroundBase.igneous8, BiomeGenUndergroundBase.igneous9, BiomeGenUndergroundBase.igneous10, 
+                    BiomeGenUndergroundBase.igneous11, BiomeGenUndergroundBase.igneous12, BiomeGenUndergroundBase.igneous13, 
+                    BiomeGenUndergroundBase.igneous14, BiomeGenUndergroundBase.igneous15, BiomeGenUndergroundBase.igneous16,
+                    BiomeGenUndergroundBase.metamorphic1, BiomeGenUndergroundBase.metamorphic2, BiomeGenUndergroundBase.metamorphic3, 
+                    BiomeGenUndergroundBase.metamorphic4, BiomeGenUndergroundBase.metamorphic5, BiomeGenUndergroundBase.metamorphic6,
+                    BiomeGenUndergroundBase.metamorphic7, BiomeGenUndergroundBase.metamorphic8, BiomeGenUndergroundBase.metamorphic9, 
+                    BiomeGenUndergroundBase.metamorphic10, BiomeGenUndergroundBase.metamorphic11, BiomeGenUndergroundBase.metamorphic12, 
+                    BiomeGenUndergroundBase.metamorphic13, BiomeGenUndergroundBase.metamorphic14, BiomeGenUndergroundBase.metamorphic15, 
+                    BiomeGenUndergroundBase.metamorphic16};
         } else {
             this.allowedBiomes = new BiomeGenUndergroundBase[] {BiomeGenUndergroundBase.igneous1, BiomeGenUndergroundBase.igneous2, 
-            		BiomeGenUndergroundBase.igneous3, BiomeGenUndergroundBase.igneous4,
-            		BiomeGenUndergroundBase.igneous5, BiomeGenUndergroundBase.igneous6, BiomeGenUndergroundBase.igneous7, 
-            		BiomeGenUndergroundBase.igneous8, BiomeGenUndergroundBase.igneous9, BiomeGenUndergroundBase.igneous10, 
-            		BiomeGenUndergroundBase.igneous11, BiomeGenUndergroundBase.igneous12, BiomeGenUndergroundBase.igneous13, 
-            		BiomeGenUndergroundBase.igneous14, BiomeGenUndergroundBase.igneous15, BiomeGenUndergroundBase.igneous16,
-            		BiomeGenUndergroundBase.metamorphic1, BiomeGenUndergroundBase.metamorphic2, BiomeGenUndergroundBase.metamorphic3, 
-            		BiomeGenUndergroundBase.metamorphic4, BiomeGenUndergroundBase.metamorphic5, BiomeGenUndergroundBase.metamorphic6,
-            		BiomeGenUndergroundBase.metamorphic7, BiomeGenUndergroundBase.metamorphic8, BiomeGenUndergroundBase.metamorphic9, 
-            		BiomeGenUndergroundBase.metamorphic10, BiomeGenUndergroundBase.metamorphic11, BiomeGenUndergroundBase.metamorphic12, 
-            		BiomeGenUndergroundBase.metamorphic13, BiomeGenUndergroundBase.metamorphic14, BiomeGenUndergroundBase.metamorphic15, 
-            		BiomeGenUndergroundBase.metamorphic16,
-        		BiomeGenUndergroundBase.vanillaStone1, BiomeGenUndergroundBase.vanillaStone2,
-        		BiomeGenUndergroundBase.vanillaStone3, BiomeGenUndergroundBase.vanillaStone4
-            		};
+                    BiomeGenUndergroundBase.igneous3, BiomeGenUndergroundBase.igneous4,
+                    BiomeGenUndergroundBase.igneous5, BiomeGenUndergroundBase.igneous6, BiomeGenUndergroundBase.igneous7, 
+                    BiomeGenUndergroundBase.igneous8, BiomeGenUndergroundBase.igneous9, BiomeGenUndergroundBase.igneous10, 
+                    BiomeGenUndergroundBase.igneous11, BiomeGenUndergroundBase.igneous12, BiomeGenUndergroundBase.igneous13, 
+                    BiomeGenUndergroundBase.igneous14, BiomeGenUndergroundBase.igneous15, BiomeGenUndergroundBase.igneous16,
+                    BiomeGenUndergroundBase.metamorphic1, BiomeGenUndergroundBase.metamorphic2, BiomeGenUndergroundBase.metamorphic3, 
+                    BiomeGenUndergroundBase.metamorphic4, BiomeGenUndergroundBase.metamorphic5, BiomeGenUndergroundBase.metamorphic6,
+                    BiomeGenUndergroundBase.metamorphic7, BiomeGenUndergroundBase.metamorphic8, BiomeGenUndergroundBase.metamorphic9, 
+                    BiomeGenUndergroundBase.metamorphic10, BiomeGenUndergroundBase.metamorphic11, BiomeGenUndergroundBase.metamorphic12, 
+                    BiomeGenUndergroundBase.metamorphic13, BiomeGenUndergroundBase.metamorphic14, BiomeGenUndergroundBase.metamorphic15, 
+                    BiomeGenUndergroundBase.metamorphic16,
+                    BiomeGenUndergroundBase.vanillaStone1, BiomeGenUndergroundBase.vanillaStone2,
+                    BiomeGenUndergroundBase.vanillaStone3, BiomeGenUndergroundBase.vanillaStone4
+                    };
         }
         this.parent = par3GenLayer;
 

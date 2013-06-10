@@ -13,7 +13,7 @@ public abstract class GenLayerUnderground extends GenLayer
      */
     public static GenLayer[] initializeAllBiomeGenerators(long par0, WorldType par2WorldType, int size)
     {
-    	
+        
         GenLayerIsland var3 = new GenLayerIsland(1L);   
         GenLayerFuzzyZoom var9 = new GenLayerFuzzyZoom(2000L, var3);
         GenLayerAddIsland var10 = new GenLayerAddIsland(1L, var9);

@@ -10,7 +10,7 @@ import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
 import exterminatorJeff.undergroundBiomes.common.WorldGenManager;
 
 public class BiomeUndergroundDecorator {
-	
+    
     /** The world the BiomeDecorator is currently decorating */
     protected World currentWorld;
 
@@ -29,20 +29,20 @@ public class BiomeUndergroundDecorator {
     BiomeGenUndergroundBase[] undergroundBiomesForGeneration;
     public WorldGenManager worldGen;
     
-	int maxHeight = 60;
-	int octaves = 2;
-	double frequency = 0.005;
-	double amplitude = 1.0;
-	boolean normalized = true;
-	boolean done = false;    
+    int maxHeight = 60;
+    int octaves = 2;
+    double frequency = 0.005;
+    double amplitude = 1.0;
+    boolean normalized = true;
+    boolean done = false;    
     
     public BiomeUndergroundDecorator(BiomeGenUndergroundBase biome){
-    	
-    	undergroundBiomesForGeneration = new BiomeGenUndergroundBase[256];
-    	
-    	worldGen = UndergroundBiomes.getWorldGenManager();
-    	
-    	this.biome = biome;
+        
+        undergroundBiomesForGeneration = new BiomeGenUndergroundBase[256];
+        
+        worldGen = UndergroundBiomes.getWorldGenManager();
+        
+        this.biome = biome;
     }
     
     public void decorate(World par1World, Random par2Random, int x, int y)
@@ -64,45 +64,45 @@ public class BiomeUndergroundDecorator {
     }
     
     public void decorate(){
-    	worldGen = UndergroundBiomes.getWorldGenManager();
-    	replaceBlocksForUndergroundBiome(chunk_X, chunk_Z);
-    	//currentWorld.getChunkProvider().loadChunk(chunk_X, chunk_Z);
+        worldGen = UndergroundBiomes.getWorldGenManager();
+        replaceBlocksForUndergroundBiome(chunk_X, chunk_Z);
+        //currentWorld.getChunkProvider().loadChunk(chunk_X, chunk_Z);
     }
     
-	public void replaceBlocksForUndergroundBiome(int par1, int par2){
-		
-		if(undergroundBiomesForGeneration == null){
-			undergroundBiomesForGeneration = new BiomeGenUndergroundBase[256];
-		}
-		undergroundBiomesForGeneration = this.worldGen.loadUndergroundBlockGeneratorData(undergroundBiomesForGeneration, par1, par2, 16, 16);
-    	for(int x = par1; x < par1 + 16; x++){
-    		for(int y = par2; y < par2 + 16; y++){
-    			//current underground Biome
-    			BiomeGenUndergroundBase currentBiome = undergroundBiomesForGeneration[(x-par1) + (y-par2) * 16];
-    			
-    			for(int z = 0; z < 128; z++){
-    				if(UndergroundBiomes.testMode1){
-    					if(currentWorld.getBlockId(x, z, y) != 0){
-    						currentWorld.setBlock(x, z, y, currentBiome.fillerBlock, currentBiome.fillerBlockMetadata, 0x2);
-    					}
-    				}else{
-	    				if(currentWorld.getBlockId(x, z, y) == Block.stone.blockID){
-	    					if(UndergroundBiomes.testMode2){
-	    						currentWorld.setBlock(x, z, y, 0, 0, 0x2);
-	    					}else{
-		    					if(currentBiome.hasStrata){
-		    						int variation = (int) (currentBiome.strataNoise.noise(x/55.533, y/55.533, 3, 1, 0.5) * 10 - 5);
-		    						int[] strata = currentBiome.getStrataBlockAtLayer(z + variation);
-		    						currentWorld.setBlock(x, z, y, strata[0], strata[1], 0x02);
-		    					}else{
-		    						currentWorld.setBlock(x, z, y, currentBiome.fillerBlock);
-		    					}
-	    					}
-	    				}
-    				}
-    			}
-    		}
-    	}
+    public void replaceBlocksForUndergroundBiome(int par1, int par2){
+        
+        if(undergroundBiomesForGeneration == null){
+            undergroundBiomesForGeneration = new BiomeGenUndergroundBase[256];
+        }
+        undergroundBiomesForGeneration = this.worldGen.loadUndergroundBlockGeneratorData(undergroundBiomesForGeneration, par1, par2, 16, 16);
+        for(int x = par1; x < par1 + 16; x++){
+            for(int y = par2; y < par2 + 16; y++){
+                //current underground Biome
+                BiomeGenUndergroundBase currentBiome = undergroundBiomesForGeneration[(x-par1) + (y-par2) * 16];
+                
+                for(int z = 0; z < 128; z++){
+                    if(UndergroundBiomes.testMode1){
+                        if(currentWorld.getBlockId(x, z, y) != 0){
+                            currentWorld.setBlock(x, z, y, currentBiome.fillerBlock, currentBiome.fillerBlockMetadata, 0x2);
+                        }
+                    }else{
+                        if(currentWorld.getBlockId(x, z, y) == Block.stone.blockID){
+                            if(UndergroundBiomes.testMode2){
+                                currentWorld.setBlock(x, z, y, 0, 0, 0x2);
+                            }else{
+                                if(currentBiome.hasStrata){
+                                    int variation = (int) (currentBiome.strataNoise.noise(x/55.533, y/55.533, 3, 1, 0.5) * 10 - 5);
+                                    int[] strata = currentBiome.getStrataBlockAtLayer(z + variation);
+                                    currentWorld.setBlock(x, z, y, strata[0], strata[1], 0x02);
+                                }else{
+                                    currentWorld.setBlock(x, z, y, currentBiome.fillerBlock);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
 

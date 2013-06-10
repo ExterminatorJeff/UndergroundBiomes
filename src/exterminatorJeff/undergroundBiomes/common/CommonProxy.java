@@ -1,8 +1,8 @@
 package exterminatorJeff.undergroundBiomes.common;
 
-public class CommonProxy{
-	
-    public void registerRenderThings(){
-        
+public class CommonProxy
+{
+    public void registerRenderThings()
+    {
     }
 }
