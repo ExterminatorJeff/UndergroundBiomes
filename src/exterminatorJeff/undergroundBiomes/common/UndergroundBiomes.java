@@ -53,7 +53,7 @@ import exterminatorJeff.undergroundBiomes.common.item.ItemMetamorphicStoneSlab;
 import exterminatorJeff.undergroundBiomes.common.item.ItemSedimentaryStoneBlock;
 
 
-@Mod(modid = "UndergroundBiomes", name = "Underground Biomes", version = "0.3.8")
+@Mod(modid = "UndergroundBiomes", name = "Underground Biomes", version = "0.3.9")
 @NetworkMod(clientSideRequired = true, serverSideRequired = true)
 
 

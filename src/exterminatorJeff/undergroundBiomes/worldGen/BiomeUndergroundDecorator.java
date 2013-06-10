@@ -46,7 +46,7 @@ public class BiomeUndergroundDecorator {
     	this.biome = biome;
     }
     
-    public void decorate(World par1World, Random par2Random, int x, int y, boolean[] ores)
+    public void decorate(World par1World, Random par2Random, int x, int y)
     {
         if (this.currentWorld != null)
         {
@@ -58,43 +58,18 @@ public class BiomeUndergroundDecorator {
             this.randomGenerator = par2Random;
             this.chunk_X = x;
             this.chunk_Z = y;
-            this.decorate(ores);
+            this.decorate();
             this.currentWorld = null;
             this.randomGenerator = null;
         }
     }
     
-    public void decorate(boolean[] ores){
+    public void decorate(){
     	worldGen = UndergroundBiomes.getWorldGenManager();
     	replaceBlocksForUndergroundBiome(chunk_X, chunk_Z);
     	//currentWorld.getChunkProvider().loadChunk(chunk_X, chunk_Z);
     }
     
-    protected void genStandardOre1(int par1, WorldGenerator par2WorldGenerator, int par3, int par4)
-    {
-        for (int var5 = 0; var5 < par1; ++var5)
-        {
-            int var6 = this.chunk_X + this.randomGenerator.nextInt(16);
-            int var7 = this.randomGenerator.nextInt(par4 - par3) + par3;
-            int var8 = this.chunk_Z + this.randomGenerator.nextInt(16);
-            par2WorldGenerator.generate(this.currentWorld, this.randomGenerator, var6, var7, var8);
-        }
-    }
-
-    /**
-     * Standard ore generation helper. Generates Lapis Lazuli.
-     */
-    protected void genStandardOre2(int par1, WorldGenerator par2WorldGenerator, int par3, int par4)
-    {
-        for (int var5 = 0; var5 < par1; ++var5)
-        {
-            int var6 = this.chunk_X + this.randomGenerator.nextInt(16);
-            int var7 = this.randomGenerator.nextInt(par4) + this.randomGenerator.nextInt(par4) + (par3 - par4);
-            int var8 = this.chunk_Z + this.randomGenerator.nextInt(16);
-            par2WorldGenerator.generate(this.currentWorld, this.randomGenerator, var6, var7, var8);
-        }
-    }
-
 	public void replaceBlocksForUndergroundBiome(int par1, int par2){
 		
 		if(undergroundBiomesForGeneration == null){
