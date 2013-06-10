@@ -67,7 +67,6 @@ public class UndergroundBiomes{
 	public Configuration config;
 	
 	public static WorldGenManager worldGen;
-	public static ArrayList<BiomeGenRule> biomeRules;
 	
 	public static String blockTextures = "/exterminatorJeff/undergroundBiomes/textures/BlockTextures.png";
 	public static String itemTextures = "/exterminatorJeff/undergroundBiomes/textures/Items.png";
@@ -161,8 +160,6 @@ public class UndergroundBiomes{
             vanillaStoneBiomes = config.get(Configuration.CATEGORY_GENERAL, "Generate Vanilla Stone Biomes (Could cause sharp biome transitions is changed while playing the same world", false).getBoolean(false);
             
             config.save();
-            
-            biomeRules = new ArrayList<BiomeGenRule>();
             
     }
 	
@@ -706,10 +703,6 @@ public class UndergroundBiomes{
 			worldGen = new WorldGenManager(worldSeed, world.getWorldInfo().getTerrainType(), world);
 		}
 		worldGen.onBiomeDecorate(event);
-	}
-	
-	public static void addBiomeRule(BiomeGenRule rule){
-		biomeRules.add(rule);
 	}
 	
 }

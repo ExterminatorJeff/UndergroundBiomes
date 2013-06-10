@@ -107,7 +107,7 @@ public class BiomeGenUndergroundBase {
 	
 	public boolean hasOres[];
 	
-	public exterminatorJeff.undergroundBiomes.common.PerlinNoiseGenerator strataNoise;
+	public PerlinNoiseGenerator strataNoise;
 	
 	public int fillerBlock = 0;
 	public byte fillerBlockMetadata;
@@ -147,15 +147,6 @@ public class BiomeGenUndergroundBase {
 			}
 		}
 		return new int[] {fillerBlock, fillerBlockMetadata};
-	}
-	
-	public int[] getStrataBlockAtLayerWithRule(int y, ArrayList<StrataLayer> rule){
-		for(int i = 0; i < rule.size(); i++){
-			if(rule.get(i).valueIsInLayer(y) == true){
-				return new int[] {rule.get(i).layerBlockID, rule.get(i).layerMetadataID};
-			}
-		}
-		return null;
 	}
 	
 	protected BiomeGenUndergroundBase setFillerBlock(byte blockID){

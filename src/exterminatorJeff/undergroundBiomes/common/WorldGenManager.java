@@ -9,7 +9,6 @@ import net.minecraft.world.WorldType;
 import net.minecraft.world.gen.layer.*;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
 import exterminatorJeff.undergroundBiomes.worldGen.BiomeGenUndergroundBase;
-import exterminatorJeff.undergroundBiomes.worldGen.CavernGenerator;
 import exterminatorJeff.undergroundBiomes.worldGen.GenLayerUnderground;
 
 public class WorldGenManager {
@@ -23,10 +22,6 @@ public class WorldGenManager {
     private byte[] blockUndergroundBiomeArray;
     
     private int biomeSize;
-    
-    public BiomeGenRule[] BiomeGenRules;
-    
-    CavernGenerator cavernGenerator;
     
     public World world;
     
@@ -49,21 +44,13 @@ public class WorldGenManager {
             this.undergroundBiomeIndexLayer = gen[1];
         }
         
-        //add custom rules for above ground biomes
-        BiomeGenRules = new BiomeGenRule[256];
-        for(BiomeGenRule rule: UndergroundBiomes.biomeRules){
-        	BiomeGenRules[rule.biomeID] = rule;
-        }
         
-        cavernGenerator = new CavernGenerator(world);
 	}
 	
 	
 	public void onBiomeDecorate(DecorateBiomeEvent event){
 		this.blockUndergroundBiomeArray = new byte[256];
 		getUndergroundBiomeGenAt(event.chunkX, event.chunkZ).decorate(event.world, event.rand, event.chunkX, event.chunkZ);
-		
-		//cavernGenerator.generate(event.chunkX, event.chunkZ);
 	}
 	
 	public BiomeGenUndergroundBase getUndergroundBiomeGenAt(int par1, int par2)
