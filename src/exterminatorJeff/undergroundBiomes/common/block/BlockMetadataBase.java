@@ -82,10 +82,4 @@ public abstract class BlockMetadataBase extends Block
     }
 
     public abstract String getBlockName(int index);
-    
-    public String getOreName(int index)
-    {
-        String name = getBlockName(index);
-        return "stone" + Character.toUpperCase(name.charAt(0)) + name.substring(1);
-    }
 }

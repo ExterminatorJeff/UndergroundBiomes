@@ -19,6 +19,7 @@ import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
 import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.oredict.OreDictionary;
+import static net.minecraftforge.oredict.OreDictionary.WILDCARD_VALUE;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
@@ -418,40 +419,12 @@ public class UndergroundBiomes
     
     public void addOreDicts()
     {
-        for (int i = 0; i < 8; i++)
-        {
-            //Register each stone with its proper name and its base name
-            ItemStack igStone = new ItemStack(igneousStone, 1, i);
-            ItemStack metStone = new ItemStack(metamorphicStone, 1, i);
-            ItemStack sedStone = new ItemStack(sedimentaryStone, 1, i);
-            
-            ItemStack igStoneCobble = new ItemStack(igneousCobblestone, 1, i);
-            ItemStack metStoneCobble = new ItemStack(metamorphicCobblestone, 1, i);
-            
-            ItemStack igStoneBrick = new ItemStack(igneousStoneBrick, 1, i);
-            ItemStack metStoneBrick = new ItemStack(metamorphicStoneBrick, 1, i);
-            
-            //proper names
-            
-            //stones
-            OreDictionary.registerOre(((BlockIgneousStone)igneousStone).getOreName(i),  igStone);
-            OreDictionary.registerOre(((BlockMetamorphicStone)metamorphicStone).getOreName(i),  metStone);
-            OreDictionary.registerOre(((BlockSedimentaryStone)sedimentaryStone).getOreName(i),  sedStone);
-            //cobble
-            OreDictionary.registerOre(((BlockIgneousCobblestone)igneousCobblestone).getOreName(i),  igStoneCobble);
-            OreDictionary.registerOre(((BlockMetamorphicCobblestone)metamorphicCobblestone).getOreName(i),  metStoneCobble);
-            //bricks
-            OreDictionary.registerOre(((BlockIgneousStoneBrick)igneousStoneBrick).getOreName(i),  igStoneBrick);
-            OreDictionary.registerOre(((BlockMetamorphicStoneBrick)metamorphicStoneBrick).getOreName(i),  metStoneBrick);
-            
-            //base name
-            OreDictionary.registerOre("stoneSmooth", new ItemStack(igneousStone, 1, i));
-            OreDictionary.registerOre("stoneSmooth", new ItemStack(metamorphicStone, 1, i));
-            OreDictionary.registerOre("stoneCobble", new ItemStack(igneousCobblestone, 1, i));
-            OreDictionary.registerOre("stoneCobble", new ItemStack(metamorphicCobblestone, 1, i));
-            OreDictionary.registerOre("stoneBricks", new ItemStack(igneousStoneBrick, 1, i));
-            OreDictionary.registerOre("stoneBricks", new ItemStack(metamorphicStoneBrick, 1, i));
-        }
+        OreDictionary.registerOre("stoneSmooth", new ItemStack(igneousStone, 1, WILDCARD_VALUE));
+        OreDictionary.registerOre("stoneSmooth", new ItemStack(metamorphicStone, 1, WILDCARD_VALUE));
+        OreDictionary.registerOre("stoneCobble", new ItemStack(igneousCobblestone, 1, WILDCARD_VALUE));
+        OreDictionary.registerOre("stoneCobble", new ItemStack(metamorphicCobblestone, 1, WILDCARD_VALUE));
+        OreDictionary.registerOre("stoneBricks", new ItemStack(igneousStoneBrick, 1, WILDCARD_VALUE));
+        OreDictionary.registerOre("stoneBricks", new ItemStack(metamorphicStoneBrick, 1, WILDCARD_VALUE));
     }
     
     public void oreDictifyRecipes(Block block, String oreDictName)
