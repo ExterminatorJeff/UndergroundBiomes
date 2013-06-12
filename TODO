@@ -1,13 +1,21 @@
 Bugs
 ====
 
+- Modifying recipes to ore dictionary doesn't always work, investigate
+
 
 Features
 ========
 
+- Command to modify recipes to ore dictionary on demand
 - Prepare anthracite block to be replaced by Minecraft 1.6 coal block
 - Configure which dimension IDs to include, which to exclude for generation
 - Configure UB layers depth and height
+- Rare drops when mining stones:
+  - only for generated stones, not for player-placed ones
+  - limestone, chalk, siltstone and lignite - random bone piece, shells, etc., crafted to 1 bone meal
+  - chert, flint block - flint item
+  - For metamorphic and igneous stone, have a rare drop of iron, gold nuggets, other mod nuggets if enabled
 - Stairs, more slabs
 - Make ore textures look smooth beside UB stone
 - Mystcraft interaction - http://binarymage.com/

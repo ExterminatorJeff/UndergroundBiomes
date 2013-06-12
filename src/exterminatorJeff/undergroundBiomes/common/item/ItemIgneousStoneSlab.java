@@ -57,7 +57,7 @@ public class ItemIgneousStoneSlab extends ItemSlab{
                 break;
             case(6): name = "komatiiteBrickSlab";
                 break;
-            case(7): name = "epidoteBrickSlab";
+            case(7): name = "daciteBrickSlab";
                 break;
             default: name="default";
             

@@ -214,7 +214,7 @@ public class UndergroundBiomes
         LanguageRegistry.instance().addStringLocalization("tile.igneousStone.gabbro.name", "Gabbro");
         LanguageRegistry.instance().addStringLocalization("tile.igneousStone.basalt.name", "Basalt");
         LanguageRegistry.instance().addStringLocalization("tile.igneousStone.komatiite.name", "Komatiite");
-        LanguageRegistry.instance().addStringLocalization("tile.igneousStone.epidote.name", "Epidote");
+        LanguageRegistry.instance().addStringLocalization("tile.igneousStone.dacite.name", "Dacite");
         
         //igneous cobble
         LanguageRegistry.instance().addStringLocalization("tile.igneousCobblestone.redGraniteCobble.name", "Red Granite Cobblestone");
@@ -224,7 +224,7 @@ public class UndergroundBiomes
         LanguageRegistry.instance().addStringLocalization("tile.igneousCobblestone.gabbroCobble.name", "Gabbro Cobblestone");
         LanguageRegistry.instance().addStringLocalization("tile.igneousCobblestone.basaltCobble.name", "Basalt Cobblestone");
         LanguageRegistry.instance().addStringLocalization("tile.igneousCobblestone.komatiiteCobble.name", "Komatiite Cobblestone");
-        LanguageRegistry.instance().addStringLocalization("tile.igneousCobblestone.epidoteCobble.name", "Epidote Cobblestone");
+        LanguageRegistry.instance().addStringLocalization("tile.igneousCobblestone.daciteCobble.name", "Dacite Cobblestone");
         
         //igneous stonebrick
         LanguageRegistry.instance().addStringLocalization("tile.igneousStoneBrick.redGraniteBrick.name", "Red Granite Bricks");
@@ -234,7 +234,7 @@ public class UndergroundBiomes
         LanguageRegistry.instance().addStringLocalization("tile.igneousStoneBrick.gabbroBrick.name", "Gabbro Bricks");
         LanguageRegistry.instance().addStringLocalization("tile.igneousStoneBrick.basaltBrick.name", "Basalt Bricks");
         LanguageRegistry.instance().addStringLocalization("tile.igneousStoneBrick.komatiiteBrick.name", "Komatiite Bricks");
-        LanguageRegistry.instance().addStringLocalization("tile.igneousStoneBrick.epidoteBrick.name", "Epidote Bricks");
+        LanguageRegistry.instance().addStringLocalization("tile.igneousStoneBrick.daciteBrick.name", "Dacite Bricks");
         
         //metamorphic stone
         LanguageRegistry.instance().addStringLocalization("tile.metamorphicStone.gneiss.name", "Gneiss");
@@ -284,7 +284,7 @@ public class UndergroundBiomes
         LanguageRegistry.instance().addStringLocalization("tile.igneousBrickSlab.gabbroBrickSlab.name", "Gabbro Brick Slab");
         LanguageRegistry.instance().addStringLocalization("tile.igneousBrickSlab.basaltBrickSlab.name", "Basalt Brick Slab");
         LanguageRegistry.instance().addStringLocalization("tile.igneousBrickSlab.komatiiteBrickSlab.name", "Komatiite Brick Slab");
-        LanguageRegistry.instance().addStringLocalization("tile.igneousBrickSlab.epidoteBrickSlab.name", "Epidote Brick Slab");
+        LanguageRegistry.instance().addStringLocalization("tile.igneousBrickSlab.daciteBrickSlab.name", "Dacite Brick Slab");
         
         //metamorphic brick slab
         LanguageRegistry.instance().addStringLocalization("tile.metamorphicBrickSlab.gneissBrickSlab.name", "Gneiss Brick Slab");
