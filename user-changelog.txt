@@ -1,6 +1,6 @@
 0.3.9a
 
-- Removed oredictifystone command
+- Remade oreDictify, now it should work with mods
 
 0.3.9
 

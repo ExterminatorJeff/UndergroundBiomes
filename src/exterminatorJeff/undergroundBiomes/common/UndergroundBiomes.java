@@ -1,6 +1,7 @@
 package exterminatorJeff.undergroundBiomes.common;
-import java.lang.reflect.Field;
+import java.lang.reflect.*;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
 
@@ -9,18 +10,20 @@ import net.minecraft.block.BlockHalfSlab;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.item.crafting.ShapedRecipes;
+import net.minecraft.item.crafting.ShapelessRecipes;
 import net.minecraft.world.World;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
 import net.minecraftforge.event.world.WorldEvent;
-import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.oredict.*;
 import static net.minecraftforge.oredict.OreDictionary.WILDCARD_VALUE;
-import net.minecraftforge.oredict.ShapedOreRecipe;
+
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.*;
 import cpw.mods.fml.common.SidedProxy;
@@ -28,8 +31,10 @@ import cpw.mods.fml.common.event.*;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+
 import exterminatorJeff.undergroundBiomes.common.block.*;
 import exterminatorJeff.undergroundBiomes.common.item.*;
+import exterminatorJeff.undergroundBiomes.common.command.*;
 
 @Mod(modid = "UndergroundBiomes", name = "Underground Biomes", version = "0.3.9a")
 @NetworkMod(clientSideRequired = true, serverSideRequired = true)
@@ -191,19 +196,18 @@ public class UndergroundBiomes
     }
     
     @PostInit
-    public void postInit(FMLPostInitializationEvent event)
+    public void postInit(FMLPostInitializationEvent event) throws Exception
     {
-        //CustomOreCreator creator = new CustomOreCreator();
         if (addOreDictRecipes)
         {
-            oreDictifyRecipes(Block.stone, "stoneSmooth");
-            oreDictifyRecipes(Block.cobblestone, "stoneCobble");
+            oreDictifyStone();
         }
     }
     
     @ServerStarting
     public void serverLoad(FMLServerStartingEvent event)
     {
+        event.registerServerCommand(new CommandOreDictifyStone());
     }
     
     public void setUpBlockNames()
@@ -310,111 +314,50 @@ public class UndergroundBiomes
     {
         if (!addOreDictRecipes)
         {
-            //furnace
-            GameRegistry.addRecipe(new ItemStack(Block.furnaceIdle, 1), new Object[]{"XXX", "X X", "XXX", 'X', igneousCobblestone});
-            GameRegistry.addRecipe(new ItemStack(Block.furnaceIdle, 1), new Object[]{"XXX", "X X", "XXX", 'X', metamorphicCobblestone});
-            
-            //lever
-            GameRegistry.addRecipe(new ItemStack(Block.lever, 1), new Object[]{"I", "X", 'X', igneousCobblestone, 'I', Item.stick});
-            GameRegistry.addRecipe(new ItemStack(Block.lever, 1), new Object[]{"I", "X", 'X', metamorphicCobblestone, 'I', Item.stick});
-            
-            //piston
-            GameRegistry.addRecipe(new ItemStack(Block.pistonBase, 1), new Object[]{"WWW", "CIC", "CRC", 'W', Block.planks, 'C', igneousCobblestone, 'I', Item.ingotIron, 'R', Item.redstone});
-            GameRegistry.addRecipe(new ItemStack(Block.pistonBase, 1), new Object[]{"WWW", "CIC", "CRC", 'W', Block.planks, 'C', metamorphicCobblestone, 'I', Item.ingotIron, 'R', Item.redstone});
-            
-            //cobble slab
-            GameRegistry.addRecipe(new ItemStack(Block.stoneSingleSlab, 6, 3), new Object[]{"XXX", 'X', igneousCobblestone});
-            GameRegistry.addRecipe(new ItemStack(Block.stoneSingleSlab, 6, 3), new Object[]{"XXX", 'X', metamorphicCobblestone});
-            
-            //stair
-            GameRegistry.addRecipe(new ItemStack(Block.stairsCobblestone, 4), new Object[]{"X  ", "XX ", "XXX", 'X', igneousCobblestone});
-            GameRegistry.addRecipe(new ItemStack(Block.stairsCobblestone, 4), new Object[]{"X  ", "XX ", "XXX", 'X', metamorphicCobblestone});
-            
-            //wall
-            GameRegistry.addRecipe(new ItemStack(Block.cobblestoneWall, 1), new Object[]{"XXX", "XXX", 'X', igneousCobblestone});
-            GameRegistry.addRecipe(new ItemStack(Block.cobblestoneWall, 1), new Object[]{"XXX", "XXX", 'X', metamorphicCobblestone});
-            
-            //axe
-            GameRegistry.addRecipe(new ItemStack(Item.axeStone, 1), new Object[]{"XX ", "XW ", " W ", 'X', igneousCobblestone, 'W', Item.stick});
-            GameRegistry.addRecipe(new ItemStack(Item.axeStone, 1), new Object[]{"XX ", "XW ", " W ", 'X', metamorphicCobblestone, 'W', Item.stick});
-            
-            //pickaxe
-            GameRegistry.addRecipe(new ItemStack(Item.pickaxeStone, 1), new Object[]{"XXX", " W ", " W ", 'X', igneousCobblestone, 'W', Item.stick});
-            GameRegistry.addRecipe(new ItemStack(Item.pickaxeStone, 1), new Object[]{"XXX", " W ", " W ", 'X', metamorphicCobblestone, 'W', Item.stick});
-            
-            //hoe
-            GameRegistry.addRecipe(new ItemStack(Item.hoeStone, 1), new Object[]{"XX ", " W ", " W ", 'X', igneousCobblestone, 'W', Item.stick});
-            GameRegistry.addRecipe(new ItemStack(Item.hoeStone, 1), new Object[]{"XX ", " W ", " W ", 'X', metamorphicCobblestone, 'W', Item.stick});
-            
-            //shovel
-            GameRegistry.addRecipe(new ItemStack(Item.shovelStone, 1), new Object[]{" X ", " W ", " W ", 'X', igneousCobblestone, 'W', Item.stick});
-            GameRegistry.addRecipe(new ItemStack(Item.shovelStone, 1), new Object[]{" X ", " W ", " W ", 'X', metamorphicCobblestone, 'W', Item.stick});
-            
-            //sword
-            GameRegistry.addRecipe(new ItemStack(Item.swordStone, 1), new Object[]{"X", "X", "W", 'X', igneousCobblestone, 'W', Item.stick});
-            GameRegistry.addRecipe(new ItemStack(Item.swordStone, 1), new Object[]{"X", "X", "W", 'X', metamorphicCobblestone, 'W', Item.stick});
-            
-            //brewing stand
-            GameRegistry.addRecipe(new ItemStack(Item.brewingStand, 1), new Object[]{" B ", "XXX", 'X', igneousCobblestone, 'B', Item.blazeRod});
-            GameRegistry.addRecipe(new ItemStack(Item.brewingStand, 1), new Object[]{" B ", "XXX", 'X', metamorphicCobblestone, 'B', Item.blazeRod});
-            
-            //dispenser
-            GameRegistry.addRecipe(new ItemStack(Block.dispenser, 1), new Object[]{"XXX", "XBX", "XRX", 'X', igneousCobblestone, 'B', Item.bow, 'R', Item.redstone});
-            GameRegistry.addRecipe(new ItemStack(Block.dispenser, 1), new Object[]{"XXX", "XBX", "XRX", 'X', metamorphicCobblestone, 'B', Item.bow, 'R', Item.redstone});
-            
-            //stone button
-            GameRegistry.addShapelessRecipe(new ItemStack(Block.stoneButton, 1), new ItemStack(igneousStone, 1));
-            GameRegistry.addShapelessRecipe(new ItemStack(Block.stoneButton, 1), new ItemStack(metamorphicStone, 1));
-            
-            //pressure plate
-            GameRegistry.addRecipe(new ItemStack(Block.pressurePlateStone, 1), new Object[]{"XX", 'X', igneousStone});
-            GameRegistry.addRecipe(new ItemStack(Block.pressurePlateStone, 1), new Object[]{"XX", 'X', metamorphicStone});
-            
-            //half slab
-            GameRegistry.addRecipe(new ItemStack(Block.stoneSingleSlab, 6, 0), new Object[]{"XXX", 'X', igneousStone});
-            GameRegistry.addRecipe(new ItemStack(Block.stoneSingleSlab, 6, 0), new Object[]{"XXX", 'X', metamorphicStone});
-            
-            //repeater
-            GameRegistry.addRecipe(new ItemStack(Item.redstoneRepeater, 1), new Object[]{"TRT", "XXX", 'X', igneousStone, 'T', Block.torchRedstoneActive, 'R', Item.redstone});
-            GameRegistry.addRecipe(new ItemStack(Item.redstoneRepeater, 1), new Object[]{"TRT", "XXX", 'X', metamorphicStone, 'T', Block.torchRedstoneActive, 'R', Item.redstone});
-            
-            //brick slab
-            GameRegistry.addRecipe(new ItemStack(Block.stoneSingleSlab, 6, 5), new Object[]{"XXX", 'X', igneousStoneBrick});
-            GameRegistry.addRecipe(new ItemStack(Block.stoneSingleSlab, 6, 5), new Object[]{"XXX", 'X', metamorphicStoneBrick});
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.furnaceIdle, 1), "XXX", "X X", "XXX", 'X', "stoneCobble"));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.lever, 1), "I", "X", 'X', "stoneCobble", 'I', Item.stick));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.pistonBase, 1), "WWW", "CIC", "CRC", 'W', Block.planks, 'C', "stoneCobble", 'I', Item.ingotIron, 'R', Item.redstone));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.stairsCobblestone, 4), "X  ", "XX ", "XXX", 'X', "stoneCobble"));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.cobblestoneWall, 1), "XXX", "XXX", 'X', "stoneCobble"));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Item.axeStone, 1), "XX ", "XW ", " W ", 'X', "stoneCobble", 'W', Item.stick));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Item.pickaxeStone, 1), "XXX", " W ", " W ", 'X', "stoneCobble", 'W', Item.stick));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Item.hoeStone, 1), "XX ", " W ", " W ", 'X', "stoneCobble", 'W', Item.stick));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Item.shovelStone, 1), " X ", " W ", " W ", 'X', "stoneCobble", 'W', Item.stick));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Item.swordStone, 1), "X", "X", "W", 'X', "stoneCobble", 'W', Item.stick));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Item.brewingStand, 1), " B ", "XXX", 'X', "stoneCobble", 'B', Item.blazeRod));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.dispenser, 1), "XXX", "XBX", "XRX", 'X', "stoneCobble", 'B', Item.bow, 'R', Item.redstone));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.pressurePlateStone, 1), "XX", 'X', "stoneSmooth"));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.stoneSingleSlab, 6, 3), "XXX", 'X', "stoneCobble"));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.stoneSingleSlab, 6, 0), "XXX", 'X', "stoneSmooth"));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Item.redstoneRepeater, 1), "TRT", "XXX", 'X', "stoneSmooth", 'T', Block.torchRedstoneActive, 'R', Item.redstone));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.stairsStoneBrick, 4), "X  ", "XX ", "XXX", 'X', "stoneBricks"));
+            GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Block.stoneButton, 1), "stoneSmooth"));
         }
-            
-        //brick stair
-        GameRegistry.addRecipe(new ItemStack(Block.stairsStoneBrick, 4), new Object[]{"X  ", "XX ", "XXX", 'X', igneousStoneBrick});
-        GameRegistry.addRecipe(new ItemStack(Block.stairsStoneBrick, 4), new Object[]{"X  ", "XX ", "XXX", 'X', metamorphicStoneBrick});
         
         for (int i = 0; i < 8; i++)
         {
-            GameRegistry.addRecipe(new ItemStack(igneousBrickSlabHalf, 6, i), new Object[]{"XXX", 'X', new ItemStack(igneousStoneBrick, 1, i)});
-            GameRegistry.addRecipe(new ItemStack(metamorphicBrickSlabHalf, 6, i), new Object[]{"XXX", 'X', new ItemStack(metamorphicStoneBrick, 1, i)});
+            GameRegistry.addRecipe(new ItemStack(igneousBrickSlabHalf, 6, i), "XXX", 'X', new ItemStack(igneousStoneBrick, 1, i));
+            GameRegistry.addRecipe(new ItemStack(metamorphicBrickSlabHalf, 6, i), "XXX", 'X', new ItemStack(metamorphicStoneBrick, 1, i));
         }
         
-        //anthracite
-        GameRegistry.addRecipe(new ItemStack(anthracite, 1), new Object[]{"XX", "XX", 'X', Item.coal});
-        GameRegistry.addRecipe(new ItemStack(Item.coal, 1), "XXX", "XXX", "XXX", 'X', (Item)ligniteCoal);
+        GameRegistry.addRecipe(new ItemStack(anthracite, 1), "XX", "XX", 'X', Item.coal);
+        GameRegistry.addRecipe(new ItemStack(Item.coal, 1), "XXX", "XXX", "XXX", 'X', ligniteCoal);
         
-        //temp
         //vanilla cobblestone
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.cobblestone, 4), new Object[] { "XX", "XX", 'X', "stoneCobble"}));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.cobblestone, 4), "XX", "XX", 'X', "stoneCobble"));
         
         for (int i = 0; i < 8; i++)
         {
             FurnaceRecipes.smelting().addSmelting(metamorphicCobblestone.blockID, i, new ItemStack(metamorphicStone, 1, i), 0.1f);
-            GameRegistry.addRecipe(new ItemStack(metamorphicStoneBrick, 4, i), new Object[]{"xx", "xx", 'x', new ItemStack(metamorphicStone, 1, i)});
+            GameRegistry.addRecipe(new ItemStack(metamorphicStoneBrick, 4, i), "xx", "xx", 'x', new ItemStack(metamorphicStone, 1, i));
         }
         for (int i = 0; i < 8; i++)
         {
             FurnaceRecipes.smelting().addSmelting(igneousCobblestone.blockID, i, new ItemStack(igneousStone, 1, i), 0.1f);
-            GameRegistry.addRecipe(new ItemStack(igneousStoneBrick, 4, i), new Object[]{"xx", "xx", 'x', new ItemStack(igneousStone, 1, i)});
+            GameRegistry.addRecipe(new ItemStack(igneousStoneBrick, 4, i), "xx", "xx", 'x', new ItemStack(igneousStone, 1, i));
         }
         
-        //fuels
         GameRegistry.registerFuelHandler(new FuelManager());
-        
     }
     
     public void addOreDicts()
@@ -427,233 +370,147 @@ public class UndergroundBiomes
         OreDictionary.registerOre("stoneBricks", new ItemStack(metamorphicStoneBrick, 1, WILDCARD_VALUE));
     }
     
-    public static void oreDictifyRecipes(Block block, String oreDictName)
+    public static int oreDictifyStone() throws Exception
     {
+        int numReplaced = 0;
+        Map<ItemStack, String> replacements = new HashMap<ItemStack, String>();
+        replacements.put(new ItemStack(Block.stone, 1, WILDCARD_VALUE), "stoneSmooth");
+        replacements.put(new ItemStack(Block.cobblestone, 1, WILDCARD_VALUE), "stoneCobble");
+        replacements.put(new ItemStack(Block.stoneBrick, 1, WILDCARD_VALUE), "stoneBricks");
+        ItemStack[] replaceStacks = replacements.keySet().toArray(new ItemStack[replacements.keySet().size()]);
+
+        // Ignore recipes for the following items
+        ItemStack[] exclusions = new ItemStack[]
+        {
+            new ItemStack(Block.stairsStoneBrick),
+        };
         List recipes = CraftingManager.getInstance().getRecipeList();
-        
-        ArrayList<Object> recipesToAdd = new ArrayList();
-        ArrayList<Object> recipesToRemove = new ArrayList();
-        
-        for (Object r: recipes)
+        List<IRecipe> recipesToRemove = new ArrayList<IRecipe>();
+        List<IRecipe> recipesToAdd = new ArrayList<IRecipe>();
+        Constructor shapedConstr = ShapedOreRecipe.class.getDeclaredConstructor(ShapedRecipes.class, Map.class);
+        Constructor shapelessConstr = ShapelessOreRecipe.class.getDeclaredConstructor(ShapelessRecipes.class, Map.class);
+        shapedConstr.setAccessible(true);
+        shapelessConstr.setAccessible(true);
+
+        // Add ore dictionary entries for replaced blocks
+        for (ItemStack stack : replacements.keySet())
         {
-            if (r instanceof ShapedRecipes)
+            OreDictionary.registerOre(replacements.get(stack), stack);
+        }
+
+        // Search stone recipes for recipes to replace
+        for (Object obj : recipes)
+        {
+            ItemStack output = ((IRecipe)obj).getRecipeOutput();
+            if (output != null && containsMatch(false, exclusions, output))
             {
-                ShapedRecipes recipe = (ShapedRecipes) r;
-                boolean hasStone = false;
-                for (ItemStack item: recipe.recipeItems)
+                continue;
+            }
+            if (obj instanceof ShapedRecipes)
+            {
+                ShapedRecipes recipe = (ShapedRecipes)obj;
+                if (containsMatch(true, recipe.recipeItems, replaceStacks))
                 {
-                    try
-                    {
-                        if (item.itemID == block.blockID) hasStone = true;
-                    }
-                    catch(Exception e) {}
-                }
-                if (hasStone)
-                {
-                    ArrayList<ItemStack> ingredients = new ArrayList();
-                    ArrayList<Object> recipeObject = new ArrayList();
-                    int charCount = 65;
-                    HashMap<Item, Character> distinctItems = new HashMap();
-                    
-                    for (ItemStack item: recipe.recipeItems)
-                    {
-                        ingredients.add(item);
-                        if (item != null)
-                        {
-                            if (!distinctItems.containsKey(item))
-                            {
-                                try
-                                {
-                                    distinctItems.put(item.getItem(), new Character((char)charCount));
-                                    charCount++;
-                                }
-                                catch(Exception e)
-                                {
-                                    //System.out.println("Error changing recipe " + recipe.getRecipeOutput().getItemName() + " for item " + item.getItemName());
-                                    //System.out.println(e.getStackTrace());
-                                }
-                            }
-                        }
-                    }
-                    String[] rows = new String[3];
-                    //loop through three rows of crafting area
-                    int length = ingredients.size();
-                    boolean notEmpty = false;
-                    for (int i = 0; i < length / 3; i++)
-                    {
-                        String current = "";
-                        for (int j = 0; j < 3; j++)
-                        {
-                            if (ingredients.get((i * 3 + j)) != null)
-                            {
-                                current = current + distinctItems.get(ingredients.get((i * 3 + j)).getItem());
-                                notEmpty = true;
-                            } else {
-                                current = current + " ";
-                            }
-                        }
-                        rows[i] = current;
-                        recipeObject.add(rows[i]);
-                    }
-                    if (!notEmpty)
-                    {
-                        break;
-                    }
-                    
-                    for (Character c: distinctItems.values())
-                    {
-                        
-                    }
-                    for (Item it: distinctItems.keySet())
-                    {
-                        ItemStack is = new ItemStack(it);
-                        recipeObject.add(Character.valueOf(distinctItems.get(it)));
-                        if (is.itemID == block.blockID)
-                        {
-                            recipeObject.add(oreDictName);
-                        } else {
-                            recipeObject.add(is);
-                        }
-                    }
-                    Object[] result = recipeObject.toArray();
-                    recipesToAdd.add(new ShapedOreRecipe(recipe.getRecipeOutput(), result));
+                    recipesToRemove.add(recipe);
+                    recipesToAdd.add((ShapedOreRecipe)shapedConstr.newInstance(recipe, replacements));
+                    numReplaced++;
+                    System.out.println("Changed shaped recipe for " + output.getItemName());
                 }
             }
-            else if (r instanceof ShapedOreRecipe)
+            else if (obj instanceof ShapelessRecipes)
             {
-                try
+                ShapelessRecipes recipe = (ShapelessRecipes)obj;
+                if (containsMatch(true, (ItemStack[])recipe.recipeItems.toArray(new ItemStack[recipe.recipeItems.size()]), replaceStacks))
                 {
-                    ShapedOreRecipe recipe = (ShapedOreRecipe) r;
-                    Field recipeInput = recipe.getClass().getDeclaredField("input");
-                    recipeInput.setAccessible(true);
-                    
-                    
-                    
-                    boolean hasStone = false;
-                    
-                    Object[] inputs = (Object[]) recipeInput.get(r);
-                    
-                    for (Object ob: inputs)
-                    {
-                        try
-                        {
-                            ItemStack item = null;
-                            if (ob instanceof ArrayList)
-                            {
-                                ArrayList ar = (ArrayList)ob;
-                                item = (ItemStack) ar.get(0);
-                            } else {
-                                item = (ItemStack) ob;
-                            }
-                            if (item != null)
-                            {
-                                if (item.itemID == block.blockID)
-                                {
-                                    hasStone = true;
-                                }
-                            }
-                        }
-                        catch(Exception e) {}
-                    }
-                    if (hasStone)
-                    {
-                        ArrayList<ItemStack> ingredients = new ArrayList();
-                        ArrayList<Object> recipeObject = new ArrayList();
-                        int charCount = 65;
-                        HashMap<Item, Character> distinctItems = new HashMap();
-                        
-                        for (Object ob: inputs)
-                        {
-                            ItemStack item = null;
-                            if (ob instanceof ArrayList)
-                            {
-                                ArrayList ar = (ArrayList)ob;
-                                item = (ItemStack) ar.get(0);
-                            } else {
-                                item = (ItemStack) ob;
-                            }
-                            ingredients.add(item);
-                            if (item != null)
-                            {
-                                if (!distinctItems.containsKey(item))
-                                {
-                                    try
-                                    {
-                                        distinctItems.put(item.getItem(), new Character((char)charCount));
-                                        charCount++;
-                                    }
-                                    catch(Exception e)
-                                    {
-                                        System.out.println("Error changing recipe " + recipe.getRecipeOutput().getItemName());
-                                        //System.out.println(e.getStackTrace());
-                                    }
-                                }
-                            }
-                        }
-                        
-                        Field recipeHeight = recipe.getClass().getDeclaredField("height");
-                        recipeHeight.setAccessible(true);
-                        
-                        Field recipeWidth = recipe.getClass().getDeclaredField("width");
-                        recipeWidth.setAccessible(true);
-                        
-                        String[] rows = new String[3];
-                        //loop through three rows of crafting area
-                        int length = ingredients.size();
-                        boolean notEmpty = false;
-                        for (int i = 0; i < recipeHeight.getInt(r); i++)
-                        {
-                            String current = "";
-                            for (int j = 0; j < recipeWidth.getInt(r); j++)
-                            {
-                                if (ingredients.get((i * recipeWidth.getInt(r) + j)) != null)
-                                {
-                                    current = current + distinctItems.get(ingredients.get((i * recipeWidth.getInt(r) + j)).getItem());
-                                    notEmpty = true;
-                                } else {
-                                    current = current + " ";
-                                }
-                            }
-                            rows[i] = current;
-                            recipeObject.add(rows[i]);
-                        }
-                        if (!notEmpty) break;
-                        for (Character c: distinctItems.values())
-                        {
-                            
-                        }
-                        for (Item it: distinctItems.keySet())
-                        {
-                            ItemStack is = new ItemStack(it);
-                            recipeObject.add(Character.valueOf(distinctItems.get(it)));
-                            if (is.itemID == block.blockID)
-                            {
-                                recipeObject.add(oreDictName);
-                            } else {
-                                recipeObject.add(is);
-                            }
-                        }
-                        Object[] result = recipeObject.toArray();
-                        recipesToAdd.add(new ShapedOreRecipe(recipe.getRecipeOutput(), result));
-                    }
+                    recipesToRemove.add((IRecipe)obj);
+                    recipesToAdd.add((ShapelessOreRecipe)shapelessConstr.newInstance(recipe, replacements));
+                    numReplaced++;
+                    System.out.println("Changed shapeless recipe for " + output.getItemName());
                 }
-                catch(Exception e)
+            }
+            else if (obj instanceof ShapedOreRecipe)
+            {
+                ShapedOreRecipe recipe = (ShapedOreRecipe)obj;
+                if (containsMatchReplaceInplace(true, recipe.getInput(), replaceStacks, replacements))
                 {
-                    System.out.println(e + " " + r.toString());
+                    numReplaced++;
+                    System.out.println("Changed shaped ore recipe for " + output.getItemName());
+                }
+            }
+            else if (obj instanceof ShapelessOreRecipe)
+            {
+                ShapelessOreRecipe recipe = (ShapelessOreRecipe)obj;
+                if (containsMatchReplaceInplace(true, recipe.getInput(), replaceStacks, replacements))
+                {
+                    numReplaced++;
+                    System.out.println("Changed shapeless ore recipe for " + output.getItemName());
                 }
             }
         }
-        for (Object o: recipesToAdd)
-        {
-            CraftingManager.getInstance().getRecipeList().add(o);
-        }
-        for (Object o: recipesToRemove)
-        {
-            recipes.remove(o);
-        }
+
+        recipes.removeAll(recipesToRemove);
+        recipes.addAll(recipesToAdd);
+        return numReplaced;
     }
     
-    
+    private static boolean containsMatch(boolean strict, ItemStack[] inputs, ItemStack... targets)
+    {
+        for (ItemStack input : inputs)
+        {
+            for (ItemStack target : targets)
+            {
+                if (OreDictionary.itemMatches(target, input, strict))
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    // Doing what Forge tells not to do
+    private static boolean containsMatchReplaceInplace(boolean strict, Object inputArrayOrList, ItemStack[] targets, Map<ItemStack, String> replacements)
+    {
+        boolean replaced = false;
+        if (inputArrayOrList instanceof ArrayList)
+        {
+            ArrayList inputList = (ArrayList)inputArrayOrList;
+            for (int i = 0; i < inputList.size(); i++)
+            {
+                Object input = inputList.get(i);
+                if (input instanceof ItemStack)
+                {
+                    for (ItemStack target : targets)
+                    {
+                        if (OreDictionary.itemMatches(target, (ItemStack)input, strict))
+                        {
+                            inputList.set(i, OreDictionary.getOres(replacements.get(target)));
+                            replaced = true;
+                        }
+                    }
+                }
+            }
+        } else {
+            // Expect array
+            Object[] inputArray = (Object[])inputArrayOrList;
+            for (int i = 0; i < inputArray.length; i++)
+            {
+                Object input = inputArray[i];
+                if (input instanceof ItemStack)
+                {
+                    for (ItemStack target : targets)
+                    {
+                        if (OreDictionary.itemMatches(target, (ItemStack)input, strict))
+                        {
+                            inputArray[i] = OreDictionary.getOres(replacements.get(target));
+                            replaced = true;
+                        }
+                    }
+                }
+            }
+        }
+        return replaced;
+    }
     
     public static long getWorldSeed()
     {
