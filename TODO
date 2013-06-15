@@ -7,7 +7,6 @@ Bugs
 Features
 ========
 
-- Command to modify recipes to ore dictionary on demand
 - Prepare anthracite block to be replaced by Minecraft 1.6 coal block
 - Configure which dimension IDs to include, which to exclude for generation
 - Configure UB layers depth and height
@@ -21,4 +20,4 @@ Features
 - Mystcraft interaction - http://binarymage.com/
 - Chisel mod interaction - http://www.minecraftforum.net/topic/1749374-/
 - Thut's Concrete mod interaction - http://www.minecraftforum.net/topic/1810433-/
-- Compatibility with ID resolver - http://www.minecraftforum.net/topic/366377-/
+- Compatibility with ID resolver (if still incompatible) - http://www.minecraftforum.net/topic/366377-/
