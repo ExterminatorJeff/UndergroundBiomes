@@ -30,9 +30,8 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import exterminatorJeff.undergroundBiomes.common.block.*;
 import exterminatorJeff.undergroundBiomes.common.item.*;
-import exterminatorJeff.undergroundBiomes.common.command.*;
 
-@Mod(modid = "UndergroundBiomes", name = "Underground Biomes", version = "0.3.9")
+@Mod(modid = "UndergroundBiomes", name = "Underground Biomes", version = "0.3.9a")
 @NetworkMod(clientSideRequired = true, serverSideRequired = true)
 
 public class UndergroundBiomes
@@ -205,7 +204,6 @@ public class UndergroundBiomes
     @ServerStarting
     public void serverLoad(FMLServerStartingEvent event)
     {
-        event.registerServerCommand(new CommandOreDictifyStone());
     }
     
     public void setUpBlockNames()
@@ -401,8 +399,7 @@ public class UndergroundBiomes
         
         //temp
         //vanilla cobblestone
-        GameRegistry.addRecipe(new ItemStack(Block.cobblestone, 4), new Object[]{"XX", "XX", 'X', igneousCobblestone});
-        GameRegistry.addRecipe(new ItemStack(Block.cobblestone, 4), new Object[]{"XX", "XX", 'X', metamorphicCobblestone});
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.cobblestone, 4), new Object[] { "XX", "XX", 'X', "stoneCobble"}));
         
         for (int i = 0; i < 8; i++)
         {
