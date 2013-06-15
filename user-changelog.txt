@@ -2,6 +2,9 @@
 
 - Refactored code
 - Rebalanced rocks hardness
+- Fixed metamorphic bricks dropping cobblestone >_>
+- Replaced epidote with dacite, updated the texture
+- Added oredictifystone command
 
 0.3.8
 

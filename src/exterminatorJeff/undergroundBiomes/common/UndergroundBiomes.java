@@ -22,18 +22,15 @@ import net.minecraftforge.oredict.OreDictionary;
 import static net.minecraftforge.oredict.OreDictionary.WILDCARD_VALUE;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.Init;
-import cpw.mods.fml.common.Mod.PostInit;
-import cpw.mods.fml.common.Mod.PreInit;
+import cpw.mods.fml.common.Mod.*;
 import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.*;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import exterminatorJeff.undergroundBiomes.common.block.*;
 import exterminatorJeff.undergroundBiomes.common.item.*;
+import exterminatorJeff.undergroundBiomes.common.command.*;
 
 @Mod(modid = "UndergroundBiomes", name = "Underground Biomes", version = "0.3.9")
 @NetworkMod(clientSideRequired = true, serverSideRequired = true)
@@ -203,6 +200,12 @@ public class UndergroundBiomes
             oreDictifyRecipes(Block.stone, "stoneSmooth");
             oreDictifyRecipes(Block.cobblestone, "stoneCobble");
         }
+    }
+    
+    @ServerStarting
+    public void serverLoad(FMLServerStartingEvent event)
+    {
+        event.registerServerCommand(new CommandOreDictifyStone());
     }
     
     public void setUpBlockNames()
@@ -427,7 +430,7 @@ public class UndergroundBiomes
         OreDictionary.registerOre("stoneBricks", new ItemStack(metamorphicStoneBrick, 1, WILDCARD_VALUE));
     }
     
-    public void oreDictifyRecipes(Block block, String oreDictName)
+    public static void oreDictifyRecipes(Block block, String oreDictName)
     {
         List recipes = CraftingManager.getInstance().getRecipeList();
         
