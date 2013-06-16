@@ -3,6 +3,13 @@
 - More compatible configuration in case IDs are taken
 - Ability to include and exclude dimensions ID to generate in
 - No more additional Nether and End lag due to trying to replace stone
+- Added rare drops:
+  - fossil pieces from limestone, chalk, siltstone and lignite
+  - flint item from chert and flint rocks
+  - clay from shale
+- Added very rare drops (height-based):
+  - lapis lazuli and redstone from deep metamorphic stone
+  - gold nuggets (for now) from deep igneous stone
 
 0.3.9a
 

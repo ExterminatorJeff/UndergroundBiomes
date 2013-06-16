@@ -79,7 +79,7 @@ public abstract class BlockMetadataBase extends Block
         return getBlockHardness(getDamageValue(world, x, y, z) & 7);
     }
 
-    public ItemStack itemDropped(int metadata, Random random, int fortune)
+    public ItemStack itemDropped(int metadata, Random random, int fortune, int y)
     {
         return new ItemStack(this.blockID, 1, metadata & 7);
     }
@@ -89,9 +89,9 @@ public abstract class BlockMetadataBase extends Block
         ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
 
         int count = 1;
-        ItemStack stack = itemDropped(metadata, world.rand, fortune);
+        ItemStack stack = itemDropped(metadata, world.rand, fortune, y);
 
-        if ((fortune != 0) && !(stack.getItem() instanceof ItemBlock))
+        if ((fortune != 0) && (UndergroundBiomes.fortuneAffected.contains(stack.itemID)))
         {
             // Fortune III gives up to 4 items
             int j = world.rand.nextInt(fortune + 2);

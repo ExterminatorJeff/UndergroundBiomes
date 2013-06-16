@@ -67,12 +67,15 @@ public class UndergroundBiomes
     public static Block metamorphicStoneBrick;
     public static Block sedimentaryStone;
     public static Item ligniteCoal;
+    public static Item fossilPiece;
     public static Block anthracite;
     public static BlockHalfSlab igneousBrickSlabHalf;
     public static BlockHalfSlab igneousBrickSlabFull;
     public static BlockHalfSlab metamorphicBrickSlabHalf;
     public static BlockHalfSlab metamorphicBrickSlabFull;
     
+    public static List<Integer> fortuneAffected;
+
     private int igneousStoneID;
     private int igneousCobblestoneID;
     private int igneousStoneBrickID;
@@ -81,6 +84,7 @@ public class UndergroundBiomes
     private int metamorphicStoneBrickID;
     private int sedimentaryStoneID;
     private int ligniteCoalID;
+    private int fossilPieceID;
     private int anthraciteCoalID;
     private int igneousBrickSlabHalfId;
     private int igneousBrickSlabFullId;
@@ -91,6 +95,7 @@ public class UndergroundBiomes
     private String includeDimensions;
     private String excludeDimensions;
 
+    
     public static int biomeSize = 45;
     
     //no grass
@@ -129,6 +134,7 @@ public class UndergroundBiomes
         
         // Item read from block category to be backwards-compatible
         ligniteCoalID = config.getItem(Configuration.CATEGORY_BLOCK, "Lignite Item ID:", 5500).getInt();
+        fossilPieceID = config.getItem("fossilPiece", 5501).getInt();
         
         biomeSize = config.get(Configuration.CATEGORY_GENERAL, "biomeSize", 45, "Warning: exponential").getInt();
         addOreDictRecipes = config.get(Configuration.CATEGORY_GENERAL, "oreDictifyStone", true, "Modify all recipes to include Underground Biomes blocks").getBoolean(true);
@@ -154,6 +160,9 @@ public class UndergroundBiomes
         }
         
         config.save();
+
+        fortuneAffected = new ArrayList<Integer>();
+        fortuneAffected.add(ligniteCoalID);
     }
     
     @Init
@@ -163,8 +172,6 @@ public class UndergroundBiomes
         
         tabModBlocks = new CreativeTabModBlocks(CreativeTabs.creativeTabArray.length, "Underground Biomes Blocks");
         tabModItems = new CreativeTabModBlocks(CreativeTabs.creativeTabArray.length, "Underground Biomes Items");
-        
-        //rocks
         
         igneousStone = new BlockIgneousStone(igneousStoneID).setUnlocalizedName("igneousStone");
         new ItemMetadataBlock(igneousStone);
@@ -207,7 +214,9 @@ public class UndergroundBiomes
         Item.itemsList[metamorphicBrickSlabFullID] = new ItemMetamorphicStoneSlab(metamorphicBrickSlabFullID - 256, metamorphicBrickSlabFull).setUnlocalizedName("metamorphicBrickSlabFull");
         
         //items
+
         ligniteCoal = new ItemLigniteCoal(ligniteCoalID).setUnlocalizedName("ligniteCoal");
+        fossilPiece = new ItemFossilPiece(fossilPieceID).setUnlocalizedName("fossilPiece");
         
         setUpBlockNames();
         addOreDicts();
@@ -322,7 +331,11 @@ public class UndergroundBiomes
         LanguageRegistry.addName(anthracite, "Anthracite Coal Block");
         
         LanguageRegistry.addName(ligniteCoal, "Lignite");
-        
+
+        lr.addStringLocalization("item.fossilPiece.shell.name", "Shell fossil piece");
+        lr.addStringLocalization("item.fossilPiece.bone1.name", "Bone piece");
+        lr.addStringLocalization("item.fossilPiece.bone2.name", "Bone piece");
+        lr.addStringLocalization("item.fossilPiece.bone3.name", "Bone shard");
     }
     
     public void addRecipes()
@@ -351,6 +364,7 @@ public class UndergroundBiomes
         
         GameRegistry.addRecipe(new ItemStack(anthracite, 1), "XX", "XX", 'X', Item.coal);
         GameRegistry.addRecipe(new ItemStack(Item.coal, 1), "XXX", "XXX", "XXX", 'X', ligniteCoal);
+        GameRegistry.addShapelessRecipe(new ItemStack(Item.dyePowder, 1, 15), new ItemStack(fossilPiece, 1, WILDCARD_VALUE));
         
         //vanilla cobblestone
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.cobblestone, 4), "XX", "XX", 'X', "stoneCobble"));

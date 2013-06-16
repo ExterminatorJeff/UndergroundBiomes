@@ -2,6 +2,7 @@ package exterminatorJeff.undergroundBiomes.common.block;
 
 import java.util.Random;
 
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
@@ -28,8 +29,17 @@ public class BlockIgneousStone extends BlockMetadataBase
         return 10.0f * hardness[meta];
     }
 
-    public ItemStack itemDropped(int metadata, Random random, int fortune)
+    public ItemStack itemDropped(int metadata, Random random, int fortune, int y)
     {
+        // Very rare drops; TODO: mods' nuggets or add own nuggets
+        if ((metadata < 8) && (random.nextInt(2000) <= fortune))
+        {
+            // if (y < 64) iron
+            if ((y < 32) && (random.nextInt(4) == 0))
+            {
+                return new ItemStack(item.goldNugget, 1, 0);
+            }
+        }
         return new ItemStack(UndergroundBiomes.igneousCobblestone.blockID, 1, metadata & 7);
     }
 

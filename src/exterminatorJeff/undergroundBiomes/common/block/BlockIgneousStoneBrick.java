@@ -11,7 +11,7 @@ public class BlockIgneousStoneBrick extends BlockIgneousStone
         super(id);
     }
     
-    public ItemStack itemDropped(int metadata, Random random, int fortune)
+    public ItemStack itemDropped(int metadata, Random random, int fortune, int y)
     {
         return new ItemStack(this.blockID, 1, metadata & 7);
     }

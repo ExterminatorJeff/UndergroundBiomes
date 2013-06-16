@@ -7,6 +7,7 @@ import java.util.Random;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
@@ -36,9 +37,28 @@ public class BlockSedimentaryStone extends BlockMetadataBase
         return 10.0f * hardness[meta];
     }
 
-    public ItemStack itemDropped(int metadata, Random random, int fortune)
+    public ItemStack itemDropped(int metadata, Random random, int fortune, int y)
     {
-        if (metadata & 7 == 4) return new ItemStack(UndergroundBiomes.ligniteCoal.itemID, 1, 0);
+        // Rare drops
+        if ((metadata < 8) && (random.nextInt(100) <= fortune))
+        {
+            // Shale drops clay
+            if (metadata == 2)
+            {
+                return new ItemStack(item.clay, 1, 0);
+            }
+            // Limestone, chalk, siltstone and lignite drop fossil pieces
+            if (metadata == 0 || metadata == 1 || metadata == 3 || metadata == 4)
+            {
+                return new ItemStack(UndergroundBiomes.fossilPiece.itemID, 1, random.nextInt(4));
+            }
+            // Chert and flint drop flint item
+            if (metadata == 5 || metadata == 7)
+            {
+                return new ItemStack(item.flint, 1, 0);
+            }
+        }
+        if ((metadata & 7) == 4) return new ItemStack(UndergroundBiomes.ligniteCoal.itemID, 1, 0);
         return new ItemStack(this.blockID, 1, metadata & 7);
     }
 

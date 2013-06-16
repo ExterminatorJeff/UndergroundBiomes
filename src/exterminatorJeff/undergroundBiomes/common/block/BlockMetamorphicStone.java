@@ -28,8 +28,22 @@ public class BlockMetamorphicStone extends BlockMetadataBase
         return 10.0f * hardness[meta];
     }
 
-    public ItemStack itemDropped(int metadata, Random random, int fortune)
+    public ItemStack itemDropped(int metadata, Random random, int fortune, int y)
     {
+        // Very rare drops
+        if ((metadata < 8) && (random.nextInt(2000) <= fortune))
+        {
+            if ((y < 31) && (random.nextInt(3) == 0))
+            {
+                // Lapis lazuli
+                return new ItemStack(item.dyePowder, 1, 4);
+            }
+            if ((y < 16) && (random.nextInt(3) == 0))
+            {
+                // Redstone
+                return new ItemStack(item.redstone, 1, 0);
+            }
+        }
         return new ItemStack(UndergroundBiomes.metamorphicCobblestone.blockID, 1, metadata & 7);
     }
 
