@@ -86,6 +86,10 @@ public class UndergroundBiomes
     private int igneousBrickSlabFullId;
     private int metamorphicBrickSlabHalfID;
     private int metamorphicBrickSlabFullID;
+    private List<Integer> includeDimensionIDs;
+    private List<Integer> excludeDimensionIDs;
+    private String includeDimensions;
+    private String excludeDimensions;
 
     public static int biomeSize = 45;
     
@@ -126,9 +130,28 @@ public class UndergroundBiomes
         // Item read from block category to be backwards-compatible
         ligniteCoalID = config.getItem(Configuration.CATEGORY_BLOCK, "Lignite Item ID:", 5500).getInt();
         
-        biomeSize = config.get(Configuration.CATEGORY_GENERAL, "Biome size (warning: exponential): ", 45).getInt();
-        addOreDictRecipes = config.get(Configuration.CATEGORY_GENERAL, "Modify all recipes to include Underground Biomes blocks (could be buggy)", true).getBoolean(true);
-        vanillaStoneBiomes = config.get(Configuration.CATEGORY_GENERAL, "Generate Vanilla Stone Biomes (Could cause sharp biome transitions is changed while playing the same world", false).getBoolean(false);
+        biomeSize = config.get(Configuration.CATEGORY_GENERAL, "biomeSize", 45, "Warning: exponential").getInt();
+        addOreDictRecipes = config.get(Configuration.CATEGORY_GENERAL, "oreDictifyStone", true, "Modify all recipes to include Underground Biomes blocks").getBoolean(true);
+        vanillaStoneBiomes = config.get(Configuration.CATEGORY_GENERAL, "vanillaStoneBiomes", false, "Will cause sharp biome transitions if changed while playing the same world").getBoolean(false);
+        excludeDimensions = config.get(Configuration.CATEGORY_GENERAL, "excludeDimensionIDs", "-1,1", "Comma-separated list of dimension IDs, used only if include list is *").getString();
+        includeDimensions = config.get(Configuration.CATEGORY_GENERAL, "includeDimensionIDs", "*", "Comma-separated list of dimension IDs, put * to use exclude list").getString();
+
+        if (includeDimensions.equals("*"))
+        {
+            excludeDimensionIDs = new ArrayList<Integer>();
+            for (String v : excludeDimensions.split(","))
+            {
+                excludeDimensionIDs.add(Integer.parseInt(v));
+            }
+        }
+        else
+        {
+            includeDimensionIDs = new ArrayList<Integer>();
+            for (String v : includeDimensions.split(","))
+            {
+                includeDimensionIDs.add(Integer.parseInt(v));
+            }
+        }
         
         config.save();
     }
@@ -536,9 +559,12 @@ public class UndergroundBiomes
     @ForgeSubscribe
     public void onBiomeDecorate(DecorateBiomeEvent.Post event)
     {
-        if (worldGen == null)
+        int id = event.world.provider.dimensionId;
+        if (includeDimensions.equals("*"))
         {
-            worldGen = new WorldGenManager(worldSeed, world.getWorldInfo().getTerrainType(), world);
+            if (excludeDimensionIDs.contains(id)) return;
+        } else {
+            if (!includeDimensionIDs.contains(id)) return;
         }
         worldGen.onBiomeDecorate(event);
     }

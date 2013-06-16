@@ -1,3 +1,9 @@
+0.3.9b
+
+- More compatible configuration in case IDs are taken
+- Ability to include and exclude dimensions ID to generate in
+- No more additional Nether and End lag due to trying to replace stone
+
 0.3.9a
 
 - Remade oreDictify, now it should work with mods
