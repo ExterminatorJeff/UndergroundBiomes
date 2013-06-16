@@ -36,7 +36,7 @@ import exterminatorJeff.undergroundBiomes.common.block.*;
 import exterminatorJeff.undergroundBiomes.common.item.*;
 import exterminatorJeff.undergroundBiomes.common.command.*;
 
-@Mod(modid = "UndergroundBiomes", name = "Underground Biomes", version = "0.3.9a")
+@Mod(modid = "UndergroundBiomes", name = "Underground Biomes", version = "0.3.9b")
 @NetworkMod(clientSideRequired = true, serverSideRequired = true)
 
 public class UndergroundBiomes
@@ -105,25 +105,26 @@ public class UndergroundBiomes
         config = new Configuration(event.getSuggestedConfigurationFile());
         config.load();
         
-        igneousStoneID = config.get(Configuration.CATEGORY_BLOCK, "Igneous Stone ID:", 250).getInt();
-        metamorphicStoneID = config.get(Configuration.CATEGORY_BLOCK, "Metamorphic Stone ID:", 251).getInt();
-        sedimentaryStoneID = config.get(Configuration.CATEGORY_BLOCK, "Sedimentary Stone ID:", 252).getInt();
+        igneousStoneID = config.getBlock("Igneous Stone ID:", 2009).getInt();
+        metamorphicStoneID = config.getBlock("Metamorphic Stone ID:", 2010).getInt();
+        sedimentaryStoneID = config.getBlock("Sedimentary Stone ID:", 2011).getInt();
         
-        igneousCobblestoneID = config.get(Configuration.CATEGORY_BLOCK, "Igneous Cobblestone ID:", 2000).getInt();
-        metamorphicCobblestoneID = config.get(Configuration.CATEGORY_BLOCK, "Metamorphic Cobblestone ID:", 2001).getInt();
+        igneousCobblestoneID = config.getBlock("Igneous Cobblestone ID:", 2000).getInt();
+        metamorphicCobblestoneID = config.getBlock("Metamorphic Cobblestone ID:", 2001).getInt();
         
-        igneousStoneBrickID = config.get(Configuration.CATEGORY_BLOCK, "Igneous Brick ID:", 2002).getInt();
-        metamorphicStoneBrickID = config.get(Configuration.CATEGORY_BLOCK, "Metamorphic Brick ID:", 2003).getInt();
+        igneousStoneBrickID = config.getBlock("Igneous Brick ID:", 2002).getInt();
+        metamorphicStoneBrickID = config.getBlock("Metamorphic Brick ID:", 2003).getInt();
         
-        anthraciteCoalID = config.get(Configuration.CATEGORY_BLOCK, "Anthracite Block ID:", 2004).getInt();
+        anthraciteCoalID = config.getBlock("Anthracite Block ID:", 2004).getInt();
         
-        igneousBrickSlabHalfId = config.get(Configuration.CATEGORY_BLOCK, "Igneous Stone Brick Slab ID (half):", 2005).getInt();
-        igneousBrickSlabFullId = config.get(Configuration.CATEGORY_BLOCK, "Igneous Stone Brick Slab ID (full):", 2006).getInt();
+        igneousBrickSlabHalfId = config.getBlock("Igneous Stone Brick Slab ID (half):", 2005).getInt();
+        igneousBrickSlabFullId = config.getBlock("Igneous Stone Brick Slab ID (full):", 2006).getInt();
         
-        metamorphicBrickSlabHalfID = config.get(Configuration.CATEGORY_BLOCK, "Metamorphic Stone Brick Slab ID (half):", 2007).getInt();
-        metamorphicBrickSlabFullID = config.get(Configuration.CATEGORY_BLOCK, "Metamorphic Stone Brick Slab ID (full):", 2008).getInt();
+        metamorphicBrickSlabHalfID = config.getBlock("Metamorphic Stone Brick Slab ID (half):", 2007).getInt();
+        metamorphicBrickSlabFullID = config.getBlock("Metamorphic Stone Brick Slab ID (full):", 2008).getInt();
         
-        ligniteCoalID = config.get(Configuration.CATEGORY_BLOCK, "Lignite Item ID:", 550).getInt();
+        // Item read from block category to be backwards-compatible
+        ligniteCoalID = config.getItem(Configuration.CATEGORY_BLOCK, "Lignite Item ID:", 5500).getInt();
         
         biomeSize = config.get(Configuration.CATEGORY_GENERAL, "Biome size (warning: exponential): ", 45).getInt();
         addOreDictRecipes = config.get(Configuration.CATEGORY_GENERAL, "Modify all recipes to include Underground Biomes blocks (could be buggy)", true).getBoolean(true);
