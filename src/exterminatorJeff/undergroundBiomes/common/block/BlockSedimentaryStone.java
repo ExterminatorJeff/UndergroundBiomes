@@ -14,6 +14,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
+import exterminatorJeff.undergroundBiomes.common.item.ItemFossilPiece;
 
 public class BlockSedimentaryStone extends BlockMetadataBase
 {
@@ -45,17 +46,17 @@ public class BlockSedimentaryStone extends BlockMetadataBase
             // Shale drops clay
             if (metadata == 2)
             {
-                return new ItemStack(item.clay, 1, 0);
+                return new ItemStack(Item.clay, 1, 0);
             }
             // Limestone, chalk, siltstone and lignite drop fossil pieces
             if (metadata == 0 || metadata == 1 || metadata == 3 || metadata == 4)
             {
-                return new ItemStack(UndergroundBiomes.fossilPiece.itemID, 1, random.nextInt(4));
+                return new ItemStack(UndergroundBiomes.fossilPiece.itemID, 1, random.nextInt(ItemFossilPiece.TYPES));
             }
             // Chert and flint drop flint item
             if (metadata == 5 || metadata == 7)
             {
-                return new ItemStack(item.flint, 1, 0);
+                return new ItemStack(Item.flint, 1, 0);
             }
         }
         if ((metadata & 7) == 4) return new ItemStack(UndergroundBiomes.ligniteCoal.itemID, 1, 0);

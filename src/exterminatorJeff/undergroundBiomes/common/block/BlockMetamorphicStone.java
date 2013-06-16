@@ -2,6 +2,7 @@ package exterminatorJeff.undergroundBiomes.common.block;
 
 import java.util.Random;
 
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
@@ -36,12 +37,12 @@ public class BlockMetamorphicStone extends BlockMetadataBase
             if ((y < 31) && (random.nextInt(3) == 0))
             {
                 // Lapis lazuli
-                return new ItemStack(item.dyePowder, 1, 4);
+                return new ItemStack(Item.dyePowder, 1, 4);
             }
             if ((y < 16) && (random.nextInt(3) == 0))
             {
                 // Redstone
-                return new ItemStack(item.redstone, 1, 0);
+                return new ItemStack(Item.redstone, 1, 0);
             }
         }
         return new ItemStack(UndergroundBiomes.metamorphicCobblestone.blockID, 1, metadata & 7);

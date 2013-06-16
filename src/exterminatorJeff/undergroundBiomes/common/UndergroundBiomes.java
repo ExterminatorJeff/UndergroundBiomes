@@ -332,10 +332,11 @@ public class UndergroundBiomes
         
         LanguageRegistry.addName(ligniteCoal, "Lignite");
 
-        lr.addStringLocalization("item.fossilPiece.shell.name", "Shell fossil piece");
-        lr.addStringLocalization("item.fossilPiece.bone1.name", "Bone piece");
-        lr.addStringLocalization("item.fossilPiece.bone2.name", "Bone piece");
-        lr.addStringLocalization("item.fossilPiece.bone3.name", "Bone shard");
+        lr.addStringLocalization("item.fossilPiece.ammonite.name", "Ammonite fossil");
+        lr.addStringLocalization("item.fossilPiece.shell.name", "Shell fossil");
+        lr.addStringLocalization("item.fossilPiece.bone.name", "Bone fossil");
+        lr.addStringLocalization("item.fossilPiece.rib.name", "Rib fossil");
+        lr.addStringLocalization("item.fossilPiece.skull.name", "Skull fossil");
     }
     
     public void addRecipes()

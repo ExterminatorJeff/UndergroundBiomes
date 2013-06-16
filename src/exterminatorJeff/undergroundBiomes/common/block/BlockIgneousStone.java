@@ -37,7 +37,7 @@ public class BlockIgneousStone extends BlockMetadataBase
             // if (y < 64) iron
             if ((y < 32) && (random.nextInt(4) == 0))
             {
-                return new ItemStack(item.goldNugget, 1, 0);
+                return new ItemStack(Item.goldNugget, 1, 0);
             }
         }
         return new ItemStack(UndergroundBiomes.igneousCobblestone.blockID, 1, metadata & 7);

@@ -14,8 +14,9 @@ import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
 
 public class ItemFossilPiece extends Item
 {
-    private Icon[] textures = {null, null, null, null};
-    private String[] names = {"shell", "bone1", "bone2", "bone3"};
+    private Icon[] textures = {null, null, null, null, null, null};
+    private String[] names = {"ammonite", "shell", "rib", "bone", "skull", "bone"};
+    public static final int TYPES = 6;
 
     public ItemFossilPiece(int id)
     {
@@ -28,7 +29,7 @@ public class ItemFossilPiece extends Item
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister iconRegister)
     {
-        for(int i = 0; i < 4; i++)
+        for(int i = 0; i < TYPES; i++)
         {
             textures[i] = iconRegister.registerIcon(UndergroundBiomes.texturePath + "fossilPiece_" + i);
         }
@@ -37,13 +38,14 @@ public class ItemFossilPiece extends Item
     @SideOnly(Side.CLIENT)
     public Icon getIconFromDamage(int damage)
     {
-        return textures[damage & 3];
+        if (damage > TYPES) damage = 0;
+        return textures[damage];
     }
 
     @SideOnly(Side.CLIENT)
     public void getSubItems(int id, CreativeTabs tabs, List list)
     {
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < TYPES; i++)
         {
             list.add(new ItemStack(id, 1, i));
         }
@@ -51,6 +53,8 @@ public class ItemFossilPiece extends Item
 
     public String getUnlocalizedName(ItemStack stack)
     {
-        return super.getUnlocalizedName() + "." + names[stack.getItemDamage() & 3];
+        int damage = stack.getItemDamage();
+        if (damage > TYPES) damage = 0;
+        return super.getUnlocalizedName() + "." + names[damage];
     }
 }
