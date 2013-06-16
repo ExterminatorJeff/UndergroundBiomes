@@ -36,22 +36,10 @@ public class BlockSedimentaryStone extends BlockMetadataBase
         return 10.0f * hardness[meta];
     }
 
-    public int idDropped(int metadata, Random random, int par3)
+    public ItemStack itemDropped(int metadata, Random random, int fortune)
     {
-        return metadata == 4 ? UndergroundBiomes.ligniteCoal.itemID : this.blockID;
-    }
-
-    public int damageDropped(int metadata)
-    {
-        return metadata == 4 ? 0 : metadata;
-    }
-    
-    public int quantityDropped(int meta, int fortune, Random random)
-    {
-        if (fortune == 0 || meta != 4) return 1;
-        // Lignite is affected by fortune: Fortune III gives up to 4 items
-        int j = random.nextInt(fortune + 2);
-        return (j < 1) ? 1 : j;
+        if (metadata & 7 == 4) return new ItemStack(UndergroundBiomes.ligniteCoal.itemID, 1, 0);
+        return new ItemStack(this.blockID, 1, metadata & 7);
     }
 
     public String getBlockName(int index)

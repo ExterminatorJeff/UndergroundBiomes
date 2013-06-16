@@ -23,7 +23,7 @@ public class ItemMetadataBlock extends ItemBlock
     
     public int getMetadata(int meta)
     {
-        return meta;
+        return meta | 8;
     }
     
     @SideOnly(Side.CLIENT)

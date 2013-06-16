@@ -2,6 +2,8 @@ package exterminatorJeff.undergroundBiomes.common.block;
 
 import java.util.Random;
 
+import net.minecraft.item.ItemStack;
+
 import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
 
 public class BlockMetamorphicStone extends BlockMetadataBase
@@ -26,9 +28,9 @@ public class BlockMetamorphicStone extends BlockMetadataBase
         return 10.0f * hardness[meta];
     }
 
-    public int idDropped(int metadata, Random random, int par3)
+    public ItemStack itemDropped(int metadata, Random random, int fortune)
     {
-        return UndergroundBiomes.metamorphicCobblestone.blockID;
+        return new ItemStack(UndergroundBiomes.metamorphicCobblestone.blockID, 1, metadata & 7);
     }
 
     public String getBlockName(int index)
