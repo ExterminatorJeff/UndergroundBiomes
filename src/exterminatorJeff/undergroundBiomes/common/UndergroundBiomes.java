@@ -335,6 +335,7 @@ public class UndergroundBiomes
         lr.addStringLocalization("item.fossilPiece.ammonite.name", "Ammonite fossil");
         lr.addStringLocalization("item.fossilPiece.shell.name", "Shell fossil");
         lr.addStringLocalization("item.fossilPiece.bone.name", "Bone fossil");
+        lr.addStringLocalization("item.fossilPiece.boneshard.name", "Bone shard fossil");
         lr.addStringLocalization("item.fossilPiece.rib.name", "Rib fossil");
         lr.addStringLocalization("item.fossilPiece.skull.name", "Skull fossil");
     }

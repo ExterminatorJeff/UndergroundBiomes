@@ -15,8 +15,8 @@ import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
 public class ItemFossilPiece extends Item
 {
     private Icon[] textures = {null, null, null, null, null, null};
-    private String[] names = {"ammonite", "shell", "rib", "bone", "skull", "bone"};
-    public static final int TYPES = 6;
+    private String[] names = {"ammonite", "shell", "rib", "bone", "skull", "bone", "shell", "boneshard"};
+    public static final int TYPES = 8;
 
     public ItemFossilPiece(int id)
     {
