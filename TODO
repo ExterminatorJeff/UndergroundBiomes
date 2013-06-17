@@ -5,11 +5,11 @@ Bugs
 Features
 ========
 
-- Fix fossils textures
 - Better rare drops when mining stones, mod support for them
 - Prepare anthracite block to be replaced by Minecraft 1.6 coal block
 - Stairs, more slabs
 - Make ore textures look smooth beside UB stone
+- Add minerals
 - Configure UB layers content, depth and height
 - Mystcraft interaction - http://binarymage.com/
 - Chisel mod interaction - http://www.minecraftforum.net/topic/1749374-/
