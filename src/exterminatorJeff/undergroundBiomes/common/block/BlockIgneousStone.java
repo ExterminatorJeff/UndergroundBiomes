@@ -31,13 +31,17 @@ public class BlockIgneousStone extends BlockMetadataBase
 
     public ItemStack itemDropped(int metadata, Random random, int fortune, int y)
     {
-        // Very rare drops; TODO: mods' nuggets or add own nuggets
+        // Very rare drops
         if ((metadata < 8) && (random.nextInt(2000) <= fortune))
         {
-            // if (y < 64) iron
-            if ((y < 32) && (random.nextInt(4) == 0))
+            int num = UndergroundBiomes.nuggets.size();
+            if (num > 0)
             {
-                return new ItemStack(Item.goldNugget, 1, 0);
+                ItemStack stack = UndergroundBiomes.nuggets.get(random.nextInt(num));
+                if ((stack.itemID != Item.goldNugget.itemID) || (y < 32))
+                {
+                    return stack;
+                }
             }
         }
         return new ItemStack(UndergroundBiomes.igneousCobblestone.blockID, 1, metadata & 7);

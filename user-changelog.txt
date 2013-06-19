@@ -1,4 +1,4 @@
-0.3.9b
+0.4.0
 
 - More compatible configuration in case IDs are taken
 - Ability to include and exclude dimensions ID to generate in
@@ -9,7 +9,9 @@
   - clay from shale
 - Added very rare drops (height-based):
   - lapis lazuli and redstone from deep metamorphic stone
-  - gold nuggets (for now) from deep igneous stone
+  - gold nuggets from deep igneous stone
+  - other mods' metal nuggets from igneous stone below the sea level
+- Hopefully fixed support for mods ore gen
 
 0.3.9a
 

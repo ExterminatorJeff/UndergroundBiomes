@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Arrays;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHalfSlab;
@@ -36,7 +37,7 @@ import exterminatorJeff.undergroundBiomes.common.block.*;
 import exterminatorJeff.undergroundBiomes.common.item.*;
 import exterminatorJeff.undergroundBiomes.common.command.*;
 
-@Mod(modid = "UndergroundBiomes", name = "Underground Biomes", version = "0.3.9b")
+@Mod(modid = "UndergroundBiomes", name = "Underground Biomes", version = "0.4.0")
 @NetworkMod(clientSideRequired = true, serverSideRequired = true)
 
 public class UndergroundBiomes
@@ -74,7 +75,12 @@ public class UndergroundBiomes
     public static BlockHalfSlab metamorphicBrickSlabHalf;
     public static BlockHalfSlab metamorphicBrickSlabFull;
     
-    public static List<Integer> fortuneAffected;
+    public static ArrayList<Integer> fortuneAffected;
+    public static ArrayList<ItemStack> nuggets;
+
+    private static String[] nuggetStrings = {
+      "nuggetIron", "nuggetCopper", "nuggetTin", "nuggetSilver", "nuggetLead", "nuggetNaturalAluminium", "nuggetAluminiumBrass",
+    };
 
     private int igneousStoneID;
     private int igneousCobblestoneID;
@@ -163,6 +169,9 @@ public class UndergroundBiomes
 
         fortuneAffected = new ArrayList<Integer>();
         fortuneAffected.add(ligniteCoalID);
+
+        nuggets = new ArrayList<ItemStack>();
+        nuggets.add(new ItemStack(Item.goldNugget, 1, 0));
     }
     
     @Init
@@ -234,6 +243,17 @@ public class UndergroundBiomes
         if (addOreDictRecipes)
         {
             oreDictifyStone();
+        }
+
+        // Pull nuggets from ore dictionary
+        ArrayList<ItemStack> stacks;
+        for (String s : nuggetStrings)
+        {
+            stacks = OreDictionary.getOres(s);
+            if (stacks.size() > 0)
+            {
+                nuggets.add(stacks.get(0));
+            }
         }
     }
     
@@ -583,5 +603,14 @@ public class UndergroundBiomes
             if (!includeDimensionIDs.contains(id)) return;
         }
         worldGen.onBiomeDecorate(event);
+    }
+
+    @ForgeSubscribe
+    public void registerOre(OreDictionary.OreRegisterEvent event)
+    {
+        if (Arrays.asList(nuggets).contains(event.Name))
+        {
+            nuggets.add(event.Ore);
+        }
     }
 }
