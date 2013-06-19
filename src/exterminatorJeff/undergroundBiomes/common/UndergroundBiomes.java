@@ -32,6 +32,7 @@ import cpw.mods.fml.common.event.*;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import cpw.mods.fml.common.Loader;
 
 import exterminatorJeff.undergroundBiomes.common.block.*;
 import exterminatorJeff.undergroundBiomes.common.item.*;
@@ -253,6 +254,19 @@ public class UndergroundBiomes
             if (stacks.size() > 0)
             {
                 nuggets.add(stacks.get(0));
+            }
+        }
+
+        if (Loader.isModLoaded("Thaumcraft"))
+        {
+            try
+            {
+		//ThaumcraftApi.registerObjectTag(id, meta, (new ObjectTags()).add(EnumTag.VALUABLE, 58).add(EnumTag.LIGHT, 15));
+            }
+            catch (Exception e)
+            {
+                System.out.println("[UndergroundBiomes] Error while integrating with Thaumcraft");
+                e.printStackTrace(System.err);
             }
         }
     }

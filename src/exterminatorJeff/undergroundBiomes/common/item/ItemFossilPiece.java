@@ -14,7 +14,7 @@ import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
 
 public class ItemFossilPiece extends Item
 {
-    private Icon[] textures = {null, null, null, null, null, null};
+    private Icon[] textures;
     private String[] names = {"ammonite", "shell", "rib", "bone", "skull", "bone", "shell", "boneshard"};
     public static final int TYPES = 8;
 
@@ -29,7 +29,8 @@ public class ItemFossilPiece extends Item
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister iconRegister)
     {
-        for(int i = 0; i < TYPES; i++)
+        textures = new Icon[TYPES];
+        for (int i = 0; i < TYPES; i++)
         {
             textures[i] = iconRegister.registerIcon(UndergroundBiomes.texturePath + "fossilPiece_" + i);
         }
