@@ -59,6 +59,11 @@ public abstract class BlockMetadataBase extends Block
         return true;
     }
 
+    public boolean isGenMineableReplaceable(World world, int x, int y, int z, int target)
+    {
+        return true;
+    }
+
     public float getBlockHardness(int meta)
     {
         return 1.5f;
