@@ -80,7 +80,8 @@ public class UndergroundBiomes
     public static ArrayList<ItemStack> nuggets;
 
     private static String[] nuggetStrings = {
-      "nuggetIron", "nuggetCopper", "nuggetTin", "nuggetSilver", "nuggetLead", "nuggetNaturalAluminium", "nuggetAluminiumBrass",
+      "nuggetIron", "nuggetCopper", "nuggetTin", "nuggetSilver", "nuggetLead", "nuggetAluminium",
+      "nuggetNaturalAluminium", "nuggetNickel", "nuggetPlatinum", "nuggetElectrum", "nuggetZinc",
     };
 
     private int igneousStoneID;

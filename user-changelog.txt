@@ -1,6 +1,10 @@
 0.4.0
 
-- More compatible configuration in case IDs are taken
+- More compatible configuration in case IDs are taken;
+  NOTE: three general configuration parameters were changed, re-adjust:
+    I:biomeSize=45
+    B:oreDictifyStone=true
+    B:vanillaStoneBiomes=false
 - Ability to include and exclude dimensions ID to generate in
 - No more additional Nether and End lag due to trying to replace stone
 - Added rare drops:
