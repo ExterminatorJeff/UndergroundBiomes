@@ -446,8 +446,6 @@ public class UndergroundBiomes
             new ItemStack(Block.stairsStoneBrick),
         };
         List recipes = CraftingManager.getInstance().getRecipeList();
-        List<IRecipe> recipesToRemove = new ArrayList<IRecipe>();
-        List<IRecipe> recipesToAdd = new ArrayList<IRecipe>();
         Constructor shapedConstr = ShapedOreRecipe.class.getDeclaredConstructor(ShapedRecipes.class, Map.class);
         Constructor shapelessConstr = ShapelessOreRecipe.class.getDeclaredConstructor(ShapelessRecipes.class, Map.class);
         shapedConstr.setAccessible(true);
@@ -460,8 +458,9 @@ public class UndergroundBiomes
         }
 
         // Search stone recipes for recipes to replace
-        for (Object obj : recipes)
+        for (int i = 0; i < recipes.size(); i++)
         {
+            Object obj = recipes.get(i);
             ItemStack output = ((IRecipe)obj).getRecipeOutput();
             if (output != null && containsMatch(false, exclusions, output))
             {
@@ -472,8 +471,7 @@ public class UndergroundBiomes
                 ShapedRecipes recipe = (ShapedRecipes)obj;
                 if (containsMatch(true, recipe.recipeItems, replaceStacks))
                 {
-                    recipesToRemove.add(recipe);
-                    recipesToAdd.add((ShapedOreRecipe)shapedConstr.newInstance(recipe, replacements));
+                    recipes.set(i, (ShapedOreRecipe)shapedConstr.newInstance(recipe, replacements));
                     numReplaced++;
                     System.out.println("Changed shaped recipe for " + output.getItemName());
                 }
@@ -483,8 +481,7 @@ public class UndergroundBiomes
                 ShapelessRecipes recipe = (ShapelessRecipes)obj;
                 if (containsMatch(true, (ItemStack[])recipe.recipeItems.toArray(new ItemStack[recipe.recipeItems.size()]), replaceStacks))
                 {
-                    recipesToRemove.add((IRecipe)obj);
-                    recipesToAdd.add((ShapelessOreRecipe)shapelessConstr.newInstance(recipe, replacements));
+                    recipes.set(i, (ShapelessOreRecipe)shapelessConstr.newInstance(recipe, replacements));
                     numReplaced++;
                     System.out.println("Changed shapeless recipe for " + output.getItemName());
                 }
@@ -508,9 +505,6 @@ public class UndergroundBiomes
                 }
             }
         }
-
-        recipes.removeAll(recipesToRemove);
-        recipes.addAll(recipesToAdd);
         return numReplaced;
     }
     
