@@ -1,6 +1,9 @@
 Bugs
 ====
 
+- To be nice to other mods that save recipes with their indexes and get surprised when recipe order changes,
+  make OreDictifyStone keep recipe indexes.
+
 
 Features
 ========
