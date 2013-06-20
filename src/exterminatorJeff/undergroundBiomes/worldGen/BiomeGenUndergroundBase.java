@@ -154,7 +154,7 @@ public class BiomeGenUndergroundBase {
     
     protected BiomeUndergroundDecorator createBiomeDecorator()
     {
-        return new BiomeUndergroundDecorator(this);
+        return new BiomeUndergroundDecorator();
     }
     
     public void decorate(World par1World, Random par2Random, int par3, int par4)

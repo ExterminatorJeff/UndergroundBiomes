@@ -38,7 +38,7 @@ import exterminatorJeff.undergroundBiomes.common.block.*;
 import exterminatorJeff.undergroundBiomes.common.item.*;
 import exterminatorJeff.undergroundBiomes.common.command.*;
 
-@Mod(modid = "UndergroundBiomes", name = "Underground Biomes", version = "0.4.0")
+@Mod(modid = "UndergroundBiomes", name = "Underground Biomes", version = "0.4.1")
 @NetworkMod(clientSideRequired = true, serverSideRequired = true)
 
 public class UndergroundBiomes
@@ -105,12 +105,6 @@ public class UndergroundBiomes
 
     
     public static int biomeSize = 45;
-    
-    //no grass
-    public static boolean testMode1 = false;
-    //no stone
-    public static boolean testMode2 = false;
-    
 
     @SidedProxy(clientSide = "exterminatorJeff.undergroundBiomes.client.ClientProxy",
                 serverSide = "exterminatorJeff.undergroundBiomes.common.CommonProxy")
