@@ -444,6 +444,8 @@ public class UndergroundBiomes
         ItemStack[] exclusions = new ItemStack[]
         {
             new ItemStack(Block.stairsStoneBrick),
+            new ItemStack(Block.stoneBrick),
+            new ItemStack(Block.stoneSingleSlab, 1, 5),
         };
         List recipes = CraftingManager.getInstance().getRecipeList();
         Constructor shapedConstr = ShapedOreRecipe.class.getDeclaredConstructor(ShapedRecipes.class, Map.class);
