@@ -1,4 +1,4 @@
-0.4.0
+0.4.0 (20 Jun 2013)
 
 - More compatible configuration in case IDs are taken;
   NOTE: three general configuration parameters were changed, re-adjust:
@@ -20,11 +20,11 @@
 - (reupload) Fixed recipes broken with new oreDictify: stone bricks and stone brick slabs
 - (reupload) Fixed block picking in creative
 
-0.3.9a
+0.3.9a (16 Jun 2013)
 
 - Remade oreDictify, now it should work with mods
 
-0.3.9
+0.3.9 (15 Jun 2013)
 
 - Refactored code
 - Rebalanced rocks hardness
@@ -32,12 +32,12 @@
 - Replaced epidote with dacite, updated the texture
 - Added oredictifystone command
 
-0.3.8
+0.3.8 (10 Jun 2013)
 
 - Fixed metamorphic stone not dropping cobblestone
 - Hopefully fixed worldgen
 
-0.3.7
+0.3.7 (05 Jun 2013)
 
 - Killed Thumbs.db
 - Fixed lignite drop incorrect metadata leading to inability to craft it to coal
