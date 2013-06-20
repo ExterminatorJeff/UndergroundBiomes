@@ -16,7 +16,9 @@
   - gold nuggets from deep igneous stone
   - other mods' metal nuggets from igneous stone below the sea level
 - Hopefully fixed support for mods ore gen
-- Fixed compatibility with mods that save recipe indexes
+- (reupload) Fixed compatibility with mods that save recipe indexes
+- (reupload) Fixed recipes broken with new oreDictify: stone bricks and stone brick slabs
+- (reupload) Fixed block picking in creative
 
 0.3.9a
 
