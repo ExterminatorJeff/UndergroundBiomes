@@ -607,6 +607,12 @@ public class UndergroundBiomes
         } else {
             if (!includeDimensionIDs.contains(id)) return;
         }
+        // Sometimes can get called before onWorldLoad, wtf?
+        if (worldGen == null)
+        {
+            System.out.println("UndergroundBiomes warning: onBiomeDecorate before onWorldLoad! Ignoring.");
+            return;
+        }
         worldGen.onBiomeDecorate(event);
     }
 
