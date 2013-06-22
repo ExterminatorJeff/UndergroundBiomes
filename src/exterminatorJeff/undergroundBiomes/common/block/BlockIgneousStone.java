@@ -10,6 +10,7 @@ import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
 public class BlockIgneousStone extends BlockMetadataBase
 {
     private static final float[] hardness = {1.5f, 1.4f, 1.1f, 1.2f, 0.8f, 1.2f, 1.3f, 1.0f};
+    private static final float[] resistance = {1.35f, 1.31f, 1.11f, 1.2f, 0.7f, 1.2f, 1.26f, 1.0f};
     private static final String[] blockName = {
         "redGranite", "blackGranite", "rhyolite", "andesite", "gabbro", "basalt", "komatiite", "dacite"
     };
@@ -26,7 +27,7 @@ public class BlockIgneousStone extends BlockMetadataBase
 
     public float getBlockExplosionResistance(int meta)
     {
-        return 10.0f * hardness[meta];
+        return 6.0f * resistance[meta];
     }
 
     public ItemStack itemDropped(int metadata, Random random, int fortune, int y)

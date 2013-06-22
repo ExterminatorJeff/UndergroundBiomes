@@ -10,8 +10,11 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
+import net.minecraft.entity.Entity;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+
 import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
 
 public class BlockIgneousStoneSlab extends BlockStep{
@@ -29,11 +32,16 @@ public class BlockIgneousStoneSlab extends BlockStep{
     }
 
 
-    @Override
-    public float getBlockHardness(World par1World, int par2, int par3, int par4){
-        return UndergroundBiomes.igneousStoneBrick.getBlockHardness(par1World, par2, par3, par4)+0.25f;
+    public float getBlockHardness(World par1World, int par2, int par3, int par4)
+    {
+        return UndergroundBiomes.igneousStoneBrick.getBlockHardness(par1World, par2, par3, par4);
     }
     
+    public float getExplosionResistance(Entity entity, World world, int x, int y, int z, double explosionX, double explosionY, double explosionZ)
+    {
+        return UndergroundBiomes.igneousStoneBrick.getExplosionResistance(entity, world, x, y, z, explosionX, explosionY, explosionZ);
+    }
+
     @Override
     protected ItemStack createStackedBlock(int metadata) {
         return new ItemStack(UndergroundBiomes.igneousBrickSlabHalf.blockID, 2, metadata & 7);
