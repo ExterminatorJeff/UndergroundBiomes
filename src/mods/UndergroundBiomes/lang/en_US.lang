@@ -61,7 +61,7 @@ tile.sedimentaryStone.chalk.name=Chalk
 tile.sedimentaryStone.shale.name=Shale
 tile.sedimentaryStone.siltstone.name=Siltstone
 tile.sedimentaryStone.ligniteBlock.name=Lignite Block
-tile.sedimentaryStone.flint.name=Flint
+tile.sedimentaryStone.dolomite.name=Dolomite
 tile.sedimentaryStone.greywacke.name=Greywacke
 tile.sedimentaryStone.chert.name=Chert
 

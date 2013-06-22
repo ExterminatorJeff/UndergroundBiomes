@@ -61,9 +61,9 @@ tile.sedimentaryStone.chalk.name=Мел
 tile.sedimentaryStone.shale.name=Глинистый сланец
 tile.sedimentaryStone.siltstone.name=Алеврит
 tile.sedimentaryStone.ligniteBlock.name=Блок бурого угля
-tile.sedimentaryStone.flint.name=Чёрный кремень
+tile.sedimentaryStone.dolomite.name=Доломит
 tile.sedimentaryStone.greywacke.name=Граувакка
-tile.sedimentaryStone.chert.name=Обыкновенный кремень
+tile.sedimentaryStone.chert.name=Кремень
 
 tile.igneousBrickSlab.redGraniteBrickSlab.name=Плита из кирпичей красного гранита
 tile.igneousBrickSlab.blackGraniteBrickSlab.name=Плита из кирпичей чёрного гранита
