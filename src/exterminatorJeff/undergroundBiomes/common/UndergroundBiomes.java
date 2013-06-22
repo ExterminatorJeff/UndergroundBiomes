@@ -5,7 +5,9 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Arrays;
+import java.net.URL;
 
+import net.minecraft.util.StringTranslate;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHalfSlab;
 import net.minecraft.creativetab.CreativeTabs;
@@ -51,8 +53,7 @@ public class UndergroundBiomes
     
     public static WorldGenManager worldGen;
     
-    public static String blockTextures = "/exterminatorJeff/undergroundBiomes/textures/BlockTextures.png";
-    public static String itemTextures = "/exterminatorJeff/undergroundBiomes/textures/Items.png";
+    public static String textures = "/exterminatorJeff/undergroundBiomes/textures.png";
     public static String texturePath = "UndergroundBiomes:";
     
     public static CreativeTabs tabModBlocks;
@@ -274,99 +275,15 @@ public class UndergroundBiomes
     
     public void setUpBlockNames()
     {
-        LanguageRegistry lr = LanguageRegistry.instance();
-
-        lr.addStringLocalization("tile.igneousStone.redGranite.name", "Red Granite");
-        lr.addStringLocalization("tile.igneousStone.blackGranite.name", "Black Granite");
-        lr.addStringLocalization("tile.igneousStone.rhyolite.name", "Rhyolite");
-        lr.addStringLocalization("tile.igneousStone.andesite.name", "Andesite");
-        lr.addStringLocalization("tile.igneousStone.gabbro.name", "Gabbro");
-        lr.addStringLocalization("tile.igneousStone.basalt.name", "Basalt");
-        lr.addStringLocalization("tile.igneousStone.komatiite.name", "Komatiite");
-        lr.addStringLocalization("tile.igneousStone.dacite.name", "Dacite");
-        
-        lr.addStringLocalization("tile.igneousCobblestone.redGraniteCobble.name", "Red Granite Cobblestone");
-        lr.addStringLocalization("tile.igneousCobblestone.blackGraniteCobble.name", "Black Granite Cobblestone");
-        lr.addStringLocalization("tile.igneousCobblestone.rhyoliteCobble.name", "Rhyolite Cobblestone");
-        lr.addStringLocalization("tile.igneousCobblestone.andesiteCobble.name", "Andesite Cobblestone");
-        lr.addStringLocalization("tile.igneousCobblestone.gabbroCobble.name", "Gabbro Cobblestone");
-        lr.addStringLocalization("tile.igneousCobblestone.basaltCobble.name", "Basalt Cobblestone");
-        lr.addStringLocalization("tile.igneousCobblestone.komatiiteCobble.name", "Komatiite Cobblestone");
-        lr.addStringLocalization("tile.igneousCobblestone.daciteCobble.name", "Dacite Cobblestone");
-        
-        lr.addStringLocalization("tile.igneousStoneBrick.redGraniteBrick.name", "Red Granite Bricks");
-        lr.addStringLocalization("tile.igneousStoneBrick.blackGraniteBrick.name", "Black Granite Bricks");
-        lr.addStringLocalization("tile.igneousStoneBrick.rhyoliteBrick.name", "Rhyolite Bricks");
-        lr.addStringLocalization("tile.igneousStoneBrick.andesiteBrick.name", "Andesite Bricks");
-        lr.addStringLocalization("tile.igneousStoneBrick.gabbroBrick.name", "Gabbro Bricks");
-        lr.addStringLocalization("tile.igneousStoneBrick.basaltBrick.name", "Basalt Bricks");
-        lr.addStringLocalization("tile.igneousStoneBrick.komatiiteBrick.name", "Komatiite Bricks");
-        lr.addStringLocalization("tile.igneousStoneBrick.daciteBrick.name", "Dacite Bricks");
-        
-        lr.addStringLocalization("tile.metamorphicStone.gneiss.name", "Gneiss");
-        lr.addStringLocalization("tile.metamorphicStone.eclogite.name", "Eclogite");
-        lr.addStringLocalization("tile.metamorphicStone.marble.name", "Marble");
-        lr.addStringLocalization("tile.metamorphicStone.quartzite.name", "Quartzite");
-        lr.addStringLocalization("tile.metamorphicStone.blueschist.name", "Blue Schist");
-        lr.addStringLocalization("tile.metamorphicStone.greenschist.name", "Green Schist");
-        lr.addStringLocalization("tile.metamorphicStone.soapstone.name", "Soapstone");
-        lr.addStringLocalization("tile.metamorphicStone.migmatite.name", "Migmatite");
-        
-        lr.addStringLocalization("tile.metamorphicCobblestone.gneissCobble.name", "Gneiss Cobblestone");
-        lr.addStringLocalization("tile.metamorphicCobblestone.eclogiteCobble.name", "Eclogite Cobblestone");
-        lr.addStringLocalization("tile.metamorphicCobblestone.marbleCobble.name", "Marble Cobblestone");
-        lr.addStringLocalization("tile.metamorphicCobblestone.quartziteCobble.name", "Quartzite Cobblestone");
-        lr.addStringLocalization("tile.metamorphicCobblestone.blueschistCobble.name", "Blue Schist Cobblestone");
-        lr.addStringLocalization("tile.metamorphicCobblestone.greenschistCobble.name", "Green Schist Cobblestone");
-        lr.addStringLocalization("tile.metamorphicCobblestone.soapstoneCobble.name", "Soapstone Cobblestone");
-        lr.addStringLocalization("tile.metamorphicCobblestone.migmatiteCobble.name", "Migmatite Cobblestone");
-        
-        lr.addStringLocalization("tile.metamorphicStoneBrick.gneissBrick.name", "Gneiss Bricks");
-        lr.addStringLocalization("tile.metamorphicStoneBrick.eclogiteBrick.name", "Eclogite Bricks");
-        lr.addStringLocalization("tile.metamorphicStoneBrick.marbleBrick.name", "Marble Bricks");
-        lr.addStringLocalization("tile.metamorphicStoneBrick.quartziteBrick.name", "Quartzite Bricks");
-        lr.addStringLocalization("tile.metamorphicStoneBrick.blueschistBrick.name", "Blue Schist Bricks");
-        lr.addStringLocalization("tile.metamorphicStoneBrick.greenschistBrick.name", "Green Schist Bricks");
-        lr.addStringLocalization("tile.metamorphicStoneBrick.soapstoneBrick.name", "Soapstone Bricks");
-        lr.addStringLocalization("tile.metamorphicStoneBrick.migmatiteBrick.name", "Migmatite Bricks");
-        
-        lr.addStringLocalization("tile.sedimentaryStone.limestone.name", "Limestone");
-        lr.addStringLocalization("tile.sedimentaryStone.chalk.name", "Chalk");
-        lr.addStringLocalization("tile.sedimentaryStone.shale.name", "Shale");
-        lr.addStringLocalization("tile.sedimentaryStone.siltstone.name", "Siltstone");
-        lr.addStringLocalization("tile.sedimentaryStone.ligniteBlock.name", "Lignite Block");
-        lr.addStringLocalization("tile.sedimentaryStone.flint.name", "Flint");
-        lr.addStringLocalization("tile.sedimentaryStone.greywacke.name", "Greywacke");
-        lr.addStringLocalization("tile.sedimentaryStone.chert.name", "Chert");
-        
-        lr.addStringLocalization("tile.igneousBrickSlab.redGraniteBrickSlab.name", "Red Granite Brick Slab");
-        lr.addStringLocalization("tile.igneousBrickSlab.blackGraniteBrickSlab.name", "Black Granite Brick Slab");
-        lr.addStringLocalization("tile.igneousBrickSlab.rhyoliteBrickSlab.name", "Rhyolite Brick Slab");
-        lr.addStringLocalization("tile.igneousBrickSlab.andesiteBrickSlab.name", "Andesite Brick Slab");
-        lr.addStringLocalization("tile.igneousBrickSlab.gabbroBrickSlab.name", "Gabbro Brick Slab");
-        lr.addStringLocalization("tile.igneousBrickSlab.basaltBrickSlab.name", "Basalt Brick Slab");
-        lr.addStringLocalization("tile.igneousBrickSlab.komatiiteBrickSlab.name", "Komatiite Brick Slab");
-        lr.addStringLocalization("tile.igneousBrickSlab.daciteBrickSlab.name", "Dacite Brick Slab");
-        
-        lr.addStringLocalization("tile.metamorphicBrickSlab.gneissBrickSlab.name", "Gneiss Brick Slab");
-        lr.addStringLocalization("tile.metamorphicBrickSlab.eclogiteBrickSlab.name", "Eclogite Brick Slab");
-        lr.addStringLocalization("tile.metamorphicBrickSlab.marbleBrickSlab.name", "Marble Brick Slab");
-        lr.addStringLocalization("tile.metamorphicBrickSlab.quartziteBrickSlab.name", "Quartzite Brick Slab");
-        lr.addStringLocalization("tile.metamorphicBrickSlab.blueschistBrickSlab.name", "Blue Schist Brick Slab");
-        lr.addStringLocalization("tile.metamorphicBrickSlab.greenschistBrickSlab.name", "Green Schist Brick Slab");
-        lr.addStringLocalization("tile.metamorphicBrickSlab.soapstoneBrickSlab.name", "Soapstone Brick Slab");
-        lr.addStringLocalization("tile.metamorphicBrickSlab.migmatiteBrickSlab.name", "Migmatite Brick Slab");
-        
-        LanguageRegistry.addName(anthracite, "Anthracite Coal Block");
-        
-        LanguageRegistry.addName(ligniteCoal, "Lignite");
-
-        lr.addStringLocalization("item.fossilPiece.ammonite.name", "Ammonite fossil");
-        lr.addStringLocalization("item.fossilPiece.shell.name", "Shell fossil");
-        lr.addStringLocalization("item.fossilPiece.bone.name", "Bone fossil");
-        lr.addStringLocalization("item.fossilPiece.boneshard.name", "Bone shard fossil");
-        lr.addStringLocalization("item.fossilPiece.rib.name", "Rib fossil");
-        lr.addStringLocalization("item.fossilPiece.skull.name", "Skull fossil");
+        for (Object obj : StringTranslate.getInstance().getLanguageList().keySet())
+        {
+            String lang = (String)obj;
+            URL urlResource = this.getClass().getResource("/mods/UndergroundBiomes/lang/"+lang+".lang");
+            if (urlResource != null)
+            {
+                LanguageRegistry.instance().loadLocalization(urlResource, lang, false);
+            }
+        }
     }
     
     public void addRecipes()
