@@ -26,8 +26,6 @@ public abstract class BlockMetadataBase extends Block
     public BlockMetadataBase(int id)
     {
         super(id, Material.rock);
-        this.setHardness(1.5f);
-        this.setResistance(10.0f);
         this.setCreativeTab(UndergroundBiomes.tabModBlocks);
     }
     
