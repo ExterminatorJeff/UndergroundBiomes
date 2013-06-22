@@ -8,6 +8,7 @@ Features
 - Make worldgen faster
 - Prepare anthracite block to be replaced by Minecraft 1.6 coal block
 - Stairs, more slabs
+- Translation support, Russian translation
 - Make ore textures look smooth beside UB stone
 - Add minerals, including emerald shards from LegendGear
 - Configure UB layers content, depth and height
