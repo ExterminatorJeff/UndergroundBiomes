@@ -1,12 +1,14 @@
 package exterminatorJeff.undergroundBiomes.client;
 
 import exterminatorJeff.undergroundBiomes.common.CommonProxy;
+import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
+
+import net.minecraftforge.client.MinecraftForgeClient;
 
 public class ClientProxy extends CommonProxy
 {
     public void registerRenderThings()
     {
-        //MinecraftForgeClient.preloadTexture("/exterminatorJeff/undergroundBiomes/textures/BlockTextures.png");
-        //MinecraftForgeClient.preloadTexture("/exterminatorJeff/undergroundBiomes/textures/Items.png");
+        MinecraftForgeClient.preloadTexture(UndergroundBiomes.textures);
     }
 }

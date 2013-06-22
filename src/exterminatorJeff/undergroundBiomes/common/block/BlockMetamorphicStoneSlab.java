@@ -9,8 +9,9 @@ import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
 
 public class BlockMetamorphicStoneSlab extends BlockIgneousStoneSlab{
 
-    public BlockMetamorphicStoneSlab(int par1, boolean par2) {
-        super(par1, par2);
+    public BlockMetamorphicStoneSlab(int par1, boolean par2, int texture)
+    {
+        super(par1, par2, texture);
     }
     
     @Override

@@ -6,9 +6,9 @@ import net.minecraft.item.ItemStack;
 
 public class BlockIgneousStoneBrick extends BlockIgneousStone
 {
-    public BlockIgneousStoneBrick(int id)
+    public BlockIgneousStoneBrick(int id, int texture)
     {
-        super(id);
+        super(id, texture);
     }
     
     public ItemStack itemDropped(int metadata, Random random, int fortune, int y)

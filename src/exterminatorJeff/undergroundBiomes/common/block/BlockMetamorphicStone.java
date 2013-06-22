@@ -14,9 +14,9 @@ public class BlockMetamorphicStone extends BlockMetadataBase
         "gneiss", "eclogite", "marble", "quartzite", "blueschist", "greenschist", "soapstone", "migmatite"
     };
 
-    public BlockMetamorphicStone(int id)
+    public BlockMetamorphicStone(int id, int texture)
     {
-        super(id);
+        super(id, texture);
     }
     
     public float getBlockHardness(int meta)

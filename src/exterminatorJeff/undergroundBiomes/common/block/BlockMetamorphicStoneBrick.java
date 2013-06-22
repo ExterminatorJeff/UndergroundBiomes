@@ -6,9 +6,9 @@ import net.minecraft.item.ItemStack;
 
 public class BlockMetamorphicStoneBrick extends BlockMetamorphicStone
 {
-    public BlockMetamorphicStoneBrick(int id)
+    public BlockMetamorphicStoneBrick(int id, int texture)
     {
-        super(id);
+        super(id, texture);
     }
     
     public ItemStack itemDropped(int metadata, Random random, int fortune, int y)

@@ -3,10 +3,10 @@ package exterminatorJeff.undergroundBiomes.common.item;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
 import exterminatorJeff.undergroundBiomes.common.block.BlockMetadataBase;
 
 public class ItemMetadataBlock extends ItemBlock
@@ -26,15 +26,19 @@ public class ItemMetadataBlock extends ItemBlock
         return meta | 8;
     }
     
-    @SideOnly(Side.CLIENT)
-    public Icon getIconFromDamage(int meta)
+    public int getIconFromDamage(int meta)
     {
-        return theBlock.getIcon(2, meta);
+        return theBlock.getBlockTextureFromSideAndMetadata(0, meta);
     }
 
-    public String getUnlocalizedName(ItemStack stack)
+    public String getTextureFile()
+    {
+        return UndergroundBiomes.textures;
+    }
+
+    public String getItemNameIS(ItemStack stack)
     {
         String name = ((BlockMetadataBase)theBlock).getBlockName(stack.getItemDamage());
-        return super.getUnlocalizedName() + "." + name;
+        return super.getItemName() + "." + name;
     }
 }

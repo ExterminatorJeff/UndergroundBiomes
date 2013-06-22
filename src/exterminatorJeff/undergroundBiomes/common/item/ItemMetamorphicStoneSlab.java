@@ -2,7 +2,6 @@ package exterminatorJeff.undergroundBiomes.common.item;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
@@ -36,7 +35,7 @@ public class ItemMetamorphicStoneSlab extends ItemIgneousStoneSlab{
             default: name="default";
             
         }
-        return getUnlocalizedName() + "." + name;
+        return getItemName() + "." + name;
     }
 
 }

@@ -14,9 +14,9 @@ public class BlockIgneousStone extends BlockMetadataBase
         "redGranite", "blackGranite", "rhyolite", "andesite", "gabbro", "basalt", "komatiite", "dacite"
     };
 
-    public BlockIgneousStone(int id)
+    public BlockIgneousStone(int id, int texture)
     {
-        super(id);
+        super(id, texture);
     }
     
     public float getBlockHardness(int meta)

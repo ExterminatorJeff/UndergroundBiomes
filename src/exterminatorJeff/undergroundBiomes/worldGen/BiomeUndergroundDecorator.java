@@ -50,7 +50,7 @@ public class BiomeUndergroundDecorator
                     {
                         int variation = (int) (currentBiome.strataNoise.noise(x/55.533, z/55.533, 3, 1, 0.5) * 10 - 5);
                         int[] strata = currentBiome.getStrataBlockAtLayer(y + variation);
-                        currentWorld.setBlock(x, y, z, strata[0], strata[1], 0x02);
+                        currentWorld.setBlockAndMetadata(x, y, z, strata[0], strata[1]);
                     }
                 }
             }

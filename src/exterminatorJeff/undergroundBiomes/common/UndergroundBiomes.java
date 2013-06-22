@@ -23,7 +23,6 @@ import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
 import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.oredict.*;
-import static net.minecraftforge.oredict.OreDictionary.WILDCARD_VALUE;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.*;
@@ -51,8 +50,8 @@ public class UndergroundBiomes
     
     public static WorldGenManager worldGen;
     
-    public static String blockTextures = "/exterminatorJeff/undergroundBiomes/textures/BlockTextures.png";
-    public static String itemTextures = "/exterminatorJeff/undergroundBiomes/textures/Items.png";
+    public static int WILDCARD_VALUE = -1;
+    public static String textures = "/exterminatorJeff/undergroundBiomes/textures.png";
     public static String texturePath = "UndergroundBiomes:";
     
     public static CreativeTabs tabModBlocks;
@@ -141,8 +140,8 @@ public class UndergroundBiomes
         biomeSize = config.get(Configuration.CATEGORY_GENERAL, "biomeSize", 45, "Warning: exponential").getInt();
         addOreDictRecipes = config.get(Configuration.CATEGORY_GENERAL, "oreDictifyStone", true, "Modify all recipes to include Underground Biomes blocks").getBoolean(true);
         vanillaStoneBiomes = config.get(Configuration.CATEGORY_GENERAL, "vanillaStoneBiomes", false, "Will cause sharp biome transitions if changed while playing the same world").getBoolean(false);
-        excludeDimensions = config.get(Configuration.CATEGORY_GENERAL, "excludeDimensionIDs", "-1,1", "Comma-separated list of dimension IDs, used only if include list is *").getString();
-        includeDimensions = config.get(Configuration.CATEGORY_GENERAL, "includeDimensionIDs", "*", "Comma-separated list of dimension IDs, put * to use exclude list").getString();
+        excludeDimensions = config.get(Configuration.CATEGORY_GENERAL, "excludeDimensionIDs", "-1,1", "Comma-separated list of dimension IDs, used only if include list is *").value;
+        includeDimensions = config.get(Configuration.CATEGORY_GENERAL, "includeDimensionIDs", "*", "Comma-separated list of dimension IDs, put * to use exclude list").value;
 
         if (includeDimensions.equals("*"))
         {
@@ -178,50 +177,50 @@ public class UndergroundBiomes
         tabModBlocks = new CreativeTabModBlocks(CreativeTabs.creativeTabArray.length, "Underground Biomes Blocks");
         tabModItems = new CreativeTabModBlocks(CreativeTabs.creativeTabArray.length, "Underground Biomes Items");
         
-        igneousStone = new BlockIgneousStone(igneousStoneID).setUnlocalizedName("igneousStone");
-        new ItemMetadataBlock(igneousStone);
+        igneousStone = new BlockIgneousStone(igneousStoneID, 0).setBlockName("igneousStone");
+        new ItemMetadataBlock(igneousStone).setItemName("igneousStone");
         
-        igneousCobblestone = new BlockIgneousCobblestone(igneousCobblestoneID).setUnlocalizedName("igneousCobblestone");
-        new ItemMetadataBlock(igneousCobblestone);
+        igneousCobblestone = new BlockIgneousCobblestone(igneousCobblestoneID, 16).setBlockName("igneousCobblestone");
+        new ItemMetadataBlock(igneousCobblestone).setItemName("igneousCobblestone");
         
-        igneousStoneBrick = new BlockIgneousStoneBrick(igneousStoneBrickID).setUnlocalizedName("igneousStoneBrick");
-        new ItemMetadataBlock(igneousStoneBrick);
+        igneousStoneBrick = new BlockIgneousStoneBrick(igneousStoneBrickID, 32).setBlockName("igneousStoneBrick");
+        new ItemMetadataBlock(igneousStoneBrick).setItemName("igneousStoneBrick");
         
-        metamorphicStone = new BlockMetamorphicStone(metamorphicStoneID).setUnlocalizedName("metamorphicStone");
-        new ItemMetadataBlock(metamorphicStone);
+        metamorphicStone = new BlockMetamorphicStone(metamorphicStoneID, 8).setBlockName("metamorphicStone");
+        new ItemMetadataBlock(metamorphicStone).setItemName("metamorphicStone");
         
-        metamorphicCobblestone = new BlockMetamorphicCobblestone(metamorphicCobblestoneID).setUnlocalizedName("metamorphicCobblestone");
-        new ItemMetadataBlock(metamorphicCobblestone);
+        metamorphicCobblestone = new BlockMetamorphicCobblestone(metamorphicCobblestoneID, 8+16).setBlockName("metamorphicCobblestone");
+        new ItemMetadataBlock(metamorphicCobblestone).setItemName("metamorphicCobblestone");
         
-        metamorphicStoneBrick = new BlockMetamorphicStoneBrick(metamorphicStoneBrickID).setUnlocalizedName("metamorphicStoneBrick");
-        new ItemMetadataBlock(metamorphicStoneBrick);
+        metamorphicStoneBrick = new BlockMetamorphicStoneBrick(metamorphicStoneBrickID, 8+32).setBlockName("metamorphicStoneBrick");
+        new ItemMetadataBlock(metamorphicStoneBrick).setItemName("metamorphicStoneBrick");
         
-        sedimentaryStone = new BlockSedimentaryStone(sedimentaryStoneID).setUnlocalizedName("sedimentaryStone");
-        new ItemMetadataBlock(sedimentaryStone);
+        sedimentaryStone = new BlockSedimentaryStone(sedimentaryStoneID, 48).setBlockName("sedimentaryStone");
+        new ItemMetadataBlock(sedimentaryStone).setItemName("sedimentaryStone");
         
-        anthracite = new BlockAnthracite(anthraciteCoalID).setUnlocalizedName("anthraciteCoal");
+        anthracite = new BlockAnthracite(anthraciteCoalID, 56).setBlockName("anthraciteCoal");
         GameRegistry.registerBlock(anthracite, "anthraciteBlock");
         
-        igneousBrickSlabHalf = (BlockHalfSlab) new BlockIgneousStoneSlab(igneousBrickSlabHalfId, false).setUnlocalizedName("igneousBrickSlab");
-        igneousBrickSlabFull = (BlockHalfSlab) new BlockIgneousStoneSlab(igneousBrickSlabFullId, true).setUnlocalizedName("igneousBrickSlabFull");
+        igneousBrickSlabHalf = (BlockHalfSlab) new BlockIgneousStoneSlab(igneousBrickSlabHalfId, false, 32).setBlockName("igneousBrickSlab");
+        igneousBrickSlabFull = (BlockHalfSlab) new BlockIgneousStoneSlab(igneousBrickSlabFullId, true, 32).setBlockName("igneousBrickSlabFull");
         
         ItemIgneousStoneSlab.setSlabs(igneousBrickSlabHalf, igneousBrickSlabFull);
         
-        Item.itemsList[igneousBrickSlabFullId] = new ItemIgneousStoneSlab(igneousBrickSlabFullId - 256, igneousBrickSlabFull).setUnlocalizedName("igneousBrickSlabFull");
-        Item.itemsList[igneousBrickSlabHalfId] = new ItemIgneousStoneSlab(igneousBrickSlabHalfId - 256, igneousBrickSlabHalf).setUnlocalizedName("igneousBrickSlab");
+        Item.itemsList[igneousBrickSlabFullId] = new ItemIgneousStoneSlab(igneousBrickSlabFullId - 256, igneousBrickSlabFull).setItemName("igneousBrickSlabFull");
+        Item.itemsList[igneousBrickSlabHalfId] = new ItemIgneousStoneSlab(igneousBrickSlabHalfId - 256, igneousBrickSlabHalf).setItemName("igneousBrickSlab");
         
-        metamorphicBrickSlabHalf = (BlockHalfSlab) new BlockMetamorphicStoneSlab(metamorphicBrickSlabHalfID, false).setUnlocalizedName("metamorphicBrickSlab");
-        metamorphicBrickSlabFull = (BlockHalfSlab) new BlockMetamorphicStoneSlab(metamorphicBrickSlabFullID, true).setUnlocalizedName("metamorphicBrickSlabFull");
+        metamorphicBrickSlabHalf = (BlockHalfSlab) new BlockMetamorphicStoneSlab(metamorphicBrickSlabHalfID, false, 8+32).setBlockName("metamorphicBrickSlab");
+        metamorphicBrickSlabFull = (BlockHalfSlab) new BlockMetamorphicStoneSlab(metamorphicBrickSlabFullID, true, 8+32).setBlockName("metamorphicBrickSlabFull");
         
         ItemMetamorphicStoneSlab.setSlabs(metamorphicBrickSlabHalf, metamorphicBrickSlabFull);
         
-        Item.itemsList[metamorphicBrickSlabHalfID] = new ItemMetamorphicStoneSlab(metamorphicBrickSlabHalfID - 256, metamorphicBrickSlabHalf).setUnlocalizedName("metamorphicBrickSlab");
-        Item.itemsList[metamorphicBrickSlabFullID] = new ItemMetamorphicStoneSlab(metamorphicBrickSlabFullID - 256, metamorphicBrickSlabFull).setUnlocalizedName("metamorphicBrickSlabFull");
+        Item.itemsList[metamorphicBrickSlabHalfID] = new ItemMetamorphicStoneSlab(metamorphicBrickSlabHalfID - 256, metamorphicBrickSlabHalf).setItemName("metamorphicBrickSlab");
+        Item.itemsList[metamorphicBrickSlabFullID] = new ItemMetamorphicStoneSlab(metamorphicBrickSlabFullID - 256, metamorphicBrickSlabFull).setItemName("metamorphicBrickSlabFull");
         
         //items
 
-        ligniteCoal = new ItemLigniteCoal(ligniteCoalID).setUnlocalizedName("ligniteCoal");
-        fossilPiece = new ItemFossilPiece(fossilPieceID).setUnlocalizedName("fossilPiece");
+        ligniteCoal = new ItemLigniteCoal(ligniteCoalID).setItemName("ligniteCoal");
+        fossilPiece = new ItemFossilPiece(fossilPieceID).setItemName("fossilPiece");
         
         setUpBlockNames();
         addOreDicts();
@@ -373,10 +372,10 @@ public class UndergroundBiomes
     {
         if (!addOreDictRecipes)
         {
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.furnaceIdle, 1), "XXX", "X X", "XXX", 'X', "stoneCobble"));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.stoneOvenIdle, 1), "XXX", "X X", "XXX", 'X', "stoneCobble"));
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.lever, 1), "I", "X", 'X', "stoneCobble", 'I', Item.stick));
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.pistonBase, 1), "WWW", "CIC", "CRC", 'W', Block.planks, 'C', "stoneCobble", 'I', Item.ingotIron, 'R', Item.redstone));
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.stairsCobblestone, 4), "X  ", "XX ", "XXX", 'X', "stoneCobble"));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.stairCompactCobblestone, 4), "X  ", "XX ", "XXX", 'X', "stoneCobble"));
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.cobblestoneWall, 1), "XXX", "XXX", 'X', "stoneCobble"));
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Item.axeStone, 1), "XX ", "XW ", " W ", 'X', "stoneCobble", 'W', Item.stick));
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Item.pickaxeStone, 1), "XXX", " W ", " W ", 'X', "stoneCobble", 'W', Item.stick));
@@ -389,7 +388,7 @@ public class UndergroundBiomes
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.stoneSingleSlab, 6, 3), "XXX", 'X', "stoneCobble"));
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.stoneSingleSlab, 6, 0), "XXX", 'X', "stoneSmooth"));
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Item.redstoneRepeater, 1), "TRT", "XXX", 'X', "stoneSmooth", 'T', Block.torchRedstoneActive, 'R', Item.redstone));
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.stairsStoneBrick, 4), "X  ", "XX ", "XXX", 'X', "stoneBricks"));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.stairsStoneBrickSmooth, 4), "X  ", "XX ", "XXX", 'X', "stoneBricks"));
             GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Block.stoneButton, 1), "stoneSmooth"));
         }
         
@@ -437,7 +436,7 @@ public class UndergroundBiomes
         // Ignore recipes for the following items
         ItemStack[] exclusions = new ItemStack[]
         {
-            new ItemStack(Block.stairsStoneBrick),
+            new ItemStack(Block.stairsStoneBrickSmooth),
             new ItemStack(Block.stoneBrick),
             new ItemStack(Block.stoneSingleSlab, 1, 5),
         };

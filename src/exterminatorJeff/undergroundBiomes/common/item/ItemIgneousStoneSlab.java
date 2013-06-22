@@ -1,30 +1,27 @@
 package exterminatorJeff.undergroundBiomes.common.item;
 
-import com.google.common.base.Optional;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHalfSlab;
 import net.minecraft.item.ItemSlab;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
 
 public class ItemIgneousStoneSlab extends ItemSlab{
     
-    private static Optional<BlockHalfSlab>    singleSlab    = Optional.absent();
-    private static Optional<BlockHalfSlab>    doubleSlab    = Optional.absent();
+    private static BlockHalfSlab singleSlab;
+    private static BlockHalfSlab doubleSlab;
     
-    public static void setSlabs(BlockHalfSlab singleSlab,
-            BlockHalfSlab doubleSlab)
+    public static void setSlabs(BlockHalfSlab singleS, BlockHalfSlab doubleS)
     {
-        ItemIgneousStoneSlab.singleSlab = Optional.of(singleSlab);
-        ItemIgneousStoneSlab.doubleSlab = Optional.of(doubleSlab);
+        singleSlab = singleS;
+        doubleSlab = doubleS;
     }
 
-    public ItemIgneousStoneSlab(int id, Block block) {
-        super(id, singleSlab.get(), doubleSlab.get(), (id == doubleSlab.get().blockID));
+    public ItemIgneousStoneSlab(int id, Block block)
+    {
+        super(id, singleSlab, doubleSlab, (id == doubleSlab.blockID));
         this.setMaxDamage(0);
         this.setHasSubtypes(true);
     }
@@ -34,10 +31,9 @@ public class ItemIgneousStoneSlab extends ItemSlab{
         return par1;
     }
     
-    @SideOnly(Side.CLIENT)
-    public Icon getIconFromDamage(int par1)
+    public int getIconFromDamage(int meta)
     {
-        return UndergroundBiomes.igneousBrickSlabHalf.getIcon(0, par1);
+        return UndergroundBiomes.igneousBrickSlabHalf.getBlockTextureFromSideAndMetadata(0, meta);
     }
 
     public String getItemName(int index){
@@ -62,12 +58,16 @@ public class ItemIgneousStoneSlab extends ItemSlab{
             default: name="default";
             
         }
-        return getUnlocalizedName() + "." + name;
+        return getItemName() + "." + name;
     }
     
-    @Override
-    public String getUnlocalizedName(ItemStack itemstack) {
+    public String getItemNameIS(ItemStack itemstack)
+    {
         return getItemName(itemstack.getItemDamage());
     }
 
+    public String getTextureFile()
+    {
+        return UndergroundBiomes.textures;
+    }
 }

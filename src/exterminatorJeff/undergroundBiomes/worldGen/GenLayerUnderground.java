@@ -32,15 +32,15 @@ public abstract class GenLayerUnderground extends GenLayer
             var4 = 64;
         }
 
-        GenLayer var5 = GenLayerZoom.magnify(1000L, var11, 0);
-        var5 = GenLayerZoom.magnify(1000L, var5, var4 + 2);
+        GenLayer var5 = GenLayerZoom.func_75915_a(1000L, var11, 0);
+        var5 = GenLayerZoom.func_75915_a(1000L, var5, var4 + 2);
         
         GenLayerUndergroundBiomes var17 = new GenLayerUndergroundBiomes(200L, var5, par2WorldType);
         
         
         GenLayerSmooth var15 = new GenLayerSmooth(1000L, var17);
-        GenLayer var6 = GenLayerZoom.magnify(1000L, var15, biomeSize);
-        var6 = GenLayerZoom.magnify(1000L, var6, 2);
+        GenLayer var6 = GenLayerZoom.func_75915_a(1000L, var15, biomeSize);
+        var6 = GenLayerZoom.func_75915_a(1000L, var6, 2);
         
         
 

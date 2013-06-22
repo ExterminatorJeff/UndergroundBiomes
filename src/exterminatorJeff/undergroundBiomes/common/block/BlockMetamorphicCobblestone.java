@@ -6,9 +6,9 @@ import net.minecraft.item.ItemStack;
 
 public class BlockMetamorphicCobblestone extends BlockMetamorphicStone
 {
-    public BlockMetamorphicCobblestone(int id)
+    public BlockMetamorphicCobblestone(int id, int texture)
     {
-        super(id);
+        super(id, texture);
     }
     
     public float getBlockHardness(int meta)

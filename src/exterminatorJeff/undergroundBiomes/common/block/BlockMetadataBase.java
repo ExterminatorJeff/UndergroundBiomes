@@ -4,15 +4,10 @@ import java.util.Random;
 import java.util.List;
 import java.util.ArrayList;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.util.Icon;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.world.World;
 import net.minecraft.entity.Entity;
@@ -21,31 +16,24 @@ import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
 
 public abstract class BlockMetadataBase extends Block
 {
-    protected Icon[] textures = {null, null, null, null, null, null, null, null};
-
-    public BlockMetadataBase(int id)
+    public BlockMetadataBase(int id, int texture)
     {
-        super(id, Material.rock);
+        super(id, texture, Material.rock);
         this.setHardness(1.5f);
         this.setResistance(10.0f);
         this.setCreativeTab(UndergroundBiomes.tabModBlocks);
     }
     
-    @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister iconRegister)
+    public int getBlockTextureFromSideAndMetadata(int side, int metadata)
     {
-        for(int i = 0; i < 8; i++)
-        {
-            textures[i] = iconRegister.registerIcon(UndergroundBiomes.texturePath + getBlockName(i));
-        }
+        return blockIndexInTexture + (metadata & 7);
     }
     
-    @SideOnly(Side.CLIENT)
-    public Icon getIcon(int side, int metadata)
+    public String getTextureFile()
     {
-        return textures[metadata & 7];
+        return UndergroundBiomes.textures;
     }
-    
+
     public void getSubBlocks(int id, CreativeTabs tabs, List list)
     {
         for (int i = 0; i < 8; i++)
