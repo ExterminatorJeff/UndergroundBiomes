@@ -1,7 +1,5 @@
 package exterminatorJeff.undergroundBiomes.common.item;
 
-import com.google.common.base.Optional;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHalfSlab;
 import net.minecraft.item.ItemSlab;
@@ -11,20 +9,20 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
 
-public class ItemIgneousStoneSlab extends ItemSlab{
+public class ItemIgneousStoneSlab extends ItemSlab
+{
+    private static BlockHalfSlab singleSlab;
+    private static BlockHalfSlab doubleSlab;
     
-    private static Optional<BlockHalfSlab>    singleSlab    = Optional.absent();
-    private static Optional<BlockHalfSlab>    doubleSlab    = Optional.absent();
-    
-    public static void setSlabs(BlockHalfSlab singleSlab,
-            BlockHalfSlab doubleSlab)
+    public static void setSlabs(BlockHalfSlab singleS, BlockHalfSlab doubleS)
     {
-        ItemIgneousStoneSlab.singleSlab = Optional.of(singleSlab);
-        ItemIgneousStoneSlab.doubleSlab = Optional.of(doubleSlab);
+        ItemIgneousStoneSlab.singleSlab = singleS;
+        ItemIgneousStoneSlab.doubleSlab = doubleS;
     }
 
-    public ItemIgneousStoneSlab(int id, Block block) {
-        super(id, singleSlab.get(), doubleSlab.get(), (id == doubleSlab.get().blockID));
+    public ItemIgneousStoneSlab(int id, Block block)
+    {
+        super(id, singleSlab, doubleSlab, (id == doubleSlab.blockID));
         this.setMaxDamage(0);
         this.setHasSubtypes(true);
     }
@@ -66,7 +64,8 @@ public class ItemIgneousStoneSlab extends ItemSlab{
     }
     
     @Override
-    public String getUnlocalizedName(ItemStack itemstack) {
+    public String getUnlocalizedName(ItemStack itemstack)
+    {
         return getItemName(itemstack.getItemDamage());
     }
 
