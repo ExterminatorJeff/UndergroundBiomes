@@ -42,7 +42,7 @@ public class BlockSedimentaryStone extends BlockMetadataBase
     public ItemStack itemDropped(int metadata, Random random, int fortune, int y)
     {
         // Rare drops
-        if ((metadata < 8) && (random.nextInt(50) <= fortune))
+        if ((metadata < 8) && (random.nextInt(64) <= fortune))
         {
             // Shale drops clay
             if (metadata == 2)

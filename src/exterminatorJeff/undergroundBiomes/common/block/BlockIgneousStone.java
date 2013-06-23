@@ -33,7 +33,7 @@ public class BlockIgneousStone extends BlockMetadataBase
     public ItemStack itemDropped(int metadata, Random random, int fortune, int y)
     {
         // Very rare drops
-        if ((metadata < 8) && (random.nextInt(1000) <= fortune))
+        if ((metadata < 8) && (random.nextInt(1024) <= fortune))
         {
             int num = UndergroundBiomes.nuggets.size();
             if (num > 0)
