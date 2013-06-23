@@ -97,5 +97,5 @@ item.fossilPiece.skull.name=Ископаемый череп
 
 # Creative Tabs
 
-itemGroup.undergroundBiomesBlocks.name=Блоки Underground Biomes
-itemGroup.undergroundBiomesItems.name=Предметы Underground Biomes
+itemGroup.undergroundBiomesBlocks=Блоки Underground Biomes
+itemGroup.undergroundBiomesItems=Предметы Underground Biomes

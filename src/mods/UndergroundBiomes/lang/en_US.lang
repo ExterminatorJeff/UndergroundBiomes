@@ -97,5 +97,5 @@ item.fossilPiece.skull.name=Skull fossil
 
 # Creative Tabs
 
-itemGroup.undergroundBiomesBlocks.name=Underground Biomes Blocks
-itemGroup.undergroundBiomesItems.name=Underground Biomes Items
+itemGroup.undergroundBiomesBlocks=Underground Biomes Blocks
+itemGroup.undergroundBiomesItems=Underground Biomes Items

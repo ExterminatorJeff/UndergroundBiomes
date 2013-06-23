@@ -97,5 +97,5 @@ item.fossilPiece.skull.name=Koponya
 
 # Creative Tabs
 
-itemGroup.undergroundBiomesBlocks.name=Underground Biomes Tömbök
-itemGroup.undergroundBiomesItems.name=Underground Biomes Tárgyak
+itemGroup.undergroundBiomesBlocks=Underground Biomes Tömbök
+itemGroup.undergroundBiomesItems=Underground Biomes Tárgyak

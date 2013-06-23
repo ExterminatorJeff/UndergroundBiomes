@@ -97,5 +97,5 @@ item.fossilPiece.skull.name=Crâne
 
 # Creative Tabs
 
-itemGroup.undergroundBiomesBlocks.name=Blocs de Underground Biomes
-itemGroup.undergroundBiomesItems.name=Objets de Underground Biomes
+itemGroup.undergroundBiomesBlocks=Blocs de Underground Biomes
+itemGroup.undergroundBiomesItems=Objets de Underground Biomes

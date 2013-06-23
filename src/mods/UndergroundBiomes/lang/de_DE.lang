@@ -97,5 +97,5 @@ item.fossilPiece.skull.name=Schädel
 
 # Creative Tabs
 
-itemGroup.undergroundBiomesBlocks.name=Underground Biomes Blöcken
-itemGroup.undergroundBiomesItems.name=Underground Biomes Items
+itemGroup.undergroundBiomesBlocks=Underground Biomes Blöcken
+itemGroup.undergroundBiomesItems=Underground Biomes Items

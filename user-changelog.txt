@@ -1,9 +1,10 @@
 0.4.2
 
 - Localization support
-- Russian, Hungarian, French localizations
+- Russian, Hungarian, French, German localizations
 - Repalced flint with dolomite
 - Fixed and rebalanced rocks blast resistance
+- Refactored code
 
 0.4.1 (22 Jun 2013)
 
