@@ -48,7 +48,7 @@ public class BlockIgneousStone extends BlockMetadataBase
         return new ItemStack(UndergroundBiomes.igneousCobblestone.blockID, 1, metadata & 7);
     }
 
-    public String getBlockName(int index)
+    public String getBlockTypeName(int index)
     {
         return blockName[index & 7];
     }

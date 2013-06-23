@@ -112,5 +112,10 @@ public abstract class BlockMetadataBase extends Block
         return ret;
     }
 
-    public abstract String getBlockName(int index);
+    public abstract String getBlockTypeName(int index);
+
+    public String getBlockName(int index)
+    {
+        return getBlockTypeName(index);
+    }
 }

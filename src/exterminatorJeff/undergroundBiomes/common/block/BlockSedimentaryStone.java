@@ -64,7 +64,7 @@ public class BlockSedimentaryStone extends BlockMetadataBase
         return new ItemStack(this.blockID, 1, metadata & 7);
     }
 
-    public String getBlockName(int index)
+    public String getBlockTypeName(int index)
     {
         return blockName[index & 7];
     }

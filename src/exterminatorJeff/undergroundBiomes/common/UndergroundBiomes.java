@@ -12,6 +12,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockHalfSlab;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemSlab;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.CraftingManager;
@@ -56,8 +57,8 @@ public class UndergroundBiomes
     public static String textures = "/exterminatorJeff/undergroundBiomes/textures.png";
     public static String texturePath = "UndergroundBiomes:";
     
-    public static CreativeTabs tabModBlocks;
-    public static CreativeTabs tabModItems;
+    public static CreativeTabModBlocks tabModBlocks;
+    public static CreativeTabModBlocks tabModItems;
     
     public static long worldSeed;
     private boolean gotWorldSeed;
@@ -176,8 +177,8 @@ public class UndergroundBiomes
     {
         proxy.registerRenderThings();
         
-        tabModBlocks = new CreativeTabModBlocks("undergroundBiomesBlocks", igneousStoneBrick.blockID);
-        tabModItems = new CreativeTabModBlocks("undergroundBiomesItems", ligniteCoal.itemID);
+        tabModBlocks = new CreativeTabModBlocks("undergroundBiomesBlocks");
+        tabModItems = new CreativeTabModBlocks("undergroundBiomesItems");
         
         igneousStone = new BlockIgneousStone(igneousStoneID).setUnlocalizedName("igneousStone");
         new ItemMetadataBlock(igneousStone);
@@ -203,27 +204,26 @@ public class UndergroundBiomes
         anthracite = new BlockAnthracite(anthraciteCoalID).setUnlocalizedName("anthraciteCoal");
         GameRegistry.registerBlock(anthracite, "anthraciteBlock");
         
-        igneousBrickSlabHalf = (BlockHalfSlab) new BlockIgneousStoneSlab(igneousBrickSlabHalfId, false).setUnlocalizedName("igneousBrickSlab");
-        igneousBrickSlabFull = (BlockHalfSlab) new BlockIgneousStoneSlab(igneousBrickSlabFullId, true).setUnlocalizedName("igneousBrickSlabFull");
+        igneousBrickSlabHalf = (BlockHalfSlab)new BlockStoneSlab(igneousBrickSlabHalfId, false, igneousStoneBrick).setUnlocalizedName("igneousBrickSlab");
+        igneousBrickSlabFull = (BlockHalfSlab)new BlockStoneSlab(igneousBrickSlabFullId, true, igneousStoneBrick).setUnlocalizedName("igneousBrickSlab");
         
-        ItemIgneousStoneSlab.setSlabs(igneousBrickSlabHalf, igneousBrickSlabFull);
+        new ItemSlab(igneousBrickSlabHalfId - 256, igneousBrickSlabHalf, igneousBrickSlabFull, false);
+        new ItemSlab(igneousBrickSlabFullId - 256, igneousBrickSlabHalf, igneousBrickSlabFull, true);
         
-        Item.itemsList[igneousBrickSlabFullId] = new ItemIgneousStoneSlab(igneousBrickSlabFullId - 256, igneousBrickSlabFull).setUnlocalizedName("igneousBrickSlabFull");
-        Item.itemsList[igneousBrickSlabHalfId] = new ItemIgneousStoneSlab(igneousBrickSlabHalfId - 256, igneousBrickSlabHalf).setUnlocalizedName("igneousBrickSlab");
+        metamorphicBrickSlabHalf = (BlockHalfSlab)new BlockStoneSlab(metamorphicBrickSlabHalfID, false, metamorphicStoneBrick).setUnlocalizedName("metamorphicBrickSlab");
+        metamorphicBrickSlabFull = (BlockHalfSlab)new BlockStoneSlab(metamorphicBrickSlabFullID, true, metamorphicStoneBrick).setUnlocalizedName("metamorphicBrickSlab");
         
-        metamorphicBrickSlabHalf = (BlockHalfSlab) new BlockMetamorphicStoneSlab(metamorphicBrickSlabHalfID, false).setUnlocalizedName("metamorphicBrickSlab");
-        metamorphicBrickSlabFull = (BlockHalfSlab) new BlockMetamorphicStoneSlab(metamorphicBrickSlabFullID, true).setUnlocalizedName("metamorphicBrickSlabFull");
-        
-        ItemMetamorphicStoneSlab.setSlabs(metamorphicBrickSlabHalf, metamorphicBrickSlabFull);
-        
-        Item.itemsList[metamorphicBrickSlabHalfID] = new ItemMetamorphicStoneSlab(metamorphicBrickSlabHalfID - 256, metamorphicBrickSlabHalf).setUnlocalizedName("metamorphicBrickSlab");
-        Item.itemsList[metamorphicBrickSlabFullID] = new ItemMetamorphicStoneSlab(metamorphicBrickSlabFullID - 256, metamorphicBrickSlabFull).setUnlocalizedName("metamorphicBrickSlabFull");
+        new ItemSlab(metamorphicBrickSlabHalfID - 256, metamorphicBrickSlabHalf, metamorphicBrickSlabFull, false);
+        new ItemSlab(metamorphicBrickSlabFullID - 256, metamorphicBrickSlabHalf, metamorphicBrickSlabFull, true);
         
         //items
 
         ligniteCoal = new ItemLigniteCoal(ligniteCoalID).setUnlocalizedName("ligniteCoal");
         fossilPiece = new ItemFossilPiece(fossilPieceID).setUnlocalizedName("fossilPiece");
         
+        tabModBlocks.iconID = igneousStoneBrick.blockID;
+        tabModItems.iconID = ligniteCoal.itemID;
+
         setUpBlockNames();
         addOreDicts();
         addRecipes();

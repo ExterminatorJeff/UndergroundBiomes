@@ -34,7 +34,7 @@ public class ItemMetadataBlock extends ItemBlock
 
     public String getUnlocalizedName(ItemStack stack)
     {
-        String name = ((BlockMetadataBase)theBlock).getBlockName(stack.getItemDamage());
+        String name = ((BlockMetadataBase)theBlock).getBlockTypeName(stack.getItemDamage());
         return super.getUnlocalizedName() + "." + name;
     }
 }
