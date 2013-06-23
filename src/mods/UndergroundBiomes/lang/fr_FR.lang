@@ -94,3 +94,8 @@ item.fossilPiece.bone.name=Os fossilisé
 item.fossilPiece.boneshard.name=Fragments osseux
 item.fossilPiece.rib.name=Côte fossilisé
 item.fossilPiece.skull.name=Crâne
+
+# Creative Tabs
+
+itemGroup.undergroundBiomesBlocks.name=Blocs de Underground Biomes
+itemGroup.undergroundBiomesItems.name=Objets de Underground Biomes

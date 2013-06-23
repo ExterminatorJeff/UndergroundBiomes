@@ -40,7 +40,7 @@ import exterminatorJeff.undergroundBiomes.common.block.*;
 import exterminatorJeff.undergroundBiomes.common.item.*;
 import exterminatorJeff.undergroundBiomes.common.command.*;
 
-@Mod(modid = "UndergroundBiomes", name = "Underground Biomes", version = "0.4.1")
+@Mod(modid = "UndergroundBiomes", name = "Underground Biomes", version = "0.4.2")
 @NetworkMod(clientSideRequired = true, serverSideRequired = true)
 
 public class UndergroundBiomes
@@ -176,8 +176,8 @@ public class UndergroundBiomes
     {
         proxy.registerRenderThings();
         
-        tabModBlocks = new CreativeTabModBlocks(CreativeTabs.creativeTabArray.length, "Underground Biomes Blocks");
-        tabModItems = new CreativeTabModBlocks(CreativeTabs.creativeTabArray.length, "Underground Biomes Items");
+        tabModBlocks = new CreativeTabModBlocks("undergroundBiomesBlocks", igneousStoneBrick.blockID);
+        tabModItems = new CreativeTabModBlocks("undergroundBiomesItems", ligniteCoal.itemID);
         
         igneousStone = new BlockIgneousStone(igneousStoneID).setUnlocalizedName("igneousStone");
         new ItemMetadataBlock(igneousStone);
@@ -229,9 +229,6 @@ public class UndergroundBiomes
         addRecipes();
         
         MinecraftForge.EVENT_BUS.register(this);    
-        
-        ((CreativeTabModBlocks) tabModBlocks).setIcon(igneousStoneBrick.blockID);
-        ((CreativeTabModBlocks) tabModItems).setIcon(ligniteCoal.itemID);
     }
     
     @PostInit

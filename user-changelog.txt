@@ -1,3 +1,10 @@
+0.4.2
+
+- Localization support
+- Russian, Hungarian, French localizations
+- Repalced flint with dolomite
+- Fixed and rebalanced rocks blast resistance
+
 0.4.1 (22 Jun 2013)
 
 - Included Minecraft 1.4.7 compatible version

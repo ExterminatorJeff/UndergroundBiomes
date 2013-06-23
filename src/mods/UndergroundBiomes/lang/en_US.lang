@@ -94,3 +94,8 @@ item.fossilPiece.bone.name=Bone fossil
 item.fossilPiece.boneshard.name=Bone shard fossil
 item.fossilPiece.rib.name=Rib fossil
 item.fossilPiece.skull.name=Skull fossil
+
+# Creative Tabs
+
+itemGroup.undergroundBiomesBlocks.name=Underground Biomes Blocks
+itemGroup.undergroundBiomesItems.name=Underground Biomes Items

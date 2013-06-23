@@ -8,15 +8,11 @@ public class CreativeTabModBlocks extends CreativeTabs
 {
     public int iconID;
     String label;
-    public CreativeTabModBlocks(int par1, String par2Str)
+    public CreativeTabModBlocks(String s, int iconID)
     {
-        super(par1, par2Str);
-        label = par2Str;
-    }
-    
-    public void setIcon(int iconID)
-    {
+        super(s);
         this.iconID = iconID;
+        label = s;
     }
     
     @SideOnly(Side.CLIENT)
@@ -25,7 +21,7 @@ public class CreativeTabModBlocks extends CreativeTabs
         return iconID;                       
     }
 
-    public String getTranslatedTabLabel()
+    public String getTabLabel()
     {
         return label;
     }

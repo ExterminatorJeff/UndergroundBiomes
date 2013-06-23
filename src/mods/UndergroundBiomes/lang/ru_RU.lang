@@ -94,3 +94,8 @@ item.fossilPiece.bone.name=Ископаемая кость
 item.fossilPiece.boneshard.name=Ископаемый осколок кости
 item.fossilPiece.rib.name=Ископаемое ребро
 item.fossilPiece.skull.name=Ископаемый череп
+
+# Creative Tabs
+
+itemGroup.undergroundBiomesBlocks.name=Блоки Underground Biomes
+itemGroup.undergroundBiomesItems.name=Предметы Underground Biomes

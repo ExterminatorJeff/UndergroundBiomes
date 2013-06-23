@@ -94,3 +94,8 @@ item.fossilPiece.bone.name=Csontdarab
 item.fossilPiece.boneshard.name=Csonttöredék
 item.fossilPiece.rib.name=Borda
 item.fossilPiece.skull.name=Koponya
+
+# Creative Tabs
+
+itemGroup.undergroundBiomesBlocks.name=Underground Biomes Tömbök
+itemGroup.undergroundBiomesItems.name=Underground Biomes Tárgyak
