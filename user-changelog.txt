@@ -3,8 +3,9 @@
 - Localization support
 - Russian, Hungarian, French, German localizations
 - Repalced flint with dolomite
-- Fixed and rebalanced rocks blast resistance
+- Fixed and rebalanced rocks blast resistance, made igneous stone harder to mine
 - Refactored code
+- Incrased frequency of rare drops (1 in 50 sedimentary, 1 in 1000 other)
 
 0.4.1 (22 Jun 2013)
 

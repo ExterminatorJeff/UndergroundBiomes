@@ -33,7 +33,7 @@ public class BlockMetamorphicStone extends BlockMetadataBase
     public ItemStack itemDropped(int metadata, Random random, int fortune, int y)
     {
         // Very rare drops
-        if ((metadata < 8) && (random.nextInt(2000) <= fortune))
+        if ((metadata < 8) && (random.nextInt(1000) <= fortune))
         {
             if ((y < 31) && (random.nextInt(3) == 0))
             {
