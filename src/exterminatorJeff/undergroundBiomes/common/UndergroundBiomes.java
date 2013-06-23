@@ -105,6 +105,7 @@ public class UndergroundBiomes
     private String includeDimensions;
     private String excludeDimensions;
 
+    private int vanillaStoneCrafting;
     
     public static int biomeSize = 45;
 
@@ -145,6 +146,7 @@ public class UndergroundBiomes
         vanillaStoneBiomes = config.get(Configuration.CATEGORY_GENERAL, "vanillaStoneBiomes", false, "Will cause sharp biome transitions if changed while playing the same world").getBoolean(false);
         excludeDimensions = config.get(Configuration.CATEGORY_GENERAL, "excludeDimensionIDs", "-1,1", "Comma-separated list of dimension IDs, used only if include list is *").getString();
         includeDimensions = config.get(Configuration.CATEGORY_GENERAL, "includeDimensionIDs", "*", "Comma-separated list of dimension IDs, put * to use exclude list").getString();
+        vanillaStoneCrafting = config.get(Configuration.CATEGORY_GENERAL, "vanillaStoneCrafting", 3, "0 = none; 1 = one rock; 2 = with redstone; 3 = 2x2 stone, lose 3; 4 = 2x2 stone").getInt();
 
         if (includeDimensions.equals("*"))
         {
@@ -312,7 +314,23 @@ public class UndergroundBiomes
         GameRegistry.addShapelessRecipe(new ItemStack(Item.dyePowder, 1, 15), new ItemStack(fossilPiece, 1, WILDCARD_VALUE));
         
         //vanilla cobblestone
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.cobblestone, 4), "XX", "XX", 'X', "stoneCobble"));
+        switch (vanillaStoneCrafting)
+        {
+            case 1:
+                GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Block.cobblestone, 1), "stoneCobble"));
+                break;
+            case 2:
+                GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Block.cobblestone, 1), Item.redstone, "stoneCobble"));
+                break;
+            case 3:
+                GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.cobblestone, 1), "XX", "XX", 'X', "stoneCobble"));
+                break;
+            case 4:
+                GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.cobblestone, 4), "XX", "XX", 'X', "stoneCobble"));
+                break;
+            default:
+                break;
+        }
         
         for (int i = 0; i < 8; i++)
         {
