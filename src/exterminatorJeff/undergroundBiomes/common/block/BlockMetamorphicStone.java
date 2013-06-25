@@ -49,6 +49,11 @@ public class BlockMetamorphicStone extends BlockMetadataBase
         return new ItemStack(UndergroundBiomes.metamorphicCobblestone.blockID, 1, metadata & 7);
     }
 
+    public boolean hasRareDrops()
+    {
+        return true;
+    }
+
     public String getBlockTypeName(int index)
     {
         return blockName[index & 7];

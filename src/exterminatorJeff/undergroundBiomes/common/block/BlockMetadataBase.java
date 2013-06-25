@@ -114,6 +114,8 @@ public abstract class BlockMetadataBase extends Block
 
     public abstract String getBlockTypeName(int index);
 
+    public abstract boolean hasRareDrops();
+
     public String getBlockName(int index)
     {
         return getBlockTypeName(index);
