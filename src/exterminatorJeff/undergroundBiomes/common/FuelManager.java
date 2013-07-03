@@ -13,7 +13,7 @@ public class FuelManager implements IFuelHandler
         }
         else if(fuel.itemID == UndergroundBiomes.anthracite.blockID)
         {
-            return 6400;
+            return 16000;
         } else {
             return 0;
         }
