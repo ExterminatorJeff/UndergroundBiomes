@@ -14,7 +14,8 @@ public class ItemLigniteCoal extends Item
     public ItemLigniteCoal(int par1)
     {
         super(par1);
-        this.setCreativeTab(UndergroundBiomes.tabModItems);
+        setUnlocalizedName("ligniteCoal");
+        setCreativeTab(UndergroundBiomes.tabModItems);
     }
     
     public String getTextureFile()
@@ -25,11 +26,11 @@ public class ItemLigniteCoal extends Item
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister iconRegister)
     {
-        texture = iconRegister.registerIcon(UndergroundBiomes.texturePath + "lignite");
+        texture = iconRegister.registerIcon("undergroundbiomes:lignite");
     }
     
     @SideOnly(Side.CLIENT)
-    public Icon getIconFromDamage(int damage)
+    public Icon getIconFromDamage(int meta)
     {
         return texture;
     }

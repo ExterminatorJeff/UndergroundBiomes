@@ -82,7 +82,7 @@ public class BlockStoneSlab extends BlockStep
         textures = new Icon[8];
         for(int i = 0; i < 8; i++)
         {
-            textures[i] = iconRegister.registerIcon(UndergroundBiomes.texturePath + referenceBlock.getBlockName(i));
+            textures[i] = iconRegister.registerIcon("undergroundbiomes:" + referenceBlock.getBlockName(i));
         }
     }
     

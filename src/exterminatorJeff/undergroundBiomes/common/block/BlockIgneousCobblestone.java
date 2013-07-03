@@ -9,6 +9,8 @@ public class BlockIgneousCobblestone extends BlockIgneousStone
     public BlockIgneousCobblestone(int id)
     {
         super(id);
+        setUnlocalizedName("igneousCobblestone");
+        func_111022_d("undergroundbiomes:igneousCobblestone");
     }
     
     public float getBlockHardness(int meta)

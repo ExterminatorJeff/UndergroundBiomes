@@ -18,6 +18,8 @@ public class BlockMetamorphicStone extends BlockMetadataBase
     public BlockMetamorphicStone(int id)
     {
         super(id);
+        setUnlocalizedName("metamorphicStone");
+        func_111022_d("undergroundbiomes:metamorphicStone");
     }
     
     public float getBlockHardness(int meta)

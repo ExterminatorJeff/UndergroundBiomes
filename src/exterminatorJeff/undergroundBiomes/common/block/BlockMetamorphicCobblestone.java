@@ -9,6 +9,8 @@ public class BlockMetamorphicCobblestone extends BlockMetamorphicStone
     public BlockMetamorphicCobblestone(int id)
     {
         super(id);
+        setUnlocalizedName("metamorphicCobblestone");
+        func_111022_d("undergroundbiomes:metamorphicCobblestone");
     }
     
     public float getBlockHardness(int meta)

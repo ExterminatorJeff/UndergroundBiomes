@@ -9,6 +9,8 @@ public class BlockIgneousStoneBrick extends BlockIgneousStone
     public BlockIgneousStoneBrick(int id)
     {
         super(id);
+        setUnlocalizedName("igneousStoneBrick");
+        func_111022_d("undergroundbiomes:igneousStoneBrick");
     }
     
     public ItemStack itemDropped(int metadata, Random random, int fortune, int y)

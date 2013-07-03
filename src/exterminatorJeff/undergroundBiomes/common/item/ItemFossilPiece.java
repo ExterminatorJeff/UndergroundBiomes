@@ -21,9 +21,10 @@ public class ItemFossilPiece extends Item
     public ItemFossilPiece(int id)
     {
         super(id);
-        this.setMaxDamage(0);
-        this.setHasSubtypes(true);
-        this.setCreativeTab(UndergroundBiomes.tabModItems);
+        setMaxDamage(0);
+        setHasSubtypes(true);
+        setUnlocalizedName("fossilPiece");
+        setCreativeTab(UndergroundBiomes.tabModItems);
     }
     
     @SideOnly(Side.CLIENT)
@@ -32,15 +33,15 @@ public class ItemFossilPiece extends Item
         textures = new Icon[TYPES];
         for (int i = 0; i < TYPES; i++)
         {
-            textures[i] = iconRegister.registerIcon(UndergroundBiomes.texturePath + "fossilPiece_" + i);
+            textures[i] = iconRegister.registerIcon("undergroundbiomes:fossilPiece_" + i);
         }
     }
     
     @SideOnly(Side.CLIENT)
-    public Icon getIconFromDamage(int damage)
+    public Icon getIconFromDamage(int meta)
     {
-        if (damage > TYPES) damage = 0;
-        return textures[damage];
+        if (meta > TYPES) meta = 0;
+        return textures[meta];
     }
 
     @SideOnly(Side.CLIENT)

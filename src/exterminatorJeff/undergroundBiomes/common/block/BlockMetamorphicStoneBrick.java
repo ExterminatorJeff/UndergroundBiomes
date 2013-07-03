@@ -9,6 +9,8 @@ public class BlockMetamorphicStoneBrick extends BlockMetamorphicStone
     public BlockMetamorphicStoneBrick(int id)
     {
         super(id);
+        setUnlocalizedName("metamorphicStoneBrick");
+        func_111022_d("undergroundbiomes:metamorphicStoneBrick");
     }
     
     public ItemStack itemDropped(int metadata, Random random, int fortune, int y)

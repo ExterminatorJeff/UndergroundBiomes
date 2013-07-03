@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Arrays;
 import java.net.URL;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.Language;
 import net.minecraft.util.StringTranslate;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHalfSlab;
@@ -55,7 +57,6 @@ public class UndergroundBiomes
     public static WorldGenManager worldGen;
     
     public static String textures = "/exterminatorJeff/undergroundBiomes/textures.png";
-    public static String texturePath = "UndergroundBiomes:";
     
     public static CreativeTabModBlocks tabModBlocks;
     public static CreativeTabModBlocks tabModItems;
@@ -172,61 +173,63 @@ public class UndergroundBiomes
 
         nuggets = new ArrayList<ItemStack>();
         nuggets.add(new ItemStack(Item.goldNugget, 1, 0));
-    }
-    
-    @Init
-    public void load(FMLInitializationEvent event)
-    {
+
+
         proxy.registerRenderThings();
         
         tabModBlocks = new CreativeTabModBlocks("undergroundBiomesBlocks");
         tabModItems = new CreativeTabModBlocks("undergroundBiomesItems");
-        
-        igneousStone = new BlockIgneousStone(igneousStoneID).setUnlocalizedName("igneousStone");
+
+        igneousStone = new BlockIgneousStone(igneousStoneID);
         new ItemMetadataBlock(igneousStone);
         
-        igneousCobblestone = new BlockIgneousCobblestone(igneousCobblestoneID).setUnlocalizedName("igneousCobblestone");
+        igneousCobblestone = new BlockIgneousCobblestone(igneousCobblestoneID);
         new ItemMetadataBlock(igneousCobblestone);
         
-        igneousStoneBrick = new BlockIgneousStoneBrick(igneousStoneBrickID).setUnlocalizedName("igneousStoneBrick");
+        igneousStoneBrick = new BlockIgneousStoneBrick(igneousStoneBrickID);
         new ItemMetadataBlock(igneousStoneBrick);
         
-        metamorphicStone = new BlockMetamorphicStone(metamorphicStoneID).setUnlocalizedName("metamorphicStone");
+        metamorphicStone = new BlockMetamorphicStone(metamorphicStoneID);
         new ItemMetadataBlock(metamorphicStone);
         
-        metamorphicCobblestone = new BlockMetamorphicCobblestone(metamorphicCobblestoneID).setUnlocalizedName("metamorphicCobblestone");
+        metamorphicCobblestone = new BlockMetamorphicCobblestone(metamorphicCobblestoneID);
         new ItemMetadataBlock(metamorphicCobblestone);
         
-        metamorphicStoneBrick = new BlockMetamorphicStoneBrick(metamorphicStoneBrickID).setUnlocalizedName("metamorphicStoneBrick");
+        metamorphicStoneBrick = new BlockMetamorphicStoneBrick(metamorphicStoneBrickID);
         new ItemMetadataBlock(metamorphicStoneBrick);
         
-        sedimentaryStone = new BlockSedimentaryStone(sedimentaryStoneID).setUnlocalizedName("sedimentaryStone");
+        sedimentaryStone = new BlockSedimentaryStone(sedimentaryStoneID);
         new ItemMetadataBlock(sedimentaryStone);
         
-        anthracite = new BlockAnthracite(anthraciteCoalID).setUnlocalizedName("anthraciteCoal");
+        anthracite = new BlockAnthracite(anthraciteCoalID);
         GameRegistry.registerBlock(anthracite, "anthraciteBlock");
         
-        igneousBrickSlabHalf = (BlockHalfSlab)new BlockStoneSlab(igneousBrickSlabHalfId, false, igneousStoneBrick).setUnlocalizedName("igneousBrickSlab");
-        igneousBrickSlabFull = (BlockHalfSlab)new BlockStoneSlab(igneousBrickSlabFullId, true, igneousStoneBrick).setUnlocalizedName("igneousBrickSlab");
+        igneousBrickSlabHalf = (BlockHalfSlab)new BlockStoneSlab(igneousBrickSlabHalfId, false, igneousStoneBrick).setUnlocalizedName("igneousBrickSlab").func_111022_d("undergroundbiomes:igneousBrickSlab");
+        igneousBrickSlabFull = (BlockHalfSlab)new BlockStoneSlab(igneousBrickSlabFullId, true, igneousStoneBrick).setUnlocalizedName("igneousBrickSlab").func_111022_d("undergroundbiomes:igneousBrickSlab");
         
         new ItemSlab(igneousBrickSlabHalfId - 256, igneousBrickSlabHalf, igneousBrickSlabFull, false);
         new ItemSlab(igneousBrickSlabFullId - 256, igneousBrickSlabHalf, igneousBrickSlabFull, true);
         
-        metamorphicBrickSlabHalf = (BlockHalfSlab)new BlockStoneSlab(metamorphicBrickSlabHalfID, false, metamorphicStoneBrick).setUnlocalizedName("metamorphicBrickSlab");
-        metamorphicBrickSlabFull = (BlockHalfSlab)new BlockStoneSlab(metamorphicBrickSlabFullID, true, metamorphicStoneBrick).setUnlocalizedName("metamorphicBrickSlab");
+        metamorphicBrickSlabHalf = (BlockHalfSlab)new BlockStoneSlab(metamorphicBrickSlabHalfID, false, metamorphicStoneBrick).setUnlocalizedName("metamorphicBrickSlab").func_111022_d("undergroundbiomes:metamorphicBrickSlab");
+        metamorphicBrickSlabFull = (BlockHalfSlab)new BlockStoneSlab(metamorphicBrickSlabFullID, true, metamorphicStoneBrick).setUnlocalizedName("metamorphicBrickSlab").func_111022_d("undergroundbiomes:metamorphicBrickSlab");
         
         new ItemSlab(metamorphicBrickSlabHalfID - 256, metamorphicBrickSlabHalf, metamorphicBrickSlabFull, false);
         new ItemSlab(metamorphicBrickSlabFullID - 256, metamorphicBrickSlabHalf, metamorphicBrickSlabFull, true);
         
         //items
 
-        ligniteCoal = new ItemLigniteCoal(ligniteCoalID).setUnlocalizedName("ligniteCoal");
-        fossilPiece = new ItemFossilPiece(fossilPieceID).setUnlocalizedName("fossilPiece");
+        ligniteCoal = new ItemLigniteCoal(ligniteCoalID);
+        fossilPiece = new ItemFossilPiece(fossilPieceID);
         
         tabModBlocks.iconID = igneousStoneBrick.blockID;
         tabModItems.iconID = ligniteCoal.itemID;
 
         setUpBlockNames();
+    }
+    
+    @Init
+    public void load(FMLInitializationEvent event)
+    {
         addOreDicts();
         addRecipes();
         
@@ -274,10 +277,10 @@ public class UndergroundBiomes
     
     public void setUpBlockNames()
     {
-        for (Object obj : StringTranslate.getInstance().getLanguageList().keySet())
+        for (Object obj : Minecraft.getMinecraft().func_135016_M().func_135040_d())
         {
-            String lang = (String)obj;
-            URL urlResource = this.getClass().getResource("/mods/UndergroundBiomes/lang/"+lang+".lang");
+            String lang = ((Language)obj).func_135034_a();
+            URL urlResource = this.getClass().getResource("/assets/undergroundbiomes/lang/"+lang+".lang");
             if (urlResource != null)
             {
                 LanguageRegistry.instance().loadLocalization(urlResource, lang, false);

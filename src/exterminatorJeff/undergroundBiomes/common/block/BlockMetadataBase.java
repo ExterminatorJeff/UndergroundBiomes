@@ -34,7 +34,7 @@ public abstract class BlockMetadataBase extends Block
     {
         for(int i = 0; i < 8; i++)
         {
-            textures[i] = iconRegister.registerIcon(UndergroundBiomes.texturePath + getBlockName(i));
+            textures[i] = iconRegister.registerIcon("undergroundbiomes:" + getBlockName(i));
         }
     }
     

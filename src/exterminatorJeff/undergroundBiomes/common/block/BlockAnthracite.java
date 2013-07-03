@@ -13,9 +13,11 @@ public class BlockAnthracite extends Block
     public BlockAnthracite(int id)
     {
         super(id, Material.rock);
-        this.setHardness(1.5f);
-        this.setResistance(30.0f);
-        this.setCreativeTab(UndergroundBiomes.tabModBlocks);
+        setHardness(1.5f);
+        setResistance(30.0f);
+        setUnlocalizedName("anthraciteCoal");
+        func_111022_d("undergroundbiomes:anthraciteCoal");
+        setCreativeTab(UndergroundBiomes.tabModBlocks);
     }
     
     private Icon texture;
@@ -23,7 +25,7 @@ public class BlockAnthracite extends Block
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister iconRegister)
     {
-        texture = iconRegister.registerIcon(UndergroundBiomes.texturePath + "anthracite");
+        texture = iconRegister.registerIcon("undergroundbiomes:anthracite");
     }
     
     @SideOnly(Side.CLIENT)
