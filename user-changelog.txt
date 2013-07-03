@@ -1,4 +1,4 @@
-0.4.2
+0.4.2 (03 Jul 2013)
 
 - Localization support
 - Russian, Hungarian, French, German localizations
@@ -8,6 +8,8 @@
 - Incrased frequency of rare drops (1 in 64 sedimentary, 1 in 1024 other)
 - Vanilla stone conversion configuration; by default lose 3 stone
 - No more changing metadata of cobblestone and bricks, better compatibility
+- Anthracite block will be replaced by Minecraft 1.6 coal block, be sure its ID is set to 173!
+- Updated to Minecraft 1.6.1
 
 0.4.1 (22 Jun 2013)
 
