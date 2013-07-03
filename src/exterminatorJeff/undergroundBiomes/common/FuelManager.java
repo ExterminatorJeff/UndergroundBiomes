@@ -10,10 +10,6 @@ public class FuelManager implements IFuelHandler
         if(fuel.itemID == UndergroundBiomes.ligniteCoal.itemID)
         {
             return 200;
-        }
-        else if(fuel.itemID == UndergroundBiomes.anthracite.blockID)
-        {
-            return 16000;
         } else {
             return 0;
         }

@@ -73,7 +73,6 @@ public class UndergroundBiomes
     public static Block sedimentaryStone;
     public static Item ligniteCoal;
     public static Item fossilPiece;
-    public static Block anthracite;
     public static BlockHalfSlab igneousBrickSlabHalf;
     public static BlockHalfSlab igneousBrickSlabFull;
     public static BlockHalfSlab metamorphicBrickSlabHalf;
@@ -96,7 +95,6 @@ public class UndergroundBiomes
     private int sedimentaryStoneID;
     private int ligniteCoalID;
     private int fossilPieceID;
-    private int anthraciteCoalID;
     private int igneousBrickSlabHalfId;
     private int igneousBrickSlabFullId;
     private int metamorphicBrickSlabHalfID;
@@ -129,9 +127,6 @@ public class UndergroundBiomes
         
         igneousStoneBrickID = config.getBlock("Igneous Brick ID:", 2002).getInt();
         metamorphicStoneBrickID = config.getBlock("Metamorphic Brick ID:", 2003).getInt();
-        
-        anthraciteCoalID = config.getTerrainBlock(Configuration.CATEGORY_BLOCK, "Anthracite Block ID:", 173,
-            "must be 173 or will disappear when updating to Minecraft 1.6 coal block").getInt();
         
         igneousBrickSlabHalfId = config.getBlock("Igneous Stone Brick Slab ID (half):", 2005).getInt();
         igneousBrickSlabFullId = config.getBlock("Igneous Stone Brick Slab ID (full):", 2006).getInt();
@@ -201,9 +196,6 @@ public class UndergroundBiomes
         
         sedimentaryStone = new BlockSedimentaryStone(sedimentaryStoneID);
         new ItemMetadataBlock(sedimentaryStone);
-        
-        anthracite = new BlockAnthracite(anthraciteCoalID);
-        GameRegistry.registerBlock(anthracite, "anthraciteBlock");
         
         igneousBrickSlabHalf = (BlockHalfSlab)new BlockStoneSlab(igneousBrickSlabHalfId, false, igneousStoneBrick).setUnlocalizedName("igneousBrickSlab").func_111022_d("undergroundbiomes:igneousBrickSlab");
         igneousBrickSlabFull = (BlockHalfSlab)new BlockStoneSlab(igneousBrickSlabFullId, true, igneousStoneBrick).setUnlocalizedName("igneousBrickSlab").func_111022_d("undergroundbiomes:igneousBrickSlab");
@@ -313,9 +305,6 @@ public class UndergroundBiomes
             GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Block.stoneButton, 1), "stoneSmooth"));
         }
         
-        // to help deprecate antracite block
-        GameRegistry.addRecipe(new ItemStack(anthracite, 1), "XXX", "XXX", "XXX", 'X', Item.coal);
-        GameRegistry.addShapelessRecipe(new ItemStack(Item.coal, 9), anthracite);
         GameRegistry.addRecipe(new ItemStack(Item.coal, 1), "XXX", "XXX", "XXX", 'X', ligniteCoal);
         GameRegistry.addShapelessRecipe(new ItemStack(Item.dyePowder, 1, 15), new ItemStack(fossilPiece, 1, WILDCARD_VALUE));
         
