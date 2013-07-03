@@ -21,6 +21,11 @@ public class BlockMetamorphicCobblestone extends BlockMetamorphicStone
         return new ItemStack(this.blockID, 1, metadata & 7);
     }
 
+    public boolean hasRareDrops()
+    {
+        return false;
+    }
+
     public String getBlockName(int index)
     {
         return super.getBlockName(index) + "Cobble";

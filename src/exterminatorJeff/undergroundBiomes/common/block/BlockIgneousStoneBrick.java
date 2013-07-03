@@ -16,6 +16,11 @@ public class BlockIgneousStoneBrick extends BlockIgneousStone
         return new ItemStack(this.blockID, 1, metadata & 7);
     }
 
+    public boolean hasRareDrops()
+    {
+        return false;
+    }
+
     public String getBlockName(int index)
     {
         return super.getBlockName(index) + "Brick";

@@ -7,26 +7,15 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class CreativeTabModBlocks extends CreativeTabs
 {
     public int iconID;
-    String label;
-    public CreativeTabModBlocks(int par1, String par2Str)
+
+    public CreativeTabModBlocks(String s)
     {
-        super(par1, par2Str);
-        label = par2Str;
-    }
-    
-    public void setIcon(int iconID)
-    {
-        this.iconID = iconID;
+        super(s);
     }
     
     @SideOnly(Side.CLIENT)
     public int getTabIconItemIndex()
     {
         return iconID;                       
-    }
-
-    public String getTranslatedTabLabel()
-    {
-        return label;
     }
 }

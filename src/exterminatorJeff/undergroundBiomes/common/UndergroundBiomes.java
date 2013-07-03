@@ -5,11 +5,14 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Arrays;
+import java.net.URL;
 
+import net.minecraft.util.StringTranslate;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHalfSlab;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemSlab;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.CraftingManager;
@@ -37,7 +40,7 @@ import exterminatorJeff.undergroundBiomes.common.block.*;
 import exterminatorJeff.undergroundBiomes.common.item.*;
 import exterminatorJeff.undergroundBiomes.common.command.*;
 
-@Mod(modid = "UndergroundBiomes", name = "Underground Biomes", version = "0.4.1")
+@Mod(modid = "UndergroundBiomes", name = "Underground Biomes", version = "0.4.2")
 @NetworkMod(clientSideRequired = true, serverSideRequired = true)
 
 public class UndergroundBiomes
@@ -51,11 +54,12 @@ public class UndergroundBiomes
     public static WorldGenManager worldGen;
     
     public static int WILDCARD_VALUE = -1;
-    public static String textures = "/exterminatorJeff/undergroundBiomes/textures.png";
+                                     
+    public static String textures = "/mods/UndergroundBiomes/textures/textures.png";
     public static String texturePath = "UndergroundBiomes:";
     
-    public static CreativeTabs tabModBlocks;
-    public static CreativeTabs tabModItems;
+    public static CreativeTabModBlocks tabModBlocks;
+    public static CreativeTabModBlocks tabModItems;
     
     public static long worldSeed;
     private boolean gotWorldSeed;
@@ -102,6 +106,7 @@ public class UndergroundBiomes
     private String includeDimensions;
     private String excludeDimensions;
 
+    private int vanillaStoneCrafting;
     
     public static int biomeSize = 45;
 
@@ -140,8 +145,10 @@ public class UndergroundBiomes
         biomeSize = config.get(Configuration.CATEGORY_GENERAL, "biomeSize", 45, "Warning: exponential").getInt();
         addOreDictRecipes = config.get(Configuration.CATEGORY_GENERAL, "oreDictifyStone", true, "Modify all recipes to include Underground Biomes blocks").getBoolean(true);
         vanillaStoneBiomes = config.get(Configuration.CATEGORY_GENERAL, "vanillaStoneBiomes", false, "Will cause sharp biome transitions if changed while playing the same world").getBoolean(false);
+
         excludeDimensions = config.get(Configuration.CATEGORY_GENERAL, "excludeDimensionIDs", "-1,1", "Comma-separated list of dimension IDs, used only if include list is *").value;
         includeDimensions = config.get(Configuration.CATEGORY_GENERAL, "includeDimensionIDs", "*", "Comma-separated list of dimension IDs, put * to use exclude list").value;
+        vanillaStoneCrafting = config.get(Configuration.CATEGORY_GENERAL, "vanillaStoneCrafting", 3, "0 = none; 1 = one rock; 2 = with redstone; 3 = 2x2 stone, lose 3; 4 = 2x2 stone").getInt();
 
         if (includeDimensions.equals("*"))
         {
@@ -174,8 +181,8 @@ public class UndergroundBiomes
     {
         proxy.registerRenderThings();
         
-        tabModBlocks = new CreativeTabModBlocks(CreativeTabs.creativeTabArray.length, "Underground Biomes Blocks");
-        tabModItems = new CreativeTabModBlocks(CreativeTabs.creativeTabArray.length, "Underground Biomes Items");
+        tabModBlocks = new CreativeTabModBlocks("undergroundBiomesBlocks");
+        tabModItems = new CreativeTabModBlocks("undergroundBiomesItems");
         
         igneousStone = new BlockIgneousStone(igneousStoneID, 0).setBlockName("igneousStone");
         new ItemMetadataBlock(igneousStone).setItemName("igneousStone");
@@ -201,35 +208,31 @@ public class UndergroundBiomes
         anthracite = new BlockAnthracite(anthraciteCoalID, 56).setBlockName("anthraciteCoal");
         GameRegistry.registerBlock(anthracite, "anthraciteBlock");
         
-        igneousBrickSlabHalf = (BlockHalfSlab) new BlockIgneousStoneSlab(igneousBrickSlabHalfId, false, 32).setBlockName("igneousBrickSlab");
-        igneousBrickSlabFull = (BlockHalfSlab) new BlockIgneousStoneSlab(igneousBrickSlabFullId, true, 32).setBlockName("igneousBrickSlabFull");
+        igneousBrickSlabHalf = (BlockHalfSlab) new BlockStoneSlab(igneousBrickSlabHalfId, false, 32, igneousStoneBrick).setBlockName("igneousBrickSlab");
+        igneousBrickSlabFull = (BlockHalfSlab) new BlockStoneSlab(igneousBrickSlabFullId, true, 32, igneousStoneBrick).setBlockName("igneousBrickSlab");
         
-        ItemIgneousStoneSlab.setSlabs(igneousBrickSlabHalf, igneousBrickSlabFull);
+        new ItemSlab(igneousBrickSlabHalfId - 256, igneousBrickSlabHalf, igneousBrickSlabFull, false);
+        new ItemSlab(igneousBrickSlabFullId - 256, igneousBrickSlabHalf, igneousBrickSlabFull, true);
         
-        Item.itemsList[igneousBrickSlabFullId] = new ItemIgneousStoneSlab(igneousBrickSlabFullId - 256, igneousBrickSlabFull).setItemName("igneousBrickSlabFull");
-        Item.itemsList[igneousBrickSlabHalfId] = new ItemIgneousStoneSlab(igneousBrickSlabHalfId - 256, igneousBrickSlabHalf).setItemName("igneousBrickSlab");
+        metamorphicBrickSlabHalf = (BlockHalfSlab)new BlockStoneSlab(metamorphicBrickSlabHalfID, false, 8+32, metamorphicStoneBrick).setBlockName("metamorphicBrickSlab");
+        metamorphicBrickSlabFull = (BlockHalfSlab)new BlockStoneSlab(metamorphicBrickSlabFullID, true, 8+32, metamorphicStoneBrick).setBlockName("metamorphicBrickSlab");
         
-        metamorphicBrickSlabHalf = (BlockHalfSlab) new BlockMetamorphicStoneSlab(metamorphicBrickSlabHalfID, false, 8+32).setBlockName("metamorphicBrickSlab");
-        metamorphicBrickSlabFull = (BlockHalfSlab) new BlockMetamorphicStoneSlab(metamorphicBrickSlabFullID, true, 8+32).setBlockName("metamorphicBrickSlabFull");
-        
-        ItemMetamorphicStoneSlab.setSlabs(metamorphicBrickSlabHalf, metamorphicBrickSlabFull);
-        
-        Item.itemsList[metamorphicBrickSlabHalfID] = new ItemMetamorphicStoneSlab(metamorphicBrickSlabHalfID - 256, metamorphicBrickSlabHalf).setItemName("metamorphicBrickSlab");
-        Item.itemsList[metamorphicBrickSlabFullID] = new ItemMetamorphicStoneSlab(metamorphicBrickSlabFullID - 256, metamorphicBrickSlabFull).setItemName("metamorphicBrickSlabFull");
+        new ItemSlab(metamorphicBrickSlabHalfID - 256, metamorphicBrickSlabHalf, metamorphicBrickSlabFull, false);
+        new ItemSlab(metamorphicBrickSlabFullID - 256, metamorphicBrickSlabHalf, metamorphicBrickSlabFull, true);
         
         //items
 
         ligniteCoal = new ItemLigniteCoal(ligniteCoalID).setItemName("ligniteCoal");
         fossilPiece = new ItemFossilPiece(fossilPieceID).setItemName("fossilPiece");
         
+        tabModBlocks.iconID = igneousStoneBrick.blockID;
+        tabModItems.iconID = ligniteCoal.itemID;
+
         setUpBlockNames();
         addOreDicts();
         addRecipes();
         
         MinecraftForge.EVENT_BUS.register(this);    
-        
-        ((CreativeTabModBlocks) tabModBlocks).setIcon(igneousStoneBrick.blockID);
-        ((CreativeTabModBlocks) tabModItems).setIcon(ligniteCoal.itemID);
     }
     
     @PostInit
@@ -273,99 +276,15 @@ public class UndergroundBiomes
     
     public void setUpBlockNames()
     {
-        LanguageRegistry lr = LanguageRegistry.instance();
-
-        lr.addStringLocalization("tile.igneousStone.redGranite.name", "Red Granite");
-        lr.addStringLocalization("tile.igneousStone.blackGranite.name", "Black Granite");
-        lr.addStringLocalization("tile.igneousStone.rhyolite.name", "Rhyolite");
-        lr.addStringLocalization("tile.igneousStone.andesite.name", "Andesite");
-        lr.addStringLocalization("tile.igneousStone.gabbro.name", "Gabbro");
-        lr.addStringLocalization("tile.igneousStone.basalt.name", "Basalt");
-        lr.addStringLocalization("tile.igneousStone.komatiite.name", "Komatiite");
-        lr.addStringLocalization("tile.igneousStone.dacite.name", "Dacite");
-        
-        lr.addStringLocalization("tile.igneousCobblestone.redGraniteCobble.name", "Red Granite Cobblestone");
-        lr.addStringLocalization("tile.igneousCobblestone.blackGraniteCobble.name", "Black Granite Cobblestone");
-        lr.addStringLocalization("tile.igneousCobblestone.rhyoliteCobble.name", "Rhyolite Cobblestone");
-        lr.addStringLocalization("tile.igneousCobblestone.andesiteCobble.name", "Andesite Cobblestone");
-        lr.addStringLocalization("tile.igneousCobblestone.gabbroCobble.name", "Gabbro Cobblestone");
-        lr.addStringLocalization("tile.igneousCobblestone.basaltCobble.name", "Basalt Cobblestone");
-        lr.addStringLocalization("tile.igneousCobblestone.komatiiteCobble.name", "Komatiite Cobblestone");
-        lr.addStringLocalization("tile.igneousCobblestone.daciteCobble.name", "Dacite Cobblestone");
-        
-        lr.addStringLocalization("tile.igneousStoneBrick.redGraniteBrick.name", "Red Granite Bricks");
-        lr.addStringLocalization("tile.igneousStoneBrick.blackGraniteBrick.name", "Black Granite Bricks");
-        lr.addStringLocalization("tile.igneousStoneBrick.rhyoliteBrick.name", "Rhyolite Bricks");
-        lr.addStringLocalization("tile.igneousStoneBrick.andesiteBrick.name", "Andesite Bricks");
-        lr.addStringLocalization("tile.igneousStoneBrick.gabbroBrick.name", "Gabbro Bricks");
-        lr.addStringLocalization("tile.igneousStoneBrick.basaltBrick.name", "Basalt Bricks");
-        lr.addStringLocalization("tile.igneousStoneBrick.komatiiteBrick.name", "Komatiite Bricks");
-        lr.addStringLocalization("tile.igneousStoneBrick.daciteBrick.name", "Dacite Bricks");
-        
-        lr.addStringLocalization("tile.metamorphicStone.gneiss.name", "Gneiss");
-        lr.addStringLocalization("tile.metamorphicStone.eclogite.name", "Eclogite");
-        lr.addStringLocalization("tile.metamorphicStone.marble.name", "Marble");
-        lr.addStringLocalization("tile.metamorphicStone.quartzite.name", "Quartzite");
-        lr.addStringLocalization("tile.metamorphicStone.blueschist.name", "Blue Schist");
-        lr.addStringLocalization("tile.metamorphicStone.greenschist.name", "Green Schist");
-        lr.addStringLocalization("tile.metamorphicStone.soapstone.name", "Soapstone");
-        lr.addStringLocalization("tile.metamorphicStone.migmatite.name", "Migmatite");
-        
-        lr.addStringLocalization("tile.metamorphicCobblestone.gneissCobble.name", "Gneiss Cobblestone");
-        lr.addStringLocalization("tile.metamorphicCobblestone.eclogiteCobble.name", "Eclogite Cobblestone");
-        lr.addStringLocalization("tile.metamorphicCobblestone.marbleCobble.name", "Marble Cobblestone");
-        lr.addStringLocalization("tile.metamorphicCobblestone.quartziteCobble.name", "Quartzite Cobblestone");
-        lr.addStringLocalization("tile.metamorphicCobblestone.blueschistCobble.name", "Blue Schist Cobblestone");
-        lr.addStringLocalization("tile.metamorphicCobblestone.greenschistCobble.name", "Green Schist Cobblestone");
-        lr.addStringLocalization("tile.metamorphicCobblestone.soapstoneCobble.name", "Soapstone Cobblestone");
-        lr.addStringLocalization("tile.metamorphicCobblestone.migmatiteCobble.name", "Migmatite Cobblestone");
-        
-        lr.addStringLocalization("tile.metamorphicStoneBrick.gneissBrick.name", "Gneiss Bricks");
-        lr.addStringLocalization("tile.metamorphicStoneBrick.eclogiteBrick.name", "Eclogite Bricks");
-        lr.addStringLocalization("tile.metamorphicStoneBrick.marbleBrick.name", "Marble Bricks");
-        lr.addStringLocalization("tile.metamorphicStoneBrick.quartziteBrick.name", "Quartzite Bricks");
-        lr.addStringLocalization("tile.metamorphicStoneBrick.blueschistBrick.name", "Blue Schist Bricks");
-        lr.addStringLocalization("tile.metamorphicStoneBrick.greenschistBrick.name", "Green Schist Bricks");
-        lr.addStringLocalization("tile.metamorphicStoneBrick.soapstoneBrick.name", "Soapstone Bricks");
-        lr.addStringLocalization("tile.metamorphicStoneBrick.migmatiteBrick.name", "Migmatite Bricks");
-        
-        lr.addStringLocalization("tile.sedimentaryStone.limestone.name", "Limestone");
-        lr.addStringLocalization("tile.sedimentaryStone.chalk.name", "Chalk");
-        lr.addStringLocalization("tile.sedimentaryStone.shale.name", "Shale");
-        lr.addStringLocalization("tile.sedimentaryStone.siltstone.name", "Siltstone");
-        lr.addStringLocalization("tile.sedimentaryStone.ligniteBlock.name", "Lignite Block");
-        lr.addStringLocalization("tile.sedimentaryStone.flint.name", "Flint");
-        lr.addStringLocalization("tile.sedimentaryStone.greywacke.name", "Greywacke");
-        lr.addStringLocalization("tile.sedimentaryStone.chert.name", "Chert");
-        
-        lr.addStringLocalization("tile.igneousBrickSlab.redGraniteBrickSlab.name", "Red Granite Brick Slab");
-        lr.addStringLocalization("tile.igneousBrickSlab.blackGraniteBrickSlab.name", "Black Granite Brick Slab");
-        lr.addStringLocalization("tile.igneousBrickSlab.rhyoliteBrickSlab.name", "Rhyolite Brick Slab");
-        lr.addStringLocalization("tile.igneousBrickSlab.andesiteBrickSlab.name", "Andesite Brick Slab");
-        lr.addStringLocalization("tile.igneousBrickSlab.gabbroBrickSlab.name", "Gabbro Brick Slab");
-        lr.addStringLocalization("tile.igneousBrickSlab.basaltBrickSlab.name", "Basalt Brick Slab");
-        lr.addStringLocalization("tile.igneousBrickSlab.komatiiteBrickSlab.name", "Komatiite Brick Slab");
-        lr.addStringLocalization("tile.igneousBrickSlab.daciteBrickSlab.name", "Dacite Brick Slab");
-        
-        lr.addStringLocalization("tile.metamorphicBrickSlab.gneissBrickSlab.name", "Gneiss Brick Slab");
-        lr.addStringLocalization("tile.metamorphicBrickSlab.eclogiteBrickSlab.name", "Eclogite Brick Slab");
-        lr.addStringLocalization("tile.metamorphicBrickSlab.marbleBrickSlab.name", "Marble Brick Slab");
-        lr.addStringLocalization("tile.metamorphicBrickSlab.quartziteBrickSlab.name", "Quartzite Brick Slab");
-        lr.addStringLocalization("tile.metamorphicBrickSlab.blueschistBrickSlab.name", "Blue Schist Brick Slab");
-        lr.addStringLocalization("tile.metamorphicBrickSlab.greenschistBrickSlab.name", "Green Schist Brick Slab");
-        lr.addStringLocalization("tile.metamorphicBrickSlab.soapstoneBrickSlab.name", "Soapstone Brick Slab");
-        lr.addStringLocalization("tile.metamorphicBrickSlab.migmatiteBrickSlab.name", "Migmatite Brick Slab");
-        
-        LanguageRegistry.addName(anthracite, "Anthracite Coal Block");
-        
-        LanguageRegistry.addName(ligniteCoal, "Lignite");
-
-        lr.addStringLocalization("item.fossilPiece.ammonite.name", "Ammonite fossil");
-        lr.addStringLocalization("item.fossilPiece.shell.name", "Shell fossil");
-        lr.addStringLocalization("item.fossilPiece.bone.name", "Bone fossil");
-        lr.addStringLocalization("item.fossilPiece.boneshard.name", "Bone shard fossil");
-        lr.addStringLocalization("item.fossilPiece.rib.name", "Rib fossil");
-        lr.addStringLocalization("item.fossilPiece.skull.name", "Skull fossil");
+        for (Object obj : StringTranslate.getInstance().getLanguageList().keySet())
+        {
+            String lang = (String)obj;
+            URL urlResource = this.getClass().getResource("/mods/UndergroundBiomes/lang/"+lang+".lang");
+            if (urlResource != null)
+            {
+                LanguageRegistry.instance().loadLocalization(urlResource, lang, false);
+            }
+        }
     }
     
     public void addRecipes()
@@ -397,7 +316,23 @@ public class UndergroundBiomes
         GameRegistry.addShapelessRecipe(new ItemStack(Item.dyePowder, 1, 15), new ItemStack(fossilPiece, 1, WILDCARD_VALUE));
         
         //vanilla cobblestone
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.cobblestone, 4), "XX", "XX", 'X', "stoneCobble"));
+        switch (vanillaStoneCrafting)
+        {
+            case 1:
+                GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Block.cobblestone, 1), "stoneCobble"));
+                break;
+            case 2:
+                GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Block.cobblestone, 1), Item.redstone, "stoneCobble"));
+                break;
+            case 3:
+                GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.cobblestone, 1), "XX", "XX", 'X', "stoneCobble"));
+                break;
+            case 4:
+                GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.cobblestone, 4), "XX", "XX", 'X', "stoneCobble"));
+                break;
+            default:
+                break;
+        }
         
         for (int i = 0; i < 8; i++)
         {

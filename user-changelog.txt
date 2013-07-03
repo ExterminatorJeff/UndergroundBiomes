@@ -1,3 +1,21 @@
+0.4.2
+
+- Localization support
+- Russian, Hungarian, French, German localizations
+- Repalced flint with dolomite
+- Fixed and rebalanced rocks blast resistance, made igneous stone harder to mine
+- Refactored code
+- Incrased frequency of rare drops (1 in 64 sedimentary, 1 in 1024 other)
+- Vanilla stone conversion configuration; by default lose 3 stone
+- No more changing metadata of cobblestone and bricks, better compatibility
+
+0.4.1 (22 Jun 2013)
+
+- Included Minecraft 1.4.7 compatible version
+  NOTE: configuration file name is now "UndergroundBiomes.cfg"
+- Fixed rare world load crash
+- Slight worldgen speedup
+
 0.4.0 (20 Jun 2013)
 
 - More compatible configuration in case IDs are taken;

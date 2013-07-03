@@ -5,12 +5,13 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
 
-public class ItemLigniteCoal extends Item{
+public class ItemLigniteCoal extends Item
+{
 
-    public ItemLigniteCoal(int par1) {
+    public ItemLigniteCoal(int par1)
+    {
         super(par1);
         this.setCreativeTab(UndergroundBiomes.tabModItems);
-        // TODO Auto-generated constructor stub
     }
     
     public String getTextureFile()
@@ -22,4 +23,5 @@ public class ItemLigniteCoal extends Item{
     {
         return 128;
     }
+
 }

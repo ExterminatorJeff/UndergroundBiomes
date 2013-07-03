@@ -64,7 +64,7 @@ public abstract class BlockMetadataBase extends Block
 
     public float getBlockExplosionResistance(int meta)
     {
-        return 10.0f;
+        return 6.0f;
     }
 
     public float getExplosionResistance(Entity entity, World world, int x, int y, int z, double explosionX, double explosionY, double explosionZ)
@@ -102,5 +102,12 @@ public abstract class BlockMetadataBase extends Block
         return ret;
     }
 
-    public abstract String getBlockName(int index);
+    public abstract String getBlockTypeName(int index);
+
+    public abstract boolean hasRareDrops();
+
+    public String getBlockName(int index)
+    {
+        return getBlockTypeName(index);
+    }
 }
