@@ -1,3 +1,7 @@
+0.4.2a (06 Jul 2013)
+
+- Fixed dedicated server support for Minecraft 1.6.1
+
 0.4.2 (03 Jul 2013)
 
 - Localization support

@@ -5,11 +5,7 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Arrays;
-import java.net.URL;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.Language;
-import net.minecraft.util.StringTranslate;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHalfSlab;
 import net.minecraft.creativetab.CreativeTabs;
@@ -36,14 +32,13 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.*;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.common.Loader;
 
 import exterminatorJeff.undergroundBiomes.common.block.*;
 import exterminatorJeff.undergroundBiomes.common.item.*;
 import exterminatorJeff.undergroundBiomes.common.command.*;
 
-@Mod(modid = "UndergroundBiomes", name = "Underground Biomes", version = "0.4.2")
+@Mod(modid = "UndergroundBiomes", name = "Underground Biomes", version = "0.4.2a")
 @NetworkMod(clientSideRequired = true, serverSideRequired = true)
 
 public class UndergroundBiomes
@@ -217,7 +212,7 @@ public class UndergroundBiomes
         tabModBlocks.iconID = igneousStoneBrick.blockID;
         tabModItems.iconID = ligniteCoal.itemID;
 
-        setUpBlockNames();
+        proxy.setUpBlockNames();
     }
     
     @Init
@@ -266,19 +261,6 @@ public class UndergroundBiomes
     public void serverLoad(FMLServerStartingEvent event)
     {
         event.registerServerCommand(new CommandOreDictifyStone());
-    }
-    
-    public void setUpBlockNames()
-    {
-        for (Object obj : Minecraft.getMinecraft().func_135016_M().func_135040_d())
-        {
-            String lang = ((Language)obj).func_135034_a();
-            URL urlResource = this.getClass().getResource("/assets/undergroundbiomes/lang/"+lang+".lang");
-            if (urlResource != null)
-            {
-                LanguageRegistry.instance().loadLocalization(urlResource, lang, false);
-            }
-        }
     }
     
     public void addRecipes()
