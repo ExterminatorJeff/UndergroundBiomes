@@ -1,0 +1,100 @@
+# Underground Biomes localization
+# pl_PL made by unek
+
+tile.igneousStone.redGranite.name=Czerwony granit
+tile.igneousStone.blackGranite.name=Czarny granit
+tile.igneousStone.rhyolite.name=Ryolit
+tile.igneousStone.andesite.name=Andezyt
+tile.igneousStone.gabbro.name=Gabro
+tile.igneousStone.basalt.name=Bazalt
+tile.igneousStone.komatiite.name=Komatyt
+tile.igneousStone.dacite.name=Dacyt
+
+tile.igneousCobblestone.redGranite.name=Bruk z czerwonego granitu
+tile.igneousCobblestone.blackGranite.name=Bruk z czarnego granitu
+tile.igneousCobblestone.rhyolite.name=Bruk z ryolitu
+tile.igneousCobblestone.andesite.name=Bruk z andezytu
+tile.igneousCobblestone.gabbro.name=Bruk z gabru
+tile.igneousCobblestone.basalt.name=Bruk z bazaltu
+tile.igneousCobblestone.komatiite.name=Bruk z komatytu
+tile.igneousCobblestone.dacite.name=Bruk z dacytu
+
+tile.igneousStoneBrick.redGranite.name=Cegły z czerwonego granitu
+tile.igneousStoneBrick.blackGranite.name=Cegły z czarnego granitu
+tile.igneousStoneBrick.rhyolite.name=Cegły z ryolitu
+tile.igneousStoneBrick.andesite.name=Cegły z andezytu
+tile.igneousStoneBrick.gabbro.name=Cegły z gabru
+tile.igneousStoneBrick.basalt.name=Cegły z bazaltu
+tile.igneousStoneBrick.komatiite.name=Cegły z komatytu
+tile.igneousStoneBrick.dacite.name=Cegły z dacytu
+
+tile.metamorphicStone.gneiss.name=Gnejs
+tile.metamorphicStone.eclogite.name=Eklogit
+tile.metamorphicStone.marble.name=Marmur
+tile.metamorphicStone.quartzite.name=Kwarcyt
+tile.metamorphicStone.blueschist.name=Niebieski iłowiec
+tile.metamorphicStone.greenschist.name=Zielony iłowiec
+tile.metamorphicStone.soapstone.name=Steatyt
+tile.metamorphicStone.migmatite.name=Migmatyt
+
+tile.metamorphicCobblestone.gneiss.name=Bruk z gnejsu
+tile.metamorphicCobblestone.eclogite.name=Bruk z eklogitu
+tile.metamorphicCobblestone.marble.name=Bruk z marmuru
+tile.metamorphicCobblestone.quartzite.name=Bruk z kwarcytu
+tile.metamorphicCobblestone.blueschist.name=Bruk z niebieskiego iłowca
+tile.metamorphicCobblestone.greenschist.name=Bruk z zielonego iłowca
+tile.metamorphicCobblestone.soapstone.name=Bruk ze steatytu
+tile.metamorphicCobblestone.migmatite.name=Bruk z migmatytu
+
+tile.metamorphicStoneBrick.gneiss.name=Cegły z gnejsu
+tile.metamorphicStoneBrick.eclogite.name=Cegły z eklogitu
+tile.metamorphicStoneBrick.marble.name=Cegły z marmuru
+tile.metamorphicStoneBrick.quartzite.name=Cegły z kwarcytu
+tile.metamorphicStoneBrick.blueschist.name=Cegły z niebieskiego iłowca
+tile.metamorphicStoneBrick.greenschist.name=Cegły z zielonego iłowca
+tile.metamorphicStoneBrick.soapstone.name=Cegły ze steatytu
+tile.metamorphicStoneBrick.migmatite.name=Cegły z migmatytu
+
+tile.sedimentaryStone.limestone.name=Wapień
+tile.sedimentaryStone.chalk.name=Kreda
+tile.sedimentaryStone.shale.name=Iłołupek
+tile.sedimentaryStone.siltstone.name=Aleuryt
+tile.sedimentaryStone.ligniteBlock.name=Węgiel brunatny
+tile.sedimentaryStone.dolomite.name=Dolomit
+tile.sedimentaryStone.greywacke.name=Szarogłaz
+tile.sedimentaryStone.chert.name=Rogowiec
+
+tile.igneousBrickSlab.redGranite.name=Płyta z czerwonego granitu
+tile.igneousBrickSlab.blackGranite.name=Płyta z czarnego granitu
+tile.igneousBrickSlab.rhyolite.name=Płyta z ryolitu
+tile.igneousBrickSlab.andesite.name=Płyta z andezytu
+tile.igneousBrickSlab.gabbro.name=Płyta z gabru
+tile.igneousBrickSlab.basalt.name=Płyta z bazaltu
+tile.igneousBrickSlab.komatiite.name=Płyta z komatytu
+tile.igneousBrickSlab.dacite.name=Płyta z dacytu
+
+tile.metamorphicBrickSlab.gneiss.name=Płyta z gnejsu
+tile.metamorphicBrickSlab.eclogite.name=Płyta z eklogitu
+tile.metamorphicBrickSlab.marble.name=Płyta z marmuru
+tile.metamorphicBrickSlab.quartzite.name=Płyta z kwarcytu
+tile.metamorphicBrickSlab.blueschist.name=Płyta z niebieskiego iłowca
+tile.metamorphicBrickSlab.greenschist.name=Płyta z zielonego iłowca
+tile.metamorphicBrickSlab.soapstone.name=Płyta ze steatytu
+tile.metamorphicBrickSlab.migmatite.name=Płyta z migmatytu
+
+tile.anthraciteCoal.name=Blok węgla antracytowego
+
+# Items
+
+item.ligniteCoal.name=Węgiel brunatny
+item.fossilPiece.ammonite.name=Skamieniały amonit
+item.fossilPiece.shell.name=Skamieniała skorupa
+item.fossilPiece.bone.name=Skamieniała kość
+item.fossilPiece.boneshard.name=Skamieniały odłamek kości
+item.fossilPiece.rib.name=Skamieniałe żebro
+item.fossilPiece.skull.name=Skamieniała czaszka
+
+# Creative Tabs
+
+itemGroup.undergroundBiomesBlocks=Bloki Podziemnych Biomów
+itemGroup.undergroundBiomesItems=Przedmioty Podziemnych Biomów
