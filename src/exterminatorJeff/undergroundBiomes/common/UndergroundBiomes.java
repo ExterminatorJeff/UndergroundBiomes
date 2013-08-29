@@ -354,10 +354,10 @@ public class UndergroundBiomes
     
     public void addOreDicts()
     {
-        OreDictionary.registerOre("stoneSmooth", new ItemStack(igneousStone, 1, WILDCARD_VALUE));
-        OreDictionary.registerOre("stoneSmooth", new ItemStack(metamorphicStone, 1, WILDCARD_VALUE));
-        OreDictionary.registerOre("stoneCobble", new ItemStack(igneousCobblestone, 1, WILDCARD_VALUE));
-        OreDictionary.registerOre("stoneCobble", new ItemStack(metamorphicCobblestone, 1, WILDCARD_VALUE));
+        OreDictionary.registerOre("stone", new ItemStack(igneousStone, 1, WILDCARD_VALUE));
+        OreDictionary.registerOre("stone", new ItemStack(metamorphicStone, 1, WILDCARD_VALUE));
+        OreDictionary.registerOre("cobblestone", new ItemStack(igneousCobblestone, 1, WILDCARD_VALUE));
+        OreDictionary.registerOre("cobblestone", new ItemStack(metamorphicCobblestone, 1, WILDCARD_VALUE));
         OreDictionary.registerOre("stoneBricks", new ItemStack(igneousStoneBrick, 1, WILDCARD_VALUE));
         OreDictionary.registerOre("stoneBricks", new ItemStack(metamorphicStoneBrick, 1, WILDCARD_VALUE));
     }
@@ -366,8 +366,8 @@ public class UndergroundBiomes
     {
         int numReplaced = 0;
         Map<ItemStack, String> replacements = new HashMap<ItemStack, String>();
-        replacements.put(new ItemStack(Block.stone, 1, WILDCARD_VALUE), "stoneSmooth");
-        replacements.put(new ItemStack(Block.cobblestone, 1, WILDCARD_VALUE), "stoneCobble");
+        replacements.put(new ItemStack(Block.stone, 1, WILDCARD_VALUE), "stone");
+        replacements.put(new ItemStack(Block.cobblestone, 1, WILDCARD_VALUE), "cobblestone");
         replacements.put(new ItemStack(Block.stoneBrick, 1, WILDCARD_VALUE), "stoneBricks");
         ItemStack[] replaceStacks = replacements.keySet().toArray(new ItemStack[replacements.keySet().size()]);
 
