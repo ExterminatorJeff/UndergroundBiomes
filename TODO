@@ -1,12 +1,20 @@
 Bugs
 ====
 
+- Constructs:
+  - Recipes should be adjusted to match original, UB ones changed if needed
+  - Not all items should be craftable: no smoothstone stairs, no brick buttons
+  - In creative picking blocks picks wrong one
+  - Metamorphic stone walls have incorrect localization
+  - It is impossible to put torches on top of walls
+  - Sometimes wall item on the ground from a broken wall graphically shows as a different one (?)
+  - Internal: no need to traverse through blocks to find UB blocks, change UB code if needed
 
 Features
 ========
 
 - Make worldgen faster
-- Stairs, more slabs
+- More slabs
 - Make ore textures look smooth beside UB stone
 - Add minerals, including emerald shards from LegendGear
 - Configure UB layers content, depth and height

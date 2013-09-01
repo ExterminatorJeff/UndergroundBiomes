@@ -38,6 +38,8 @@ import exterminatorJeff.undergroundBiomes.common.block.*;
 import exterminatorJeff.undergroundBiomes.common.item.*;
 import exterminatorJeff.undergroundBiomes.common.command.*;
 
+import exterminatorJeff.undergroundBiomes.constructs.UndergroundBiomesConstructs;
+
 @Mod(modid = "UndergroundBiomes", name = "Underground Biomes", version = "0.4.2a")
 @NetworkMod(clientSideRequired = true, serverSideRequired = true)
 
@@ -100,6 +102,8 @@ public class UndergroundBiomes
     private String excludeDimensions;
 
     private int vanillaStoneCrafting;
+
+    private UndergroundBiomesConstructs constructs;
     
     public static int biomeSize = 45;
 
@@ -213,6 +217,10 @@ public class UndergroundBiomes
         tabModItems.iconID = ligniteCoal.itemID;
 
         proxy.setUpBlockNames();
+
+        constructs = new UndergroundBiomesConstructs();
+        constructs.preInit(event);
+
     }
     
     @Init
@@ -220,7 +228,9 @@ public class UndergroundBiomes
     {
         addOreDicts();
         addRecipes();
-        
+
+        constructs.load(event);
+
         MinecraftForge.EVENT_BUS.register(this);    
     }
     
@@ -255,6 +265,8 @@ public class UndergroundBiomes
                 e.printStackTrace(System.err);
             }
         }
+
+        constructs.postInit(event);
     }
     
     @ServerStarting
