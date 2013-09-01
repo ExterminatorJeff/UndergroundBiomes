@@ -30,12 +30,12 @@ public class CommandOreDictifyStone extends CommandBase
         try
         {
             int num = UndergroundBiomes.oreDictifyStone();
-            sender.func_110122_a(ChatMessageComponent.func_111077_e(String.format("commands.oredictifystone.ok", num)).func_111059_a(EnumChatFormatting.GREEN));
+            sender.sendChatToPlayer(ChatMessageComponent.func_111077_e(String.format("commands.oredictifystone.ok", num)).func_111059_a(EnumChatFormatting.GREEN));
             //sender.sendChatToPlayer(String.format("\u00a7aStone OreDictify complete, modified %d recipes.", num));
         }
         catch (Exception e)
         {
-            sender.func_110122_a(ChatMessageComponent.func_111077_e("commands.oredictifystone.fail").func_111059_a(EnumChatFormatting.RED));
+            sender.sendChatToPlayer(ChatMessageComponent.func_111077_e("commands.oredictifystone.fail").func_111059_a(EnumChatFormatting.RED));
             //sender.sendChatToPlayer("\u00a7cStone OreDictify has failed!");
             e.printStackTrace();
         }

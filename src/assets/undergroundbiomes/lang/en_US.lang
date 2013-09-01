@@ -99,3 +99,8 @@ item.fossilPiece.skull.name=Skull fossil
 
 itemGroup.undergroundBiomesBlocks=Underground Biomes Blocks
 itemGroup.undergroundBiomesItems=Underground Biomes Items
+
+# Commands
+
+commands.oredictifystone.ok=Stone OreDictify complete, modified %d recipes.
+commands.oredictifystone.fail=Stone OreDictify has failed!
