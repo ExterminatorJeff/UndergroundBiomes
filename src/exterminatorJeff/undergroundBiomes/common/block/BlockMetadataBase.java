@@ -87,9 +87,14 @@ public abstract class BlockMetadataBase extends Block
         return getBlockHardness(getDamageValue(world, x, y, z) & 7);
     }
 
-    public ItemStack itemDropped(int metadata, Random random, int fortune, int y)
+    protected ItemStack createStackedBlock(int metadata)
     {
         return new ItemStack(this.blockID, 1, metadata & 7);
+    }
+
+    public ItemStack itemDropped(int metadata, Random random, int fortune, int y)
+    {
+        return createStackedBlock(metadata);
     }
 
     public ArrayList<ItemStack> getBlockDropped(World world, int x, int y, int z, int metadata, int fortune)
