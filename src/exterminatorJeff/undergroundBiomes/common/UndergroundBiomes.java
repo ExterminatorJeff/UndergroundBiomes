@@ -155,7 +155,7 @@ public class UndergroundBiomes
         stairsOn = config.get(Configuration.CATEGORY_GENERAL,
                 "UndergroundBiomesStairs", true, "Provide Stairs for Underground Biomes blocks").getBoolean(true);
         wallsOn = config.get(Configuration.CATEGORY_GENERAL,
-                "UndergroundBiomesStairs", true, "Provide Stairs for Underground Biomes blocks").getBoolean(true);
+                "UndergroundBiomesStairs", true, "Provide Walls for Underground Biomes blocks").getBoolean(true);
 
         if (includeDimensions.equals("*"))
         {
