@@ -112,6 +112,20 @@ public abstract class ItemUndergroundBiomesConstruct extends ItemBlock {
         theBlock.setIconKludge(kludged);
     }
 
+    @Override
+    public int getDamage(ItemStack stack) {
+        int result = super.getDamage(stack);
+        setIconKludge(getIconFromDamage(result));
+        return result;
+    }
+
+    @Override
+    public int getDisplayDamage(ItemStack stack) {
+        int result = super.getDisplayDamage(stack);
+        setIconKludge(getIconFromDamage(result));
+        return result;
+    }
+
     private Icon iconKludgeFromHell;
     /* this is a really scary kludge. Item rendering code for some items gets the block
      * without carrying through the damage information. To get around this I intercept the

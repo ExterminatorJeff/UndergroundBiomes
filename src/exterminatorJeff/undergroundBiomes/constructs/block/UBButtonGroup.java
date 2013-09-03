@@ -5,6 +5,7 @@
  * Constructor for the button group
  */
 package exterminatorJeff.undergroundBiomes.constructs.block;
+import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
 import exterminatorJeff.undergroundBiomes.constructs.item.ItemUBButton;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -19,7 +20,10 @@ public class UBButtonGroup extends UBConstructGroup {
     public UBButtonGroup() {super("button");}
 
     void addRecipe(ProductItemDefiner product,StoneItemDefiner stone) {
-
+        // suppress brick buttons
+        int sourceID = stone.one().itemID;
+        if (sourceID == UndergroundBiomes.igneousStoneBrick.blockID) return;
+        if (sourceID == UndergroundBiomes.metamorphicStoneBrick.blockID) return;
             GameRegistry.addRecipe(new ShapedOreRecipe(
                     product.stackOf(2), "   ", " X ", " X ", 'X', stone.one()));
     }

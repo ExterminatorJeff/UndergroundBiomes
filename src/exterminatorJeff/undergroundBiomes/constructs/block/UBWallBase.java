@@ -99,15 +99,19 @@ public class UBWallBase extends BlockWall  implements ITileEntityProvider, IconK
     
     public void setIconKludge(Icon kludged) {
         iconKludgeFromHell = kludged;
-        //hitCount = 7;
+        hitCount = 100;
     }
     private Icon iconKludgeFromHell;
     private int hitCount;
     @Override
     @SideOnly(Side.CLIENT)
     public Icon getIcon(int side, int metadata){
-        //hitCount--;
-        //if (hitCount == 0) iconKludgeFromHell= null;
+        hitCount--;
+        if (hitCount == 0) {
+            iconKludgeFromHell= null;
+            throw new RuntimeException("no icon set up");
+        }
+
         return iconKludgeFromHell;
         //return ubBlock(metadata).icon();
     }
@@ -153,6 +157,11 @@ public class UBWallBase extends BlockWall  implements ITileEntityProvider, IconK
 
     public String getBlockName(int meta) {
         return ubBlock(meta).name();
+    }
+
+    @Override
+    public boolean canPlaceTorchOnTop(World world, int x, int y, int z) {
+        return true;
     }
 
     @Override

@@ -104,6 +104,13 @@ public class UndergroundBiomes
     private int vanillaStoneCrafting;
 
     private UndergroundBiomesConstructs constructs;
+    private static boolean buttonsOn;
+    private static boolean stairsOn;
+    private static boolean wallsOn;
+
+    public static boolean buttonsOn() {return buttonsOn;}
+    public static boolean stairsOn() {return stairsOn;}
+    public static boolean wallsOn() {return wallsOn;}
     
     public static int biomeSize = 45;
 
@@ -143,6 +150,12 @@ public class UndergroundBiomes
         excludeDimensions = config.get(Configuration.CATEGORY_GENERAL, "excludeDimensionIDs", "-1,1", "Comma-separated list of dimension IDs, used only if include list is *").getString();
         includeDimensions = config.get(Configuration.CATEGORY_GENERAL, "includeDimensionIDs", "*", "Comma-separated list of dimension IDs, put * to use exclude list").getString();
         vanillaStoneCrafting = config.get(Configuration.CATEGORY_GENERAL, "vanillaStoneCrafting", 3, "0 = none; 1 = one rock; 2 = with redstone; 3 = 2x2 stone, lose 3; 4 = 2x2 stone").getInt();
+        buttonsOn = config.get(Configuration.CATEGORY_GENERAL,
+                "UndergroundBiomesButtons", true, "Provide Buttons for non-brick Underground Biomes blocks").getBoolean(true);
+        stairsOn = config.get(Configuration.CATEGORY_GENERAL,
+                "UndergroundBiomesStairs", true, "Provide Stairs for Underground Biomes blocks").getBoolean(true);
+        wallsOn = config.get(Configuration.CATEGORY_GENERAL,
+                "UndergroundBiomesStairs", true, "Provide Stairs for Underground Biomes blocks").getBoolean(true);
 
         if (includeDimensions.equals("*"))
         {
@@ -383,6 +396,9 @@ public class UndergroundBiomes
             {
                 continue;
             }
+            // supress alterations overriding construct recipes
+            if (UndergroundBiomesConstructs.overridesRecipe((IRecipe)obj)) continue;
+
             if (obj instanceof ShapedRecipes)
             {
                 ShapedRecipes recipe = (ShapedRecipes)obj;

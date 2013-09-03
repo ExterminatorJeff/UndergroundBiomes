@@ -1,5 +1,6 @@
 package exterminatorJeff.undergroundBiomes.constructs.util;
 
+import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
 import exterminatorJeff.undergroundBiomes.constructs.block.BlockList;
 import exterminatorJeff.undergroundBiomes.common.block.BlockMetadataBase;
 
@@ -14,13 +15,13 @@ public class UndergroundBiomesBlockList {
     public static final int detailedBlockCount = 7*8; // number of different type including the subcategories
 
     private static UndergroundBiomesBlock [] stored; // a singleton instance
-    public final BlockMetadataBase igneousStone = blockMetadataBaseNamed("tile.igneousStone");
-    public final BlockMetadataBase igneousCobblestone = blockMetadataBaseNamed("tile.igneousCobblestone");
-    public final BlockMetadataBase igneousStoneBrick = blockMetadataBaseNamed("tile.igneousStoneBrick");
-    public final BlockMetadataBase metamorphicStone = blockMetadataBaseNamed("tile.metamorphicStone");
-    public final BlockMetadataBase metamorphicCobblestone = blockMetadataBaseNamed("tile.metamorphicCobblestone");
-    public final BlockMetadataBase metamorphicStoneBrick = blockMetadataBaseNamed("tile.metamorphicStoneBrick");
-    public final BlockMetadataBase sedimentaryStone = blockMetadataBaseNamed("tile.sedimentaryStone");
+    public final BlockMetadataBase igneousStone = (BlockMetadataBase)UndergroundBiomes.igneousStone;
+    public final BlockMetadataBase igneousCobblestone = (BlockMetadataBase)UndergroundBiomes.igneousCobblestone;
+    public final BlockMetadataBase igneousStoneBrick = (BlockMetadataBase)UndergroundBiomes.igneousStoneBrick;
+    public final BlockMetadataBase metamorphicStone = (BlockMetadataBase)UndergroundBiomes.metamorphicStone;
+    public final BlockMetadataBase metamorphicCobblestone = (BlockMetadataBase)UndergroundBiomes.metamorphicCobblestone;
+    public final BlockMetadataBase metamorphicStoneBrick = (BlockMetadataBase)UndergroundBiomes.metamorphicStoneBrick;
+    public final BlockMetadataBase sedimentaryStone = (BlockMetadataBase)UndergroundBiomes.sedimentaryStone;
 
     public UndergroundBiomesBlock[] definitionsIndex;
 

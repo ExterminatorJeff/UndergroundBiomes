@@ -23,7 +23,7 @@ public class UBStairsGroup extends UBConstructGroup {
 
     void addRecipe(ProductItemDefiner product, StoneItemDefiner stone) {
             GameRegistry.addRecipe(new ShapedOreRecipe(
-                    product.stackOf(4), "XXX", " XX", "  X", 'X', stone.one()));
+                    product.stackOf(4), "  X", " XX", "XXX", 'X', stone.one()));
     }
 
     Class<? extends ItemBlock> itemClass() {

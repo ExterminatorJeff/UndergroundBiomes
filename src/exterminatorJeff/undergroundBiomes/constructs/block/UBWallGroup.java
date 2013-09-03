@@ -19,7 +19,7 @@ public class UBWallGroup  extends UBConstructGroup {
 
     void addRecipe(ProductItemDefiner product, StoneItemDefiner stone) {
             GameRegistry.addRecipe(new ShapedOreRecipe(
-                    product.stackOf(5), "   ", "XXX", "X X", 'X', stone.one()));
+                    product.stackOf(6), "   ", "XXX", "XXX", 'X', stone.one()));
     }
 
     Class<? extends ItemBlock> itemClass() {
