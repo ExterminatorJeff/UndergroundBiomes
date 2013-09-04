@@ -16,6 +16,10 @@ import exterminatorJeff.undergroundBiomes.constructs.block.UBWallGroup;
 import exterminatorJeff.undergroundBiomes.constructs.util.UndergroundBiomesBlockList;
 import exterminatorJeff.undergroundBiomes.constructs.entity.UndergroundBiomesTileEntity;
 
+import exterminatorJeff.undergroundBiomes.constructs.util.Zeno410Logger;
+import java.util.logging.Logger;
+import java.util.logging.Level;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockButton;
 import net.minecraft.block.BlockStairs;
@@ -58,6 +62,8 @@ public class UndergroundBiomesConstructs {
 
     private UndergroundBiomesBlockList ubBlockList;
 
+    //private static Zeno410Logger logger = new Zeno410Logger("UndergroundBiomesConstructs");
+
     //@PreIni
     public void preInit(FMLPreInitializationEvent event) {
         config = new Configuration(event.getSuggestedConfigurationFile());
@@ -88,6 +94,9 @@ public class UndergroundBiomesConstructs {
         ubBlockList = new UndergroundBiomesBlockList();
         GameRegistry.registerTileEntity(UndergroundBiomesTileEntity.class, "UndergroundBiomesTileEntity");
 
+        //logger.logger().log(Level.INFO, "buttons " + UndergroundBiomes.buttonsOn());
+        //logger.logger().log(Level.INFO, "Stairs " + UndergroundBiomes.stairsOn());
+        //logger.logger().log(Level.INFO, "walls " + UndergroundBiomes.wallsOn());
         if (UndergroundBiomes.buttonsOn()) loadButtons();
         if (UndergroundBiomes.stairsOn()) loadStairs();
         if (UndergroundBiomes.wallsOn()) loadWalls();
@@ -126,15 +135,25 @@ public class UndergroundBiomesConstructs {
             return false;
         }
         if (!(output instanceof ItemBlock)) {return false;}
+        //logger.logger().log(Level.INFO, output.getClass().toString());
         Block blockMade = Block.blocksList[((ItemBlock)output).getBlockID()];
         if (UndergroundBiomes.buttonsOn()) {
-            if (blockMade instanceof BlockButton) return true;
+            if (blockMade instanceof BlockButton) {
+                //logger.logger().log(Level.INFO, "suppressed");
+                return true;
+            }
         }
         if (UndergroundBiomes.stairsOn()) {
-            if (blockMade instanceof BlockStairs) {return true;}
+            if (blockMade instanceof BlockStairs) {
+                //logger.logger().log(Level.INFO, "suppressed");
+                return true;
+            }
         }
         if (UndergroundBiomes.wallsOn()) {
-            if (blockMade instanceof BlockWall) return true;
+            if (blockMade instanceof BlockWall) {
+                //logger.logger().log(Level.INFO, "suppressed");
+                return true;
+            }
         }
         return false;
     }
