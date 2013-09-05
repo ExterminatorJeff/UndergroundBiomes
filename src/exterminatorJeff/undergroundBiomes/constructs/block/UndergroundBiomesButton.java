@@ -45,7 +45,7 @@ public class UndergroundBiomesButton extends BlockButton implements ITileEntityP
     @Override
     public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6){}
 
-    public final UndergroundBiomesTileEntity ubTileEntity(World world, int x, int y, int z) {
+    public final UndergroundBiomesTileEntity ubTileEntity(IBlockAccess world, int x, int y, int z) {
         UndergroundBiomesTileEntity result;
         result = (UndergroundBiomesTileEntity)(world.getBlockTileEntity(x, y, z));
         return result;
@@ -55,7 +55,7 @@ public class UndergroundBiomesButton extends BlockButton implements ITileEntityP
         return UndergroundBiomesBlockList.indexed(ubTileEntity(world,x,y,z).masterIndex());
     }
 
-    public final UndergroundBiomesBlock safeUBBlock(World world, int x, int y, int z) {
+    public final UndergroundBiomesBlock safeUBBlock(IBlockAccess world, int x, int y, int z) {
         UndergroundBiomesTileEntity entity = ubTileEntity(world,x,y,z);
         if (entity == null) return ubBlock(0);
         return UndergroundBiomesBlockList.indexed(ubTileEntity(world,x,y,z).masterIndex());
@@ -92,6 +92,11 @@ public class UndergroundBiomesButton extends BlockButton implements ITileEntityP
         //return ubBlock(metadata).icon();
     }
 
+    @Override
+    public int getMixedBrightnessForBlock(IBlockAccess world, int x, int y, int z) {
+        setIconKludge(safeUBBlock(world,x,y,z).icon());
+        return super.getMixedBrightnessForBlock(world,x,y,z);
+    }
     public Icon getBlockTexture(IBlockAccess world, int x, int y, int z, int side){
         //logger.logger().log(Level.INFO,"texture " + x + " " + y + " " + z);
         int metadataFromEntity = ((UndergroundBiomesTileEntity)(world.getBlockTileEntity(x, y, z))).masterIndex();

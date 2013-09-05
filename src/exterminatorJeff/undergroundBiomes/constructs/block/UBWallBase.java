@@ -64,17 +64,17 @@ public class UBWallBase extends BlockWall  implements ITileEntityProvider, IconK
      * entity at this location. Args: world, x, y, z, blockID, EventID, event parameter
      */
 
-    public final UndergroundBiomesTileEntity ubTileEntity(World world, int x, int y, int z) {
+    public final UndergroundBiomesTileEntity ubTileEntity(IBlockAccess world, int x, int y, int z) {
         UndergroundBiomesTileEntity result;
         result = (UndergroundBiomesTileEntity)(world.getBlockTileEntity(x, y, z));
         return result;
     }
 
-    public final UndergroundBiomesBlock ubBlock(World world, int x, int y, int z) {
+    public final UndergroundBiomesBlock ubBlock(IBlockAccess world, int x, int y, int z) {
         return UndergroundBiomesBlockList.indexed(ubTileEntity(world,x,y,z).masterIndex());
     }
 
-    public final UndergroundBiomesBlock safeUBBlock(World world, int x, int y, int z) {
+    public final UndergroundBiomesBlock safeUBBlock(IBlockAccess world, int x, int y, int z) {
         UndergroundBiomesTileEntity entity = ubTileEntity(world,x,y,z);
         if (entity == null) return ubBlock(0);
         return UndergroundBiomesBlockList.indexed(ubTileEntity(world,x,y,z).masterIndex());
@@ -108,14 +108,19 @@ public class UBWallBase extends BlockWall  implements ITileEntityProvider, IconK
     public Icon getIcon(int side, int metadata){
         hitCount--;
         if (hitCount == 0) {
-            iconKludgeFromHell= null;
-            throw new RuntimeException("no icon set up");
+            //iconKludgeFromHell= null;
+            //throw new RuntimeException("no icon set up");
         }
 
         return iconKludgeFromHell;
         //return ubBlock(metadata).icon();
     }
 
+    @Override
+    public int getMixedBrightnessForBlock(IBlockAccess world, int x, int y, int z) {
+        setIconKludge(safeUBBlock(world,x,y,z).icon());
+        return super.getMixedBrightnessForBlock(world,x,y,z);
+    }
     @Override
     public Icon getBlockTexture(IBlockAccess world, int x, int y, int z, int side){
         //logger.logger().log(Level.INFO,"texture " + x + " " + y + " " + z);

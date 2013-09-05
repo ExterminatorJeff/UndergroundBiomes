@@ -65,7 +65,7 @@ public class UBStairsBase extends BlockStairs implements ITileEntityProvider, Ic
      * entity at this location. Args: world, x, y, z, blockID, EventID, event parameter
      */
 
-    public final UndergroundBiomesTileEntity ubTileEntity(World world, int x, int y, int z) {
+    public final UndergroundBiomesTileEntity ubTileEntity(IBlockAccess world, int x, int y, int z) {
         UndergroundBiomesTileEntity result;
         result = (UndergroundBiomesTileEntity)(world.getBlockTileEntity(x, y, z));
         return result;
@@ -75,7 +75,7 @@ public class UBStairsBase extends BlockStairs implements ITileEntityProvider, Ic
         return UndergroundBiomesBlockList.indexed(ubTileEntity(world,x,y,z).masterIndex());
     }
 
-    public final UndergroundBiomesBlock safeUBBlock(World world, int x, int y, int z) {
+    public final UndergroundBiomesBlock safeUBBlock(IBlockAccess world, int x, int y, int z) {
         // this is needed for block breaking; there seems to be a call to getHardness after
         // the block is already gone
         UndergroundBiomesTileEntity entity = ubTileEntity(world,x,y,z);
@@ -115,6 +115,12 @@ public class UBStairsBase extends BlockStairs implements ITileEntityProvider, Ic
         //return ubBlock(metadata).icon();
     }
 
+    @Override
+    public int getMixedBrightnessForBlock(IBlockAccess world, int x, int y, int z) {
+        setIconKludge(safeUBBlock(world,x,y,z).icon());
+        return super.getMixedBrightnessForBlock(world,x,y,z);
+    }
+    @Override
     public Icon getBlockTexture(IBlockAccess world, int x, int y, int z, int side){
         int metadataFromEntity = ((UndergroundBiomesTileEntity)(world.getBlockTileEntity(x, y, z))).masterIndex();
         return ubBlock(metadataFromEntity).icon();
