@@ -99,3 +99,8 @@ item.fossilPiece.skull.name=Schädel
 
 itemGroup.undergroundBiomesBlocks=Underground Biomes Blöcken
 itemGroup.undergroundBiomesItems=Underground Biomes Items
+
+# Commands
+
+commands.oredictifystone.ok=Stein-OreDictify beendet, %d Rezepte verändert.
+commands.oredictifystone.fail=Stein-OreDictify ist fehlgeschlagen!
