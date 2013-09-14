@@ -38,7 +38,7 @@ import exterminatorJeff.undergroundBiomes.common.block.*;
 import exterminatorJeff.undergroundBiomes.common.item.*;
 import exterminatorJeff.undergroundBiomes.common.command.*;
 
-@Mod(modid = "UndergroundBiomes", name = "Underground Biomes", version = "0.4.2a")
+@Mod(modid = "UndergroundBiomes", name = "Underground Biomes", version = "0.4.3")
 @NetworkMod(clientSideRequired = true, serverSideRequired = true)
 
 public class UndergroundBiomes
@@ -46,6 +46,7 @@ public class UndergroundBiomes
     public static World world;
     public static boolean addOreDictRecipes = true;
     public static boolean vanillaStoneBiomes = false;
+    public static int generateHeight = 128;
     
     public Configuration config;
     
@@ -139,6 +140,7 @@ public class UndergroundBiomes
         excludeDimensions = config.get(Configuration.CATEGORY_GENERAL, "excludeDimensionIDs", "-1,1", "Comma-separated list of dimension IDs, used only if include list is *").getString();
         includeDimensions = config.get(Configuration.CATEGORY_GENERAL, "includeDimensionIDs", "*", "Comma-separated list of dimension IDs, put * to use exclude list").getString();
         vanillaStoneCrafting = config.get(Configuration.CATEGORY_GENERAL, "vanillaStoneCrafting", 3, "0 = none; 1 = one rock; 2 = with redstone; 3 = 2x2 stone, lose 3; 4 = 2x2 stone").getInt();
+        generateHeight = config.get(Configuration.CATEGORY_GENERAL, "generateHeight", 127, "Max height to replace stone in, usually 127; higher is slower").getInt();
 
         if (includeDimensions.equals("*"))
         {
@@ -326,10 +328,10 @@ public class UndergroundBiomes
     
     public void addOreDicts()
     {
-        OreDictionary.registerOre("stoneSmooth", new ItemStack(igneousStone, 1, WILDCARD_VALUE));
-        OreDictionary.registerOre("stoneSmooth", new ItemStack(metamorphicStone, 1, WILDCARD_VALUE));
-        OreDictionary.registerOre("stoneCobble", new ItemStack(igneousCobblestone, 1, WILDCARD_VALUE));
-        OreDictionary.registerOre("stoneCobble", new ItemStack(metamorphicCobblestone, 1, WILDCARD_VALUE));
+        OreDictionary.registerOre("stone", new ItemStack(igneousStone, 1, WILDCARD_VALUE));
+        OreDictionary.registerOre("stone", new ItemStack(metamorphicStone, 1, WILDCARD_VALUE));
+        OreDictionary.registerOre("cobblestone", new ItemStack(igneousCobblestone, 1, WILDCARD_VALUE));
+        OreDictionary.registerOre("cobblestone", new ItemStack(metamorphicCobblestone, 1, WILDCARD_VALUE));
         OreDictionary.registerOre("stoneBricks", new ItemStack(igneousStoneBrick, 1, WILDCARD_VALUE));
         OreDictionary.registerOre("stoneBricks", new ItemStack(metamorphicStoneBrick, 1, WILDCARD_VALUE));
     }
@@ -338,8 +340,8 @@ public class UndergroundBiomes
     {
         int numReplaced = 0;
         Map<ItemStack, String> replacements = new HashMap<ItemStack, String>();
-        replacements.put(new ItemStack(Block.stone, 1, WILDCARD_VALUE), "stoneSmooth");
-        replacements.put(new ItemStack(Block.cobblestone, 1, WILDCARD_VALUE), "stoneCobble");
+        replacements.put(new ItemStack(Block.stone, 1, WILDCARD_VALUE), "stone");
+        replacements.put(new ItemStack(Block.cobblestone, 1, WILDCARD_VALUE), "cobblestone");
         replacements.put(new ItemStack(Block.stoneBrick, 1, WILDCARD_VALUE), "stoneBricks");
         ItemStack[] replaceStacks = replacements.keySet().toArray(new ItemStack[replacements.keySet().size()]);
 

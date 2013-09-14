@@ -1,0 +1,101 @@
+# Underground Biomes localization
+# ===============================
+# Blocks
+
+tile.igneousStone.redGranite.name=Kırmızı Granit
+tile.igneousStone.blackGranite.name=Siyah Granit
+tile.igneousStone.rhyolite.name=Riyolit
+tile.igneousStone.andesite.name=Andezit
+tile.igneousStone.gabbro.name=Gabro
+tile.igneousStone.basalt.name=Bazalt
+tile.igneousStone.komatiite.name=Komatiite
+tile.igneousStone.dacite.name=Dasit
+
+tile.igneousCobblestone.redGranite.name=Kırmızı Granit Kırık Taş
+tile.igneousCobblestone.blackGranite.name=Siyah Granit Kırık Taş
+tile.igneousCobblestone.rhyolite.name=Riyolit Kırık Taş
+tile.igneousCobblestone.andesite.name=Andezit Kırık Taş
+tile.igneousCobblestone.gabbro.name=Gabro Kırık Taş
+tile.igneousCobblestone.basalt.name=Bazalt Kırık Taş
+tile.igneousCobblestone.komatiite.name=Komatiite Kırık Taş
+tile.igneousCobblestone.dacite.name=Dasit Kırık Taş
+
+tile.igneousStoneBrick.redGranite.name=Kırmızı Granit Tuğla
+tile.igneousStoneBrick.blackGranite.name=Siyah Granit Tuğla
+tile.igneousStoneBrick.rhyolite.name=Riyolit Tuğla
+tile.igneousStoneBrick.andesite.name=Andezit Tuğla
+tile.igneousStoneBrick.gabbro.name=Gabro Tuğla
+tile.igneousStoneBrick.basalt.name=Bazalt Tuğla
+tile.igneousStoneBrick.komatiite.name=Komatiite Tuğla
+tile.igneousStoneBrick.dacite.name=Dasit Tuğla
+
+tile.metamorphicStone.gneiss.name=Gnays
+tile.metamorphicStone.eclogite.name=Eklojit
+tile.metamorphicStone.marble.name=Mermer
+tile.metamorphicStone.quartzite.name=Kuvarsit
+tile.metamorphicStone.blueschist.name=Mavi Şist
+tile.metamorphicStone.greenschist.name=Yeşil Şist
+tile.metamorphicStone.soapstone.name=Sabun Taşı
+tile.metamorphicStone.migmatite.name=Migmatit
+
+tile.metamorphicCobblestone.gneiss.name=Gnays Kırık Taş
+tile.metamorphicCobblestone.eclogite.name=Eklojit Kırık Taş
+tile.metamorphicCobblestone.marble.name=Mermer Kırık Taş
+tile.metamorphicCobblestone.quartzite.name=Kuvarsit Kırık Taş
+tile.metamorphicCobblestone.blueschist.name=Mavi Şist Kırık Taş
+tile.metamorphicCobblestone.greenschist.name=Yeşil Şist Kırık Taş
+tile.metamorphicCobblestone.soapstone.name=Sabun Taşı Kırık Taş
+tile.metamorphicCobblestone.migmatite.name=Migmatit Kırık Taş
+
+tile.metamorphicStoneBrick.gneiss.name=Gnays Tuğla
+tile.metamorphicStoneBrick.eclogite.name=Eklojit Tuğla
+tile.metamorphicStoneBrick.marble.name=Mermer Tuğla
+tile.metamorphicStoneBrick.quartzite.name=Kuvarsit Tuğla
+tile.metamorphicStoneBrick.blueschist.name=Mavi Şist Tuğla
+tile.metamorphicStoneBrick.greenschist.name=Yeşil Şist Tuğla
+tile.metamorphicStoneBrick.soapstone.name=Sabun Taşı Tuğla
+tile.metamorphicStoneBrick.migmatite.name=Migmatit Tuğla
+
+tile.sedimentaryStone.limestone.name=Kireç Taşı
+tile.sedimentaryStone.chalk.name=Tebeşir
+tile.sedimentaryStone.shale.name=Shale
+tile.sedimentaryStone.siltstone.name=Silt Taşı
+tile.sedimentaryStone.ligniteBlock.name=Linyit Bloğu 
+tile.sedimentaryStone.dolomite.name=Dolomit
+tile.sedimentaryStone.greywacke.name=Grovak
+tile.sedimentaryStone.chert.name=Kuvarslı Kaya
+
+tile.igneousBrickSlab.redGranite.name=Kırmızı Granit Basamağı
+tile.igneousBrickSlab.blackGranite.name=Siyah Granit Basamağı
+tile.igneousBrickSlab.rhyolite.name=Riyolit Basamağı
+tile.igneousBrickSlab.andesite.name=Andezit Basamağı
+tile.igneousBrickSlab.gabbro.name=Gabro Basamağı
+tile.igneousBrickSlab.basalt.name=Bazalt Basamağı
+tile.igneousBrickSlab.komatiite.name=Komatiite Basamağı
+tile.igneousBrickSlab.dacite.name=Dasit Basamağı
+
+tile.metamorphicBrickSlab.gneiss.name=Gnays Basamağı
+tile.metamorphicBrickSlab.eclogite.name=Eklojit Basamağı
+tile.metamorphicBrickSlab.marble.name=Mermer Basamağı
+tile.metamorphicBrickSlab.quartzite.name=Kuvarsit Basamağı
+tile.metamorphicBrickSlab.blueschist.name=Mavi Şist Basamağı
+tile.metamorphicBrickSlab.greenschist.name=Yeşil Şist Basamağı
+tile.metamorphicBrickSlab.soapstone.name=Sabun Taşı Basamağı
+tile.metamorphicBrickSlab.migmatite.name=Migmatit Basamağı
+
+tile.anthraciteCoal.name=Antrasit Kömür Bloğu
+
+# Items
+
+item.ligniteCoal.name=Linyit
+item.fossilPiece.ammonite.name=Salyangoz fosili
+item.fossilPiece.shell.name=Deniz Kabuğu fosili
+item.fossilPiece.bone.name=Kemik fosili
+item.fossilPiece.boneshard.name=Kırık Kemik fosili
+item.fossilPiece.rib.name=Kaburga fosili
+item.fossilPiece.skull.name=Kafa fosili
+
+# Creative Tabs
+
+itemGroup.undergroundBiomesBlocks=Underground Biomes Blokları
+itemGroup.undergroundBiomesItems=Underground Biomes Itemları

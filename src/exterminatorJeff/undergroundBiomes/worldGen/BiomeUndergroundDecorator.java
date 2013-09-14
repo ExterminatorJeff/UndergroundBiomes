@@ -44,7 +44,7 @@ public class BiomeUndergroundDecorator
             for(int z = par_z; z < par_z + 16; z++)
             {
                 BiomeGenUndergroundBase currentBiome = undergroundBiomesForGeneration[(x-par_x) + (z-par_z) * 16];
-                for(int y = 1; y < 128; y++)
+                for(int y = 1; y <= UndergroundBiomes.generateHeight; y++)
                 {
                     if(currentWorld.getBlockId(x, y, z) == Block.stone.blockID)
                     {

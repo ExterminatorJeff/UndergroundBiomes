@@ -1,12 +1,15 @@
 Bugs
 ====
 
+- Eclogite and siltstone are too common
+
 
 Features
 ========
 
+- Rebalance underground biomes and layers
+- Stairs, more slabs, walls - optional, to save on block IDs
 - Make worldgen faster
-- Stairs, more slabs
 - Make ore textures look smooth beside UB stone
 - Add minerals, including emerald shards from LegendGear
 - Configure UB layers content, depth and height
@@ -14,3 +17,4 @@ Features
 - Chisel mod interaction - http://www.minecraftforum.net/topic/1749374-/
 - Thut's Concrete mod interaction - http://www.minecraftforum.net/topic/1810433-/
 - Compatibility with ID resolver (if still incompatible) - http://www.minecraftforum.net/topic/366377-/
+- Add the stone and bricks to the respective forestry bags
