@@ -53,6 +53,14 @@ public class BlockStoneSlab extends BlockStep
     {
         return textures[meta & 7];
     }
+
+    public void getSubBlocks(int id, CreativeTabs tabs, List list)
+    {
+        for (int i = 0; i < 8; i++)
+        {
+            list.add(new ItemStack(id, 1, i));
+        } 
+    }
     
     private int getHalfSlab()
     {
