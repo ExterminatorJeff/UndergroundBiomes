@@ -31,12 +31,12 @@ public class BlockSedimentaryStone extends BlockMetadataBase
     
     public float getBlockHardness(int meta)
     {
-        return 1.5f * hardness[meta];
+        return UndergroundBiomes.hardnessModifier * hardness[meta];
     }
 
     public float getBlockExplosionResistance(int meta)
     {
-        return 6.0f * resistance[meta];
+        return UndergroundBiomes.resistanceModifier * resistance[meta];
     }
 
     public ItemStack itemDropped(int metadata, Random random, int fortune, int y)

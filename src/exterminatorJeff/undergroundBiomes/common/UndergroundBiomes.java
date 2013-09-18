@@ -107,6 +107,9 @@ public class UndergroundBiomes
     private String excludeDimensions;
 
     private int vanillaStoneCrafting;
+
+    public static float hardnessModifier = 1.5f;
+    public static float resistanceModifier = 6.0f;
     
     public static int biomeSize = 45;
 
