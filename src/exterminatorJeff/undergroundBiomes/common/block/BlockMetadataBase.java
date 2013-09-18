@@ -69,12 +69,12 @@ public abstract class BlockMetadataBase extends Block
 
     public float getBlockHardness(int meta)
     {
-        return 1.5f;
+        return UndergroundBiomes.hardnessModifier;
     }
 
     public float getBlockExplosionResistance(int meta)
     {
-        return 6.0f;
+        return UndergroundBiomes.resistanceModifier;
     }
 
     public float getExplosionResistance(Entity entity, World world, int x, int y, int z, double explosionX, double explosionY, double explosionZ)
