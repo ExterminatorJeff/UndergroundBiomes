@@ -144,6 +144,8 @@ public class UndergroundBiomes
         includeDimensions = config.get(Configuration.CATEGORY_GENERAL, "includeDimensionIDs", "*", "Comma-separated list of dimension IDs, put * to use exclude list").getString();
         vanillaStoneCrafting = config.get(Configuration.CATEGORY_GENERAL, "vanillaStoneCrafting", 3, "0 = none; 1 = one rock; 2 = with redstone; 3 = 2x2 stone, lose 3; 4 = 2x2 stone").getInt();
         generateHeight = config.get(Configuration.CATEGORY_GENERAL, "generateHeight", 127, "Max height to replace stone in, usually 127; higher is slower").getInt();
+        hardnessModifier = (float)config.get(Configuration.CATEGORY_GENERAL, "hardnessModifier", 1.5, "Increase to make stone longer to mine. Normal is 1.5").getDouble(1.5);
+        resistanceModifier = (float)config.get(Configuration.CATEGORY_GENERAL, "resistanceModifier", 6.0, "Increase to make stone more resistant to explosions. Normal is 6.0").getDouble(6.0);
 
         if (includeDimensions.equals("*"))
         {
