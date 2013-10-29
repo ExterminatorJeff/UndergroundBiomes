@@ -1,3 +1,15 @@
+0.4.2c (29 Oct 2013)
+
+- Polish localization by unek
+- Turkish localization by toltol
+- Chinese localization by laincat
+- Configurable max generation height
+- Configurable hardness and resistance modifiers
+- Fixed rhyolite and marble brick slabs not appearing in creative tabs
+- Fixed stone metadata on silk touch harvest
+- Changed stone and cobblestone oredict names according to the latest Forge
+  (fixes uncraftable items from stone for Forge #934+)
+
 0.4.2a (06 Jul 2013)
 
 - Fixed dedicated server support for Minecraft 1.6.1
