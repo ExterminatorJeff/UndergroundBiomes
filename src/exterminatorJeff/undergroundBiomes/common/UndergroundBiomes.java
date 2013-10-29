@@ -274,24 +274,24 @@ public class UndergroundBiomes
     {
         if (!addOreDictRecipes)
         {
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.furnaceIdle, 1), "XXX", "X X", "XXX", 'X', "stoneCobble"));
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.lever, 1), "I", "X", 'X', "stoneCobble", 'I', Item.stick));
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.pistonBase, 1), "WWW", "CIC", "CRC", 'W', Block.planks, 'C', "stoneCobble", 'I', Item.ingotIron, 'R', Item.redstone));
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.stairsCobblestone, 4), "X  ", "XX ", "XXX", 'X', "stoneCobble"));
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.cobblestoneWall, 1), "XXX", "XXX", 'X', "stoneCobble"));
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Item.axeStone, 1), "XX ", "XW ", " W ", 'X', "stoneCobble", 'W', Item.stick));
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Item.pickaxeStone, 1), "XXX", " W ", " W ", 'X', "stoneCobble", 'W', Item.stick));
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Item.hoeStone, 1), "XX ", " W ", " W ", 'X', "stoneCobble", 'W', Item.stick));
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Item.shovelStone, 1), " X ", " W ", " W ", 'X', "stoneCobble", 'W', Item.stick));
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Item.swordStone, 1), "X", "X", "W", 'X', "stoneCobble", 'W', Item.stick));
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Item.brewingStand, 1), " B ", "XXX", 'X', "stoneCobble", 'B', Item.blazeRod));
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.dispenser, 1), "XXX", "XBX", "XRX", 'X', "stoneCobble", 'B', Item.bow, 'R', Item.redstone));
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.pressurePlateStone, 1), "XX", 'X', "stoneSmooth"));
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.stoneSingleSlab, 6, 3), "XXX", 'X', "stoneCobble"));
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.stoneSingleSlab, 6, 0), "XXX", 'X', "stoneSmooth"));
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Item.redstoneRepeater, 1), "TRT", "XXX", 'X', "stoneSmooth", 'T', Block.torchRedstoneActive, 'R', Item.redstone));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.furnaceIdle, 1), "XXX", "X X", "XXX", 'X', "cobblestone"));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.lever, 1), "I", "X", 'X', "cobblestone", 'I', Item.stick));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.pistonBase, 1), "WWW", "CIC", "CRC", 'W', Block.planks, 'C', "cobblestone", 'I', Item.ingotIron, 'R', Item.redstone));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.stairsCobblestone, 4), "X  ", "XX ", "XXX", 'X', "cobblestone"));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.cobblestoneWall, 1), "XXX", "XXX", 'X', "cobblestone"));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Item.axeStone, 1), "XX ", "XW ", " W ", 'X', "cobblestone", 'W', Item.stick));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Item.pickaxeStone, 1), "XXX", " W ", " W ", 'X', "cobblestone", 'W', Item.stick));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Item.hoeStone, 1), "XX ", " W ", " W ", 'X', "cobblestone", 'W', Item.stick));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Item.shovelStone, 1), " X ", " W ", " W ", 'X', "cobblestone", 'W', Item.stick));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Item.swordStone, 1), "X", "X", "W", 'X', "cobblestone", 'W', Item.stick));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Item.brewingStand, 1), " B ", "XXX", 'X', "cobblestone", 'B', Item.blazeRod));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.dispenser, 1), "XXX", "XBX", "XRX", 'X', "cobblestone", 'B', Item.bow, 'R', Item.redstone));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.pressurePlateStone, 1), "XX", 'X', "stone"));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.stoneSingleSlab, 6, 3), "XXX", 'X', "cobblestone"));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.stoneSingleSlab, 6, 0), "XXX", 'X', "stone"));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Item.redstoneRepeater, 1), "TRT", "XXX", 'X', "stone", 'T', Block.torchRedstoneActive, 'R', Item.redstone));
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.stairsStoneBrick, 4), "X  ", "XX ", "XXX", 'X', "stoneBricks"));
-            GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Block.stoneButton, 1), "stoneSmooth"));
+            GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Block.stoneButton, 1), "stone"));
         }
         
         GameRegistry.addRecipe(new ItemStack(Item.coal, 1), "XXX", "XXX", "XXX", 'X', ligniteCoal);
@@ -301,16 +301,16 @@ public class UndergroundBiomes
         switch (vanillaStoneCrafting)
         {
             case 1:
-                GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Block.cobblestone, 1), "stoneCobble"));
+                GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Block.cobblestone, 1), "cobblestone"));
                 break;
             case 2:
-                GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Block.cobblestone, 1), Item.redstone, "stoneCobble"));
+                GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Block.cobblestone, 1), Item.redstone, "cobblestone"));
                 break;
             case 3:
-                GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.cobblestone, 1), "XX", "XX", 'X', "stoneCobble"));
+                GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.cobblestone, 1), "XX", "XX", 'X', "cobblestone"));
                 break;
             case 4:
-                GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.cobblestone, 4), "XX", "XX", 'X', "stoneCobble"));
+                GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.cobblestone, 4), "XX", "XX", 'X', "cobblestone"));
                 break;
             default:
                 break;
