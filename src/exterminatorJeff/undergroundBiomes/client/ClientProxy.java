@@ -19,9 +19,9 @@ public class ClientProxy extends CommonProxy
 
     public void setUpBlockNames()
     {
-        for (Object obj : Minecraft.getMinecraft().func_135016_M().func_135040_d())
+        for (Object obj : Minecraft.getMinecraft().getLanguageManager().getLanguages())
         {
-            String lang = ((Language)obj).func_135034_a();
+            String lang = ((Language)obj).getLanguageCode();
             URL urlResource = this.getClass().getResource("/assets/undergroundbiomes/lang/"+lang+".lang");
             if (urlResource != null)
             {

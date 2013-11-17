@@ -199,14 +199,14 @@ public class UndergroundBiomes
         sedimentaryStone = new BlockSedimentaryStone(sedimentaryStoneID);
         new ItemMetadataBlock(sedimentaryStone);
         
-        igneousBrickSlabHalf = (BlockHalfSlab)new BlockStoneSlab(igneousBrickSlabHalfId, false, igneousStoneBrick).setUnlocalizedName("igneousBrickSlab").func_111022_d("undergroundbiomes:igneousBrickSlab");
-        igneousBrickSlabFull = (BlockHalfSlab)new BlockStoneSlab(igneousBrickSlabFullId, true, igneousStoneBrick).setUnlocalizedName("igneousBrickSlab").func_111022_d("undergroundbiomes:igneousBrickSlab");
+        igneousBrickSlabHalf = (BlockHalfSlab)new BlockStoneSlab(igneousBrickSlabHalfId, false, igneousStoneBrick).setUnlocalizedName("igneousBrickSlab").setTextureName("undergroundbiomes:igneousBrickSlab");
+        igneousBrickSlabFull = (BlockHalfSlab)new BlockStoneSlab(igneousBrickSlabFullId, true, igneousStoneBrick).setUnlocalizedName("igneousBrickSlab").setTextureName("undergroundbiomes:igneousBrickSlab");
         
         new ItemSlab(igneousBrickSlabHalfId - 256, igneousBrickSlabHalf, igneousBrickSlabFull, false);
         new ItemSlab(igneousBrickSlabFullId - 256, igneousBrickSlabHalf, igneousBrickSlabFull, true);
         
-        metamorphicBrickSlabHalf = (BlockHalfSlab)new BlockStoneSlab(metamorphicBrickSlabHalfID, false, metamorphicStoneBrick).setUnlocalizedName("metamorphicBrickSlab").func_111022_d("undergroundbiomes:metamorphicBrickSlab");
-        metamorphicBrickSlabFull = (BlockHalfSlab)new BlockStoneSlab(metamorphicBrickSlabFullID, true, metamorphicStoneBrick).setUnlocalizedName("metamorphicBrickSlab").func_111022_d("undergroundbiomes:metamorphicBrickSlab");
+        metamorphicBrickSlabHalf = (BlockHalfSlab)new BlockStoneSlab(metamorphicBrickSlabHalfID, false, metamorphicStoneBrick).setUnlocalizedName("metamorphicBrickSlab").setTextureName("undergroundbiomes:metamorphicBrickSlab");
+        metamorphicBrickSlabFull = (BlockHalfSlab)new BlockStoneSlab(metamorphicBrickSlabFullID, true, metamorphicStoneBrick).setUnlocalizedName("metamorphicBrickSlab").setTextureName("undergroundbiomes:metamorphicBrickSlab");
         
         new ItemSlab(metamorphicBrickSlabHalfID - 256, metamorphicBrickSlabHalf, metamorphicBrickSlabFull, false);
         new ItemSlab(metamorphicBrickSlabFullID - 256, metamorphicBrickSlabHalf, metamorphicBrickSlabFull, true);

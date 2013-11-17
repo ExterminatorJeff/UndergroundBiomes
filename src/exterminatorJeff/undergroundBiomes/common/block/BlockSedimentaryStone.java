@@ -28,7 +28,7 @@ public class BlockSedimentaryStone extends BlockMetadataBase
     {
         super(id);
         setUnlocalizedName("sedimentaryStone");
-        func_111022_d("undergroundbiomes:sedimentaryStone");
+        setTextureName("undergroundbiomes:sedimentaryStone");
     }
     
     public float getBlockHardness(int meta)
