@@ -385,7 +385,7 @@ public class UndergroundBiomes
                 {
                     recipes.set(i, (ShapedOreRecipe)shapedConstr.newInstance(recipe, replacements));
                     numReplaced++;
-                    System.out.println("Changed shaped recipe for " + output.getItemName());
+                    System.out.println("Changed shaped recipe for " + output.getDisplayName());
                 }
             }
             else if (obj instanceof ShapelessRecipes)
@@ -395,7 +395,7 @@ public class UndergroundBiomes
                 {
                     recipes.set(i, (ShapelessOreRecipe)shapelessConstr.newInstance(recipe, replacements));
                     numReplaced++;
-                    System.out.println("Changed shapeless recipe for " + output.getItemName());
+                    System.out.println("Changed shapeless recipe for " + output.getDisplayName());
                 }
             }
             else if (obj instanceof ShapedOreRecipe)
@@ -404,7 +404,7 @@ public class UndergroundBiomes
                 if (containsMatchReplaceInplace(true, recipe.getInput(), replaceStacks, replacements))
                 {
                     numReplaced++;
-                    System.out.println("Changed shaped ore recipe for " + output.getItemName());
+                    System.out.println("Changed shaped ore recipe for " + output.getDisplayName());
                 }
             }
             else if (obj instanceof ShapelessOreRecipe)
@@ -413,7 +413,7 @@ public class UndergroundBiomes
                 if (containsMatchReplaceInplace(true, recipe.getInput(), replaceStacks, replacements))
                 {
                     numReplaced++;
-                    System.out.println("Changed shapeless ore recipe for " + output.getItemName());
+                    System.out.println("Changed shapeless ore recipe for " + output.getDisplayName());
                 }
             }
         }
